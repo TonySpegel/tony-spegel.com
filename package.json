@@ -1,29 +1,30 @@
 {
-  "name": "eleventy-base-blog",
+  "name": "tony-spegel.com-website",
   "version": "6.0.0",
-  "description": "A starter repository for a blog web site using the Eleventy static site generator.",
+  "description": "My personal website. I blog about the modern web.",
   "scripts": {
     "build": "npx @11ty/eleventy",
     "bench": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
     "watch": "npx @11ty/eleventy --watch",
     "serve": "npx @11ty/eleventy --serve",
     "start": "npx @11ty/eleventy --serve",
-    "debug": "DEBUG=* npx @11ty/eleventy"
+    "debug": "DEBUG=* npx @11ty/eleventy",
+    "11ty-wds": "concurrently \"npx eleventy --watch\" \"web-dev-server  --node-resolve\""
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/11ty/eleventy-base-blog.git"
+    "url": "git://github.com/TonySpegel/tony-spegel.com.git"
   },
   "author": {
-    "name": "Zach Leatherman",
-    "email": "zachleatherman@gmail.com",
-    "url": "https://zachleat.com/"
+    "name": "Tony Spegel",
+    "email": "tony.spegel@gmail.com",
+    "url": "https://tony-spegel.com/"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/11ty/eleventy-base-blog/issues"
+    "url": "https://github.com/TonySpegel/tony-spegel.com/issues"
   },
-  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
+  "homepage": "https://github.com/TonySpegel/tony-spegel.com#readme",
   "dependencies": {
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-navigation": "^0.3.3",
@@ -32,5 +33,9 @@
     "luxon": "^2.4.0",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.4"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.1.32",
+    "concurrently": "^7.2.2"
   }
 }
