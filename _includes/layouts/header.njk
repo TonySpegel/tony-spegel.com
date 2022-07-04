@@ -1,0 +1,26 @@
+<header id="site-header">
+  <nav>
+    <a id="logo-link"
+      {% if page.url !== '/' %}
+      href="{{ '/' | url }}"
+      title="Zur Startseite"
+      {% endif %}
+    >
+      <div id="logo-base">
+        <img src="/img/tsp_icon.svg" alt="Tony Spegel Logo"/>
+      </div>
+      <h1>Tony Spegel</h1>
+    </a>
+
+    <div class="menu">
+      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+      <ul class="nav">
+      {%- for entry in collections.all | eleventyNavigation %}
+        <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}">
+          <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+        </li>
+      {%- endfor %}
+      </ul>
+    </div>
+  </nav>
+</header>
