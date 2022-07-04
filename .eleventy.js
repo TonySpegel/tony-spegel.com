@@ -3,6 +3,10 @@ const fs = require("fs");
 const { DateTime } = require("luxon");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItHeaderSections = require('markdown-it-header-sections');
+const slugify = require('@sindresorhus/slugify');
+const pluginTOC = require('eleventy-plugin-nesting-toc');
+
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -12,11 +16,23 @@ module.exports = function(eleventyConfig) {
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy('js');
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
+  eleventyConfig.addPlugin(pluginTOC, {
+    ul: true,
+    tags: ['h2', 'h3'],
+  });
+
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
+  eleventyConfig.addNunjucksShortcode("externalLink", (text, title, link) => {
+    return `<a class="text-link" target="_blank" rel="noopener noreferrer" title="${title}" href="${link}">${text}</a>`;
+  });
+
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
@@ -65,15 +81,22 @@ module.exports = function(eleventyConfig) {
     html: true,
     breaks: true,
     linkify: true
-  }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: "after",
-      class: "direct-link",
-      symbol: "#",
-      level: [1,2,3,4],
-    }),
-    slugify: eleventyConfig.getFilter("slug")
-  });
+  })
+    .use(markdownItHeaderSections)
+    // .use(markdownItAnchor, {
+    //   permalink: markdownItAnchor.permalink.ariaHidden({
+    //     placement: "after",
+    //     class: "direct-link",
+    //     symbol: "#",
+    //     level: [1,2,3,4],
+    //   }),
+    //   slugify: eleventyConfig.getFilter("slug")
+    // });
+    .use(markdownItAnchor, {
+      permalink: markdownItAnchor.permalink.headerLink(),
+      tabIndex: false,
+      slugify: (s) => slugify(s),
+    });
   eleventyConfig.setLibrary("md", markdownLibrary);
 
   // Override Browsersync defaults (used only with --serve)
