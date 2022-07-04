@@ -1,0 +1,18 @@
+toc-observer ol {
+  list-style-type: none;
+  line-height: 1;
+  padding: 0;
+}
+
+toc-observer a {
+  display: block;
+  border-left: 2px solid #e0e0e0;
+  padding: calc(var(--base-gap) / 2) var(--base-gap);
+  color: var(--toc-color);
+  transition: all 100ms ease-in-out;
+}
+
+toc-observer a.toc-active {
+  color: var(--toc-color-active);
+  border-left-color: var(--toc-color-active);
+}
