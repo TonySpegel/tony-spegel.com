@@ -1,0 +1,23 @@
+.wrapper {
+  display: grid;
+  grid-template-areas: 'main toc';
+  gap: var(--base-gap);
+}
+
+article {
+  grid-area: main;
+}
+
+aside.toc {
+  grid-area: toc;
+}
+
+#post-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: calc(var(--base-gap) / 2);
+  padding: 0;
+  margin: 0;
+
+  list-style-type: none;
+}
