@@ -12,12 +12,14 @@ const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 
 module.exports = function (eleventyConfig) {
-  // Copy folders & files to the output
+  // Copy folders & files to the output directory
   eleventyConfig.addPassthroughCopy('CNAME');
   eleventyConfig.addPassthroughCopy('css');
   eleventyConfig.addPassthroughCopy('fonts');
   eleventyConfig.addPassthroughCopy('img');
   eleventyConfig.addPassthroughCopy('js');
+  eleventyConfig.addPassthroughCopy('*.svg');
+  eleventyConfig.addPassthroughCopy('robots.txt');
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
@@ -64,7 +66,7 @@ module.exports = function (eleventyConfig) {
 
   function filterTagList(tags) {
     return (tags || []).filter(
-      (tag) => ['all', 'nav', 'post', 'posts', 'blog'].indexOf(tag) === -1,
+      (tag) => ['all', 'nav', 'post', 'posts', 'footer', 'blog'].indexOf(tag) === -1,
     );
   }
 
