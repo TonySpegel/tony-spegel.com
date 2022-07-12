@@ -15,6 +15,7 @@ module.exports = function (eleventyConfig) {
   // Copy folders & files to the output
   eleventyConfig.addPassthroughCopy('CNAME');
   eleventyConfig.addPassthroughCopy('css');
+  eleventyConfig.addPassthroughCopy('fonts');
   eleventyConfig.addPassthroughCopy('img');
   eleventyConfig.addPassthroughCopy('js');
 
