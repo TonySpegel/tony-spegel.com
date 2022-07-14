@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+        <style>
+            @font-face {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-display: swap;
+                src: url(data:font/woff2;base64,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) format('woff2');
+            }
+        </style>
+    </defs>
+
+    <style>
+        svg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box-bg {
+            rx: 50px;
+            ry: 50px;
+
+            width: 100%;
+            height: 100%;
+
+            fill: #e8e8e8;
+            fill-opacity: 0;
+        }
+
+        .box-bottom {
+            rx: 40px;
+            ry: 40px;
+
+            width: 210px;
+            height: 210px;
+
+            x: 45px;
+            y: 45px;
+
+            fill: #7000a3;
+
+            stroke-width: 3;
+            stroke: rgba(235, 248, 255, 0.15);
+            stroke-opacity: 0.15;
+
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        .box-middle {
+            rx: 10px;
+            ry: 10px;
+
+            width: 210px;
+            height: 210px;
+
+            x: 45px;
+            y: 45px;
+
+            fill: #cb99e1;
+
+            stroke-width: 5;
+            stroke: rgba(235, 248, 255, 0.15);
+
+            transform-box: fill-box;
+            transform-origin: center;
+            transform: rotate(52deg);
+        }
+
+        .box-top {
+            rx: 15px;
+            ry: 15px;
+
+            width: 210px;
+            height: 210px;
+            /** 
+             * x/y pos = SVG size / 2 - Box size / 2
+             */
+            x: 45px;
+            y: 45px;
+
+            fill: #debfed;
+            fill-opacity: 0.65;
+
+            stroke-width: 3;
+            stroke: hsla(281, 53%, 97%, 0.63);
+
+
+            transform-box: fill-box;
+            transform-origin: center;
+            transform: rotate(23deg);
+        }
+
+        .logo-text {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            fill: hsla(281, 100%, 21%, 1);
+            line-height: 1;
+        }
+    </style>
+
+    <rect class="box-bg" />
+    <rect class="box-bottom" rx="40px" ry="40px" />
+    <rect class="box-middle" rx="10px" ry="10px" />
+    <rect class="box-top" rx="15px" ry="15px" />
+    <text 
+        dominant-baseline="middle" 
+        text-anchor="middle" 
+        x="150px" 
+        y="160px" 
+        font-size="5.7rem" 
+        class="logo-text"
+    >
+        TS
+    </text>
+</svg>

@@ -1,0 +1,47 @@
+/**
+ * <theme-switch>
+ * ======
+ */
+
+theme-switch {
+  --base-gap: 16px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 97% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/**
+   * Button which opens the dialog
+   */
+#btn-theme-selection {
+  border-radius: 50%;
+  border: 2px solid hsla(281, 53%, 97%, 0.63);
+  width: 25px;
+  aspect-ratio: 1;
+
+  background: linear-gradient(
+    -45deg,
+    hsla(281, 55%, 74%, 1),
+    hsl(191, 98%, 56%),
+    hsl(281, 60%, 25%),
+    hsl(338, 78%, 48%)
+  );
+
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  transition: border 500ms ease-out;
+}
+
+#btn-theme-selection:focus,
+#btn-theme-selection:hover {
+  border-color: hsla(281, 100%, 63%, 0.75);
+}
