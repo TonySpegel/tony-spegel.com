@@ -27,20 +27,23 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(pluginTOC, {
     ul: true,
-    tags: ['h2', 'h3'],
+    tags: ['h2'],
   });
 
   eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
+
+  eleventyConfig.addFilter('readableDate', (dateObj) => {
+    return new Intl.DateTimeFormat('de-DE', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(dateObj);
+  });
 
   eleventyConfig.addNunjucksShortcode('externalLink', (text, title, link) => {
     return `<a class="text-link" target="_blank" rel="noopener noreferrer" title="${title}" href="${link}">${text}</a>`;
   });
 
-  eleventyConfig.addFilter('readableDate', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
-      'dd LLL yyyy',
-    );
-  });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
