@@ -10,7 +10,7 @@ jobs:
       # Check-out repository under $GITHUB_WORKSPACE
       - name: Checkout
         uses: actions/checkout@v2
-      # Install NPM dependencies & bundle w/ Rollup
+      # Install NPM dependencies, build with 11ty
       - name: Build 🏗️
         uses: actions/setup-node@v2
         with:
@@ -23,3 +23,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
           folder: _site # The folder the action should deploy.
+      - name: List files in the repository
+        run: |
+          ls -lR | more ${{ github.workspace }}
