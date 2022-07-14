@@ -25,4 +25,4 @@ jobs:
           folder: _site # The folder the action should deploy.
       - name: List files in the repository
         run: |
-          ls -lR | more ${{ github.workspace }}
+          ls -lR | more ${{ github.workspace }}/_site
