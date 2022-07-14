@@ -7,19 +7,17 @@
       {% endif %}
     >
       <div id="logo-base">
-        <img src="/img/tsp_icon.svg" alt="Tony Spegel Logo"/>
+        <img src="/tsp_icon.svg" alt="Tony Spegel Logo"/>
       </div>
       <h1>Tony Spegel</h1>
     </a>
 
     <div class="menu">
-      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+      <button id="btn-theme-selection" title="Farbschema auswählen"></button>
       <ul class="nav">
-      {%- for entry in collections.all | eleventyNavigation %}
-        <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}">
-          <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+        <li class="nav-item">
+          <a href="/blog">Blog</a>
         </li>
-      {%- endfor %}
       </ul>
     </div>
   </nav>
