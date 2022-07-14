@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm install
-      - run: sudo npm run build
+      - run: npm run build
       # Deploy to GitHub Pages
       - name: Deploy 🚀
         # Deploys to gh-pages by default
