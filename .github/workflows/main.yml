@@ -4,7 +4,7 @@ on:
       - main
 name: Build & Deploy
 jobs:
-  build-bundle-deploy:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
       # Check-out repository under $GITHUB_WORKSPACE
@@ -19,7 +19,7 @@ jobs:
       - run: sudo npm run build
       # Deploy to GitHub Pages
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        # Deploys to gh-pages by default
+        uses: JamesIves/github-pages-deploy-action@4.3.4
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: dist # The folder the action should deploy.
+          folder: _site # The folder the action should deploy.
