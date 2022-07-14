@@ -2,9 +2,29 @@
 layout: layouts/base.njk
 templateClass: post
 ---
-<h1>{{ title }}</h1>
 
-<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+<main>
+  <header>
+    <time 
+      class="article-date" 
+      datetime="{{ page.date | htmlDateString }}"
+    >{{ page.date | readableDate }}</time>
+    <h1>{{ title }}</h1>
+  </header>
+
+  {{ content | safe }}
+
+</main>
+
+<aside class="toc">
+  <toc-observer observeParent>
+  <div slot="toc">
+  {{ content | toc | safe }}
+  </div>
+  </toc-observer>
+</aside>
+
+{# 
 <ul id="post-tags">
 {%- for tag in tags | filterTagList -%}
 {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
@@ -28,9 +48,9 @@ templateClass: post
   </aside>
 </div>
 
-{%- if collections.posts %}
-{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+{%- if collections.blog %}
+{%- set nextPost = collections.blog | getNextCollectionItem(page) %}
+{%- set previousPost = collections.blog | getPreviousCollectionItem(page) %}
 {%- if nextPost or previousPost %}
 <hr>
 <ul>
@@ -38,4 +58,4 @@ templateClass: post
   {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
 </ul>
 {%- endif %}
-{%- endif %}
+{%- endif %} #}
