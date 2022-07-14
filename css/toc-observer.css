@@ -5,14 +5,19 @@ toc-observer ol {
 }
 
 toc-observer a {
-  display: block;
+  display: flex;
   border-left: 2px solid #e0e0e0;
   padding: calc(var(--base-gap) / 2) var(--base-gap);
-  color: var(--toc-color);
-  transition: all 100ms ease-in-out;
+  color: var(--text-1);
+  
+  transition: all 50ms ease-in-out;
+  text-decoration: none;
 }
 
-toc-observer a.toc-active {
-  color: var(--toc-color-active);
-  border-left-color: var(--toc-color-active);
+toc-observer a:is(:hover, :focus, .toc-active) {
+  border-left-color: var(--surface-4);
+}
+
+toc-observer a:is(:hover, :focus) {
+  background-color: var(--surface-3);
 }
