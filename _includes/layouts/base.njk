@@ -8,23 +8,77 @@
     <meta name="generator" content="{{ eleventy.generator }}">
 
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
-    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
-    <link rel="stylesheet" href="{{ '/css/prism-diff.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/toc-observer.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/theme-switch.css' | url }}">
+
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
 
-    {% if '/posts' in page.url %}
+    <script type="module" src="{{ '/js/index.js' | url }}"></script>
+
+    {% if '/blog' in page.url %}
     <script type="module" src="{{ '/js/post.js' | url }}"></script>
     <link rel="stylesheet" href="{{ '/css/post.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/toc-observer.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/prism-diff.css' | url }}">
     {% endif %}
-  </head>
-  <body>
-    {% include 'layouts/header.njk' %}
 
-    <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
+    <style>
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/inter-v7-latin-regular.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('/fonts/inter-v7-latin-500.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/fonts/inter-v7-latin-700.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+      }
+    </style>
+
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+
+  <body>
+    <theme-switch>
+        <h2 slot="heading">Theme Auswahl</h2>
+        <span slot="sub-heading">Wähle ein Theme für die Website</span>
+        <a
+          href="/datenschutzerklaerung/#auswertung-des-verhaltens-von-besucherinnen-und-besuchern-cookies"
+          id="read-more"
+          slot="read-more"
+          target="_blank"
+          title="Was wird gespeichert?"
+        >
+          ? 
+        </a>
+        <span slot="close-caption">Schließen</span>
+    </theme-switch>
+    {% include 'layouts/header.njk' %}
+    
+    <div id="sentinel-element"></div>
+    
+    <div id="main-wrapper">
+      <div></div>
       {{ content | safe }}
-    </main>
+    </div>
+    <main{% if templateClass %} class="{{ templateClass }}"{% endif %}></main>
 
     {% include 'layouts/footer.njk' %}
   </body>
