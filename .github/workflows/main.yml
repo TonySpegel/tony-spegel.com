@@ -20,6 +20,6 @@ jobs:
       # Deploy to GitHub Pages
       - name: Deploy 🚀
         # Deploys to gh-pages by default
-        uses: JamesIves/github-pages-deploy-action@4.3.4
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           folder: _site # The folder the action should deploy.
