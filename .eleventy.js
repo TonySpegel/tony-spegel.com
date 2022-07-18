@@ -44,7 +44,6 @@ module.exports = function (eleventyConfig) {
     return `<a class="text-link" target="_blank" rel="noopener noreferrer" title="${title}" href="${link}">${text}</a>`;
   });
 
-
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
@@ -69,7 +68,8 @@ module.exports = function (eleventyConfig) {
 
   function filterTagList(tags) {
     return (tags || []).filter(
-      (tag) => ['all', 'nav', 'post', 'posts', 'footer', 'blog'].indexOf(tag) === -1,
+      (tag) =>
+        ['all', 'nav', 'post', 'posts', 'footer', 'blog'].indexOf(tag) === -1,
     );
   }
 
