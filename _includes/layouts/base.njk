@@ -7,6 +7,13 @@
     <meta name="description" content="{{ description or metadata.description }}">
     <meta name="generator" content="{{ eleventy.generator }}">
 
+
+    {% if env.environment == "production" %}
+    <base href="{{ metadata.author['gh-pages'] }}/tony-spegel.com">
+    {% else %}
+    <base href="/">
+    {% endif %}
+
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/toc-observer.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/theme-switch.css' | url }}">
@@ -74,11 +81,10 @@
     
     <div id="sentinel-element"></div>
     
-    <div id="main-wrapper">
+    <div id="main-wrapper" {% if templateClass %} class="{{ templateClass }}"{% endif %}>
       <div></div>
       {{ content | safe }}
     </div>
-    <main{% if templateClass %} class="{{ templateClass }}"{% endif %}></main>
 
     {% include 'layouts/footer.njk' %}
   </body>
