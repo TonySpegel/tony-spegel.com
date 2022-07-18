@@ -16,7 +16,10 @@ jobs:
         with:
           node-version: '16'
       - run: npm install
-      - run: npm run build
+      - run: npm run build:prod
+      # Bundle + optimize w/ Rollup
+      - name: Bundle 🧶
+      - run: npm run build-rollup-live
       # Deploy to GitHub Pages
       - name: Deploy 🚀
         # Deploys to gh-pages by default
@@ -26,3 +29,4 @@ jobs:
       - name: List files in the repository
         run: |
           ls -lR | more ${{ github.workspace }}/_site
+      
