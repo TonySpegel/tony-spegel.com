@@ -4,12 +4,14 @@
   "description": "My personal website. I blog about the modern web.",
   "scripts": {
     "build": "npx @11ty/eleventy",
+    "build:prod": "ENVIRONMENT=production npx @11ty/eleventy",
     "bench": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
     "watch": "npx @11ty/eleventy --watch",
     "serve": "npx @11ty/eleventy --serve",
     "start": "npx @11ty/eleventy --serve",
     "debug": "DEBUG=* npx @11ty/eleventy",
-    "11ty-wds": "concurrently \"npx eleventy --watch\" \"web-dev-server  --node-resolve\""
+    "11ty-wds": "concurrently \"npx eleventy --watch\" \"web-dev-server  --node-resolve\"",
+    "build-rollup-live": "rollup --config rollup.config.live.js"
   },
   "repository": {
     "type": "git",
@@ -40,7 +42,11 @@
     "toc-observer-component": "^0.0.1"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@web/dev-server": "^0.1.32",
-    "concurrently": "^7.2.2"
+    "concurrently": "^7.2.2",
+    "rollup": "^2.76.0",
+    "rollup-plugin-summary": "^1.4.3",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
