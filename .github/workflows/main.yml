@@ -10,15 +10,13 @@ jobs:
       # Check-out repository under $GITHUB_WORKSPACE
       - name: Checkout
         uses: actions/checkout@v2
-      # Install NPM dependencies, build with 11ty
-      - name: Build 🏗️
+      # Install NPM dependencies, build with 11ty, optimize with Rollup
+      - name: Build 🏗️ + bundle 🧶
         uses: actions/setup-node@v2
         with:
           node-version: '16'
       - run: npm install
       - run: npm run build:prod
-      # Bundle + optimize w/ Rollup
-      - name: Bundle 🧶
       - run: npm run build-rollup-live
       # Deploy to GitHub Pages
       - name: Deploy 🚀
