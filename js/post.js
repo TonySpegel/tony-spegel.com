@@ -1,1 +1,0 @@
-import 'toc-observer-component';
