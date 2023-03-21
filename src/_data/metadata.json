@@ -1,0 +1,46 @@
+{
+  "title": "Tony Spegel | Modern Web Playground",
+  "url": "https://tony-spegel.com/",
+  "language": "de",
+  "description": "Frontend-Entwicklung für Websites, Shopify-Onlineshops, Web- und Cross Platform-Apps",
+  "feed": {
+    "subtitle": "Frontend-Entwicklung für Websites, Shopify-Onlineshops, Web- und Cross Platform-Apps",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://tony-spegel.com/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://tony-spegel.com/feed/feed.json"
+  },
+  "author": {
+    "name": "Tony Spegel",
+    "email": "tony.spegel@gmail.com",
+    "social": [
+      {
+        "img": "/img/GitHub-Mark-120px-plus.png",
+        "imgAlt": "GitHub Logo",
+        "link": "https://github.com/TonySpegel",
+        "linkTitle": "GitHub Profil: Tony Spegel",
+        "include": true
+      },
+      {
+        "img": "/img/npm-logo-black.svg",
+        "imgAlt": "NPM Logo",
+        "link": "https://www.npmjs.com/~tonyspegel",
+        "linkTitle": "NPM Profil: Tony Spegel",
+        "include": true
+      },
+      {
+        "img": "/img/codepen-icon.svg",
+        "imgAlt": "Codepen Logo",
+        "link": "https://codepen.io/telesto90",
+        "linkTitle": "Codepen Demo Sammlung",
+        "include": false
+      }
+    ],
+    "url": "https://tony-spegel.com/",
+    "gh-pages": "https://tonyspegel.github.io",
+    "intro": "Ich bin (Frontend)-Entwickler und arbeite vor allem mit JavaScript, TypeScript, Sass, Angular und der E-Commerce-Plattform Shopify"
+  }
+}
