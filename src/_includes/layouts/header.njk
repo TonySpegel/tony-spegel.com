@@ -1,0 +1,17 @@
+<header id="site-header">
+  <nav>
+    {% if page.url !== '/' %}
+      <a class="logo" href="{{ '/' | url }}" title="Zur Startseite">
+        <img src="/tsp_icon.svg" alt="Tony Spegel Logo"/>
+      </a>
+    {% else %}
+      <a class="logo">
+        <img src="/tsp_icon.svg" alt="Tony Spegel Logo"/>
+      </a>
+    {% endif %}
+
+    <div class="menu">
+      <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+    </div>
+  </nav>
+</header>
