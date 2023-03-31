@@ -1,0 +1,107 @@
+@import './_light';
+@import './_dark';
+
+:where(html) {
+  /**
+   * Shades
+   */
+  --shade-50: hsla(281, 53%, 97%, 1);
+  --shade-50-glass: hsla(281, 53%, 97%, 0.63);
+  --shade-100: hsla(281, 56%, 94%, 1);
+  --shade-200: hsla(281, 56%, 84%, 1);
+  --shade-300: hsla(281, 55%, 74%, 1);
+  --shade-400: hsla(281, 55%, 55%, 1);
+  --shade-500: hsla(281, 100%, 35%, 1);
+  --shade-600: hsla(281, 100%, 32%, 1);
+  --shade-700: hsla(281, 100%, 27%, 1);
+  --shade-800: hsla(281, 100%, 21%, 1);
+  --shade-900: hsla(281, 100%, 16%, 1);
+
+  --blueish-1: hsl(205.38deg 86.67% 94.12%);
+  --blueish-2: #BBDEFB;
+
+  /**
+   * Light-Theme
+   */
+  --text-1-light: var(--shade-800);
+  --text-2-light: var(--shade-900);
+
+  --surface-1-light: var(--shade-300);
+  --surface-2-light: var(--shade-200);
+  --surface-3-light: var(--shade-100);
+  --surface-4-light: var(--shade-600);
+  --surface-5-light: var(--surface-4-light);
+
+  --circle-bg-light: var(--surface-4-light);
+  --circle-wave-light: #000;
+
+  --glass-tint-light: hsla(200, 100%, 96%, 0.15);
+  --glass-tint-light-2: var(--shade-50-glass);
+
+  --logo-bg-light: var(--shade-100);
+  --border-light: var(--shade-200);
+
+  --bubble-size: 350px;
+  --bubble-1--color-1: hsl(191, 98%, 56%);
+  --bubble-1--color-2: hsl(281, 100%, 56%);
+  --bubble-2--color-1: hsl(338, 78%, 48%);
+  --bubble-2--color-2: hsl(199, 98%, 48%);
+
+  --disclaimer-badge-bg-light: hsl(54deg 100% 73%);
+  --disclaimer-badge-border-light: hsl(53.88deg 100% 80.78%);
+
+  --disclaimer-box-bg-light: hsl(205.38deg 86.67% 94.12%);
+  --disclaimer-box-border-light: #BBDEFB;
+  /**
+   * Dark Theme
+   */
+  --text-1-dark: hsl(0, 0%, 90%);
+  --text-2-dark: hsl(0, 0%, 95%);
+
+  --surface-1-dark: hsl(281, 56%, 10%);
+  --surface-2-dark: hsl(281, 60%, 15%);
+  --surface-3-dark: hsl(281, 60%, 20%);
+  --surface-4-dark: hsl(281, 60%, 25%);
+  --surface-5-dark: hsl(262, 86%, 8%);
+
+  --circle-wave-dark: #fff;
+  --circle-bg-dark: #2a1d5445;
+
+  --glass-tint-dark: hsla(286, 86%, 6%, 0.657);
+  --glass-tint-dark-2: hsla(290, 93%, 5%, 0.7);
+
+  --border-dark: var(--shade-800);
+
+  --disclaimer-badge-bg-dark: red;
+  --disclaimer-badge-border-dark: blue;
+}
+
+// LIGHT MODE
+
+/**
+ * LIGHT MODE
+ * Should be present:
+ * - as a default -> :where(html)
+ * - when a preference is set
+ * - OS setting indicates it
+ */
+:where(html),
+[theme-preference='light'] {
+  @include light;
+}
+
+/**
+ * DARK MODE
+ * Should be present:
+ * - when a preference is set
+ */
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    @include dark;
+  }
+}
+
+[theme-preference='dark'] {
+  @include dark;
+  @include theme-switch-dark;
+}
