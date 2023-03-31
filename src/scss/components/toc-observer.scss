@@ -1,0 +1,43 @@
+toc-observer {
+  --toc-item-border-default-color: var(--shade-50);
+  --toc-item-border-active-color: var(--surface-4);
+  --toc-item-bg-active-color: var(--surface-3);
+
+  ol {
+    list-style-type: none;
+    line-height: 1;
+    padding: 0;
+  }
+
+  a {
+    display: flex;
+    border-left: 2px solid var(--toc-item-border-default-color);
+    padding: calc(var(--base-gap) / 2) var(--base-gap);
+    color: var(--text-1);
+
+    transition: all 50ms ease-in-out;
+    text-decoration: none;
+  }
+
+  a:is(:hover, :focus, .toc-active) {
+    border-left-color: var(--toc-item-border-active-color);
+  }
+
+  a:is(:hover, :focus) {
+    background-color: var(--toc-item-bg-active-color);
+  }
+}
+
+[theme-preference='dark'] {
+  toc-observer {
+    --toc-item-border-default-color: var(--surface-4);
+    --toc-item-border-active-color: var(--shade-50);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  toc-observer {
+    --toc-item-border-default-color: var(--surface-4);
+    --toc-item-border-active-color: var(--shade-50);
+  }
+}

@@ -1,0 +1,37 @@
+image-comparison {
+  width: fit-content;
+  height: fit-content;
+  line-height: 1;
+
+  [slot='label-before'],
+  [slot='label-after'] {
+    margin: calc(var(--base-gap) / 2);
+    padding: calc(var(--base-gap) / 4) calc(var(--base-gap) / 2);
+  }
+
+  [slot='image-before'],
+  [slot='image-before'] {
+    aspect-ratio: 3/2;
+    max-inline-size: 440px;
+  }
+
+  img {
+    border-radius: calc(var(--base-gap));
+    width: 100%;
+  }
+
+  &.post-img {
+    display: flex;
+    aspect-ratio: 3/2;
+    width: 100%;
+    max-width: 440px;
+  }
+}
+
+#slider-variant-set {
+  display: inline-flex;
+  gap: var(--base-gap);
+  border-radius: var(--base-radius);
+  margin: var(--base-gap) 0;
+  padding: var(--base-gap);
+}
