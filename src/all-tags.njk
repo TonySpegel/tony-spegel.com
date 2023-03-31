@@ -1,0 +1,22 @@
+---
+permalink: /tags/
+layout: base.njk
+title: Tags
+info: Lists all tags
+---
+
+{% import 'macros/tag.njk' as utility %}
+
+<h1>Tags</h1>
+<p>
+  Hier findet Ihr alle Tags zu denen ich Posts verfasst habe
+</p>
+
+<ul class="post-tags all-tags">
+{% for tag in collections.tagList %}
+  {% set tagUrl %}tags/{{ tag | slug }}/{% endset %}
+  <li>
+     {{ utility.tag(tagUrl, tag) }}
+  </li>
+{% endfor %}
+</ul>
