@@ -1,15 +1,13 @@
----
-info: Used on every page to display a footer with links and my copyright
----
 <footer>
   <span id="copyright">
-    © {{ metadata.author.name }} {% year %}
+    © {{ metadata.author.name }}
+    {% year %}
   </span>
   <ul>
-  {%- for entry in collections.footer -%}
-    <li class="nav-item">
-      <a href="{{ entry.url | url }}">{{ entry.data.title }}</a>
-    </li>
-  {%- endfor -%}
+    {%- for entry in collections.footer -%}
+      <li class="nav-item">
+        <a href="{{ entry.url | url }}">{{ entry.data.title }}</a>
+      </li>
+    {%- endfor -%}
   </ul>
 </footer>
