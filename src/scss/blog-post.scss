@@ -1,0 +1,142 @@
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* .post header {
+  margin-bottom: calc(var(--base-gap) * 2);
+} */
+
+/* .post aside {
+  position: sticky;
+  top: calc(var(--header-height) + (var(--base-gap) * 2));
+  height: fit-content;
+} */
+
+:root {
+  --font-size-8: 3.5rem;
+  --font-size-6: 2.5rem;
+  --font-size-5: 2rem;
+  --font-size-4: 1.5rem;
+  --font-size-3: 1.25rem;
+  --font-size-2: 1.1rem;
+}
+
+.post {
+  max-width: fit-content;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+aside {
+  display: none;
+}
+
+kbd {
+  padding: 3px 5px;
+  border-radius: 6px;
+  background-color: lightgray;
+}
+
+@media screen and (min-width: 1200px) {
+  body:not(.content-page) .main-wrapper {
+    display: grid;
+    grid-template-columns: var(--site-width) 250px;
+    grid-template-areas: 'main toc';
+  }
+
+  aside {
+    display: block;
+  }
+}
+
+header {
+  margin-bottom: calc(var(--base-gap) * 2);
+  line-height: normal;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+h2 {
+  font-size: var(--font-size-4);
+}
+
+h3 {
+  font-size: var(--font-size-2);
+}
+
+h2,
+h3 {
+  margin: revert;
+  scroll-margin-top: calc(var(--header-height) + var(--base-gap));
+}
+
+p {
+  line-height: 1.9;
+}
+
+aside {
+  --top: calc(var(--header-height) + var(--base-gap) * 5);
+  position: sticky;
+  top: var(--top);
+  height: fit-content;
+}
+
+ul:not(.post-tags) {
+  line-height: 2;
+  margin: var(--base-gap) 0;
+  padding: revert;
+}
+
+p {
+  margin-block-end: var(--base-gap);
+}
+
+.post {
+  :is(h2, h3, h4, h5, h6) {
+    margin-block-start: clamp(1.5rem, 3vw, 2rem);
+  }
+}
+
+.disclaimer {
+  position: relative;
+  display: inline-block;
+
+  border-radius: calc(var(--base-radius) * 1.5);
+  border: 1px solid var(--disclaimer-box-border);
+  margin-block-start: var(--base-gap);
+  max-width: 500px;
+  width: 100%;
+  padding: var(--base-gap);
+  background-color: var(--disclaimer-box-bg);
+
+  span {
+    position: absolute;
+    top: -20px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--disclaimer-badge-border);
+    background: var(--disclaimer-badge-bg);
+  }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid var(--text-1);
+  text-align: left;
+  padding: calc(var(--base-gap) / 2) var(--base-gap);
+}

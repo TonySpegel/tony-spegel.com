@@ -1,0 +1,11 @@
+<script>
+  // Read theme preference from localStorage
+  const themePreference = localStorage.getItem('theme-preference');
+  console.log(themePreference);
+  // Set theme if one is present in localStorage
+  if (themePreference !== null) {
+    document
+      .querySelector('html')
+      .setAttribute('theme-preference', themePreference);
+  }
+</script>

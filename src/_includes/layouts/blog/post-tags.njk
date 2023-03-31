@@ -1,0 +1,19 @@
+{# <ul id="post-tags">
+  {%- for tag in tags | filterTagList -%}
+    {%- set tagUrl %}tags/{{ tag | slug }}/{% endset -%}
+    <li>
+      <a href="{{ tagUrl | url }}" class="post-tag" title="Posts zum Tag: {{ tag }} anzeigen">{{ tag }}</a>
+    </li>
+  {%- endfor %}
+</ul> #}
+
+{% macro tags(tagSource = 'post.data.tags') %}
+  <ul id="post-tags">
+    {% for tag in post[tagSource] | filterTagList %}
+      {% set tagUrl %}tags/{{ tag | slug }}/{% endset %}
+      <li>
+        <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

@@ -1,0 +1,146 @@
+:root {
+  --color-bg: #2b2b2b;
+
+  --color-1: #f8f8f2;
+  --color-2: #d4d0ab;
+  --color-3: #fefefe;
+  --color-4: #ffa07a;
+
+  --color-5: #00e0e0;
+  --color-6: #abe338;
+  --color-7: #ffd700;
+}
+
+:is(code, pre):is([class*='language-']) {
+  color: var(--color-1);
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  border-radius: calc(var(--base-radius) * 2);
+  max-width: 100%;
+
+  padding: var(--base-gap);
+  max-width: 100%;
+  border-radius: 8px;
+  display: grid;
+  grid-template-areas: 'code';
+  gap: var(--base-gap);
+  align-items: center;
+}
+
+code {
+  overflow-x: auto;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: var(--color-bg);
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token:is(.comment, .prolog, .doctype, .cdata) {
+  color: var(--color-2);
+}
+
+.token.punctuation {
+  color: var(--color-3);
+}
+
+.token:is(.property, .tag, .constant, .symbol, .deleted) {
+  color: var(--color-4);
+}
+
+.token:is(.boolean, .number) {
+  color: var(--color-5);
+}
+
+.token:is(.selector, .attr-name, .string, .char, .builtin, .inserted) {
+  color: var(--color-6);
+}
+
+.token:is(.operator, .entity, .url),
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: var(--color-5);
+}
+
+.token:is(.atrule, .attr-value, .function, .regex, .important) {
+  color: var(--color-7);
+}
+
+.token.keyword {
+  color: var(--color-5);
+}
+
+.token:is(.important, .bold) {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    color: windowText;
+    background: window;
+  }
+
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
+    background: window;
+  }
+
+  .token.important {
+    background: highlight;
+    color: window;
+    font-weight: normal;
+  }
+
+  .token:is(.atrule, .attr-value, .function, .keyword, .operator, .selector) {
+    font-weight: bold;
+  }
+
+  .token:is(
+      .attr-value,
+      .comment,
+      .doctype,
+      .function,
+      .keyword,
+      .operator,
+      .property,
+      .string
+    ) {
+    color: highlight;
+  }
+
+  .token:is(.attr-value, .url) {
+    font-weight: normal;
+  }
+}

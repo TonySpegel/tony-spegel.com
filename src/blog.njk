@@ -1,0 +1,17 @@
+---
+permalink: /blog/
+layout: base.njk
+eleventyNavigation:
+  key: Blog
+  order: 2
+info: Blog entry page with all posts
+---
+
+<h2>Über diesen Blog</h2>
+
+<p>
+  In diesem Blog experimentiere ich mit neuen Technologien und möchte zeigen, was im Web so möglich ist. Jeder Post ist so aufgebaut, dass dieser einfach nachzuvollziehen und reproduzierbar ist. Sollte dennoch etwas nicht ganz klar sein oder nicht mehr funktionieren, schreibt mir doch eine Mail an: <a class="text-link" target="_blank" rel="noopener noreferrer" href="mailto:tony.spegel@gmail.com" title="E-Mail schreiben">tony.spegel@gmail.com</a>
+</p>
+
+{% set postslist = collections.blog %}
+{% include "postslist.njk" %}

@@ -1,6 +1,6 @@
 ---
 layout: content-page.njk
-title: Impressum | Tony Spegel
+title: Impressum
 tags: footer
 eleventyNavigation:
   key: Impressum

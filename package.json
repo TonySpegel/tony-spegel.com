@@ -11,7 +11,60 @@
     "start": "npx @11ty/eleventy --serve",
     "debug": "DEBUG=* npx @11ty/eleventy",
     "11ty-wds": "concurrently \"npx eleventy --watch\" \"web-dev-server  --node-resolve\"",
-    "build-rollup-live": "rollup --config rollup.config.live.js"
+    "build-rollup-live": "rollup --config rollup.config.live.js",
+    "build:dev:eleventy": "wireit",
+    "build:prod:eleventy": "wireit",
+    "sass:dev": "wireit",
+    "wire-serve:dev": "wireit",
+    "dev": "npm run wire-serve:dev --watch"
+  },
+  "wireit": {
+    "build:dev:eleventy": {
+      "command": "NODE_ENV=DEV eleventy --config=.eleventy-2.js",
+      "files": [
+        "src/**/*",
+        ".eleventy-2.js"
+      ],
+      "output": [
+        "_dev"
+      ],
+      "clean": "if-file-deleted"
+    },
+    "build:prod:eleventy": {
+      "command": "NODE_ENV=PROD eleventy --config=.eleventy-2.js",
+      "files": [
+        "src/**/*",
+        ".eleventy-2.js"
+      ],
+      "output": [
+        "_prod"
+      ]
+    },
+    "sass:dev": {
+      "command": "sass src/scss:_dev/css --no-source-map",
+      "files": [
+        "src/scss/*"
+      ],
+      "output": [
+        "_dev/css"
+      ],
+      "clean": "if-file-deleted"
+    },
+    "wire-serve:dev": {
+      "command": "wds --config web-dev-server.config-2.mjs",
+      "service": true,
+      "files": [],
+      "dependencies": [
+        {
+          "script": "build:dev:eleventy",
+          "cascade": false
+        },
+        {
+          "script": "sass:dev",
+          "cascade": false
+        }
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -28,13 +81,14 @@
   },
   "homepage": "https://github.com/TonySpegel/tony-spegel.com#readme",
   "dependencies": {
-    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy": "^2.0.0",
     "@11ty/eleventy-navigation": "^0.3.3",
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@sindresorhus/slugify": "^1.1.2",
     "add-prefetch-link": "^1.0.6",
     "eleventy-plugin-nesting-toc": "^1.3.0",
+    "image-comparison-component": "^0.0.4",
     "luxon": "^2.4.0",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.4",
@@ -44,10 +98,12 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@web/dev-server": "^0.1.32",
+    "@web/dev-server": "^0.1.35",
     "concurrently": "^7.2.2",
     "rollup": "^2.76.0",
     "rollup-plugin-summary": "^1.4.3",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.59.2",
+    "wireit": "^0.9.5"
   }
 }

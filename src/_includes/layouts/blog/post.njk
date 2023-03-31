@@ -1,0 +1,47 @@
+{% import 'macros/tag.njk' as utility %}
+
+<!doctype html>
+<html lang="de">
+  {# <head></head> with meta tags, css & js files #}
+  {% include './head.njk' %}
+  <body>
+    {% include '../theme-switch.njk' %}
+    {% include '../header.njk' %}
+    <div class="glass"></div>
+    <div class="bubble"></div>
+    <div class="bubble-2"></div>
+    <div class="main-wrapper post">
+      <main>
+        <div id="sentinel-element"></div>
+        <header>
+          <time class="article-date" datetime="{{ page.date | htmlDateString }}">
+            {{ page.date | readableDate }}
+          </time>
+          <h1>{{ title }}</h1>
+          <ul class="post-tags">
+            {% for tag in tags | filterTagList %}
+              {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+              <li>
+                {{ utility.tag(tagUrl, tag) }}
+              </li>
+            {% endfor %}
+          </ul>
+        </header>
+
+        {{ content | safe }}
+      </main>
+
+      {% if includeToc %}
+        <aside>
+          <toc-observer observeParent>
+            <div slot="toc">
+              {{ content | toc | safe }}
+            </div>
+          </toc-observer>
+        </aside>
+      {% endif %}
+    </div>
+
+    {% include '../footer.njk' %}
+  </body>
+</html>

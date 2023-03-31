@@ -1,0 +1,18 @@
+---
+layout: home.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+{# {% set maxPosts = collections.blog.length | min(3) %}
+<h1>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1> #}
+
+<h1>Neueste Blog posts</h1>
+
+{% set postslist = collections.blog | head(-3) %}
+{% set postslistCounter = collections.blog | length %}
+{% include "postslist.njk" %}
+
+{# <p>
+  Mehr <a href="{{ 'blog/' | url }}">Posts</a>.
+</p> #}
