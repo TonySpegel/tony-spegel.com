@@ -1,0 +1,8 @@
+{% macro tag(link, linkText) %}
+  <a href="{{link}}" class="post-tag {% if linkText == 'Lit' %}lit{% endif %}">
+    #{{linkText}}
+    {% if linkText == 'Lit' %}
+      <span></span>
+    {% endif %}
+  </a>
+{% endmacro %}
