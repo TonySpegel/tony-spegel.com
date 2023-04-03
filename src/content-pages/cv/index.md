@@ -1,23 +1,17 @@
 ---
-layout: content-page.njk
 title: CV
-# tags: footer
-description: Details zur CV auf dieser Website
-# eleventyNavigation:
-#   key: CV
-#   parent: footer
-#   order: 3
-permalink: /cv/
-noIndex: true
+description: Mein "Curriculum Vitae", Lebenslauf in HTML Form
+
+imports: ['theme-switch']
+layout: content-page.njk
+permalink: false
 templateClass: content-page
 ---
 
 # CV
 
 ## Studium
-<ul>
-
-</ul>
+<ul></ul>
 
 <details open>
   <summary>Weiteres</summary>

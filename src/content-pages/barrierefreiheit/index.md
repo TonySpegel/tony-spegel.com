@@ -1,14 +1,10 @@
 ---
-layout: content-page.njk
 title: Barrierefreiheit
-tags: footer
 description: Details zur Barrierefreiheit auf dieser Website
-eleventyNavigation:
-  key: Barrierefreiheit
-  parent: footer
-  order: 3
-permalink: /barrierefreiheit/
+
 imports: ['theme-switch']
+layout: content-page.njk
+permalink: /barrierefreiheit/
 templateClass: content-page
 ---
 {% import 'macros/external-link.njk' as link %}
@@ -28,7 +24,7 @@ Diese Seite soll den aktuellen Stand der Barrierefreiheit dieser Website zeigen.
 ## Accessibility features
 
 Die Seiten dieser Website sind mit semantischen Elementen wie `<header>`, `<navigation>`,
-`<main>` und `<footer>` strukturiert, welche Dir helfen können, dich schneller zurechtzufinden.
+`<main>` und `<footer>` strukturiert, welche helfen können, sich schneller zurechtzufinden.
 
 Überschriften der Ebene 1 markieren den Hauptinhaltsbereich jeder Seite und die weitere Struktur sollte von dort ausgehend einer logischen Reihenfolge an Überschriften folgen. Jede Seite hat einen für Screenreader zugänglichen Link, um direkt zum Inhalt springen zu können.
 
@@ -39,5 +35,8 @@ Die Farben dieser Website wurden so gewählt, dass ein ausreichender Farbkontras
 Jede Komponente dieser Website ist mit der Maus, der Tastatur oder durch Berührung zugänglich.
 Diese Website wurde auf modernen Browsern und Endgeräten verschiedener Leistungsstufen getestet.
 
+## Bekannte Probleme
+- Die Beschriftung mancher Elemente ist noch nicht perfekt zu nutzen in verschiedenen Screenreadern aber ich arbeite daran. Das äußer sicht vor allem in redundanten Bezeichnungen die gegebenenfalls doppelt vorgelesen werden.
+
 ## Feedback
-Barrierefreiheit ist ein wichtiges Thema für mich und als nicht direkt Betroffener schwierig perfekt umzusetzen. Sollte es irgendwelche Probleme geben, schickt mir bitte eine E-Mail an: tony.spegel@gmail.com. Ich nehme Probleme mit der Barrierefreiheit sehr ernst und werde versuchen, diese so schnell wie möglich zu beheben.
+Barrierefreiheit ist ein wichtiges Thema für mich und als nicht direkt Betroffener schwierig perfekt umzusetzen. Sollte es irgendwelche Probleme geben, schickt mir bitte eine E-Mail an: tony.spegel@gmail.com. Ich nehme Probleme mit der Barrierefreiheit sehr ernst und werde versuchen, diese so schnell wie möglich zu beheben. Für Links oder Ressourcen bin ich auch sehr dankbar.

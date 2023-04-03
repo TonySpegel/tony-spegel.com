@@ -1,13 +1,10 @@
 ---
-layout: content-page.njk
-title: Impressum
-tags: footer
-eleventyNavigation:
-  key: Impressum
-  parent: footer
-  order: 1
-permalink: /impressum/
+title: Datenschutzerklärung
+description: Datenschutzerklärung für diese Website
+
 imports: ['theme-switch']
+layout: content-page.njk
+permalink: /impressum/
 templateClass: content-page
 ---
 

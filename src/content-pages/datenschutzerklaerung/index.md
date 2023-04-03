@@ -1,13 +1,10 @@
 ---
-layout: content-page.njk
 title: Datenschutzerklärung
-tags: footer
-eleventyNavigation:
-  key: Datenschutzerklärung
-  parent: footer
-  order: 2
-permalink: /datenschutzerklaerung/
+description: Datenschutzerklärung für diese Website
+
 imports: ['theme-switch']
+layout: content-page.njk
+permalink: /datenschutzerklaerung/
 templateClass: content-page
 ---
 {% import 'macros/external-link.njk' as link %}
