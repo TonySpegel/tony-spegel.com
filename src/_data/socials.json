@@ -1,0 +1,23 @@
+[
+  {
+    "img": "/img/socials/GitHub-Mark-120px-plus.png",
+    "imgAlt": "GitHub Logo",
+    "link": "https://github.com/TonySpegel",
+    "linkTitle": "GitHub Profil: Tony Spegel",
+    "include": true
+  },
+  {
+    "img": "/img/socials/npm-logo-black.svg",
+    "imgAlt": "NPM Logo",
+    "link": "https://www.npmjs.com/~tonyspegel",
+    "linkTitle": "NPM Profil: Tony Spegel",
+    "include": true
+  },
+  {
+    "img": "/img/socials/codepen-icon.svg",
+    "imgAlt": "Codepen Logo",
+    "link": "https://codepen.io/telesto90",
+    "linkTitle": "Codepen Demo Sammlung",
+    "include": false
+  }
+]
