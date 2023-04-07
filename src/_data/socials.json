@@ -4,20 +4,23 @@
     "imgAlt": "GitHub Logo",
     "link": "https://github.com/TonySpegel",
     "linkTitle": "GitHub Profil: Tony Spegel",
-    "include": true
+    "include": true,
+    "dimensions": { "width": 120, "height": 120 }
   },
   {
     "img": "/img/socials/npm-logo-black.svg",
     "imgAlt": "NPM Logo",
     "link": "https://www.npmjs.com/~tonyspegel",
     "linkTitle": "NPM Profil: Tony Spegel",
-    "include": true
+    "include": true,
+    "dimensions": { "width": 300, "height": 96 }
   },
   {
     "img": "/img/socials/codepen-icon.svg",
     "imgAlt": "Codepen Logo",
     "link": "https://codepen.io/telesto90",
     "linkTitle": "Codepen Demo Sammlung",
-    "include": false
+    "include": false,
+    "dimensions": { "width": 150, "height": 150 }
   }
 ]

@@ -34,12 +34,17 @@
                 {% if socialEntry.include %}
                 <li>
                   <a
-                  href="{{ socialEntry.link }}"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  title="{{ socialEntry.linkTitle }}"
-                >
-                    <img src="{{ socialEntry.img }}" alt="{{ socialEntry.imgAlt }}">
+                    href="{{ socialEntry.link }}"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    title="{{ socialEntry.linkTitle }}"
+                  >
+                    <img
+                      src="{{ socialEntry.img }}"
+                      alt="{{ socialEntry.imgAlt }}"
+                      width="{{ socialEntry.dimensions.width }}"
+                      height="{{ socialEntry.dimensions.height }}"
+                    >
                   </a>
                 </li>
                 {% endif %}
@@ -52,16 +57,7 @@
       </main>
     </div>
 
-    {% if env.environment == "PRODUCTION" %}
-      <!-- tsp:prod -->
-      <script>
-        if ('serviceWorker' in navigator) {
-          navigator
-            .serviceWorker
-            .register('/sw.js');
-        }
-      </script>
-    {% endif %}
+    {% include 'layouts/sw-registration.njk' %}
     {% include 'layouts/footer.njk' %}
   </body>
 </html>
