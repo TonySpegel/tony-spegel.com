@@ -5,7 +5,7 @@
 import { addPrefetchLink } from 'add-prefetch-link';
 
 const links = document.querySelectorAll(
-  'a:not([href^="mailto:"]):not([href^="tel:"])',
+  'a:not([href^="mailto:"]):not([href^="tel:"]):not([href^="#"])',
 );
 
 // Call addPrefetchLink on every link
