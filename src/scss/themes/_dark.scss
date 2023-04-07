@@ -23,6 +23,10 @@
 
   --disclaimer-badge-bg: var(--disclaimer-badge-bg-dark);
   --disclaimer-badge-border: var(--disclaimer-badge-border-dark);
+  --disclaimer-badge-text: var(--text-1-light);
+
+  --disclaimer-box-bg: var(--disclaimer-box-bg-dark);
+  --disclaimer-box-border: var(--disclaimer-box-border-dark);
 }
 
 @mixin theme-switch-dark {

@@ -72,8 +72,12 @@
 
   --border-dark: var(--shade-800);
 
-  --disclaimer-badge-bg-dark: red;
-  --disclaimer-badge-border-dark: blue;
+  --disclaimer-badge-bg-dark: hsl(54deg 100% 73%);
+  --disclaimer-badge-border-dark: hsl(53.88deg 100% 80.78%);
+  --disclaimer-badge-text: var(--text-1);
+
+  --disclaimer-box-bg-dark: hsl(205.38deg 64.06% 21.67%);
+  --disclaimer-box-border-dark: #BBDEFB;
 }
 
 // LIGHT MODE
