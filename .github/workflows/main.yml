@@ -1,4 +1,4 @@
-on: 
+on:
   push:
     branches:
       - main
@@ -16,15 +16,18 @@ jobs:
         with:
           node-version: '16'
       - run: npm install
-      - run: npm run build:prod
-      - run: npm run build-rollup-live
+      # Build 11ty
+      - run: npm run build:eleventy:prod
+      # Build CSS files
+      - run: npm run sass:prod
+      # Bundle + optimize
+      - run: npm run build:rollup:prod
       # Deploy to GitHub Pages
       - name: Deploy 🚀
         # Deploys to gh-pages by default
         uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
-          folder: _site # The folder the action should deploy.
+          folder: _prod # The folder the action should deploy.
       - name: List files in the repository
         run: |
-          ls -lR | more ${{ github.workspace }}/_site
-      
+          ls -lR | more ${{ github.workspace }}/_prod
