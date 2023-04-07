@@ -5,7 +5,9 @@
   </span>
   <ul>
     {% for page in footer %}
-      <a href="{{ page.url }}">{{ page.text }}</a>
+      <li>
+        <a href="{{ page.url }}">{{ page.text }}</a>
+      </li>
     {% endfor %}
   </ul>
 </footer>
