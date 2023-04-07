@@ -11,15 +11,18 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 
+const DEV = process.env.NODE_ENV === 'DEV';
+const outputFolder = DEV ? '_dev' : '_prod';
+
 module.exports = function (eleventyConfig) {
   // Copy folders & files to the output directory
-  eleventyConfig.addPassthroughCopy('CNAME');
-  eleventyConfig.addPassthroughCopy('css');
-  eleventyConfig.addPassthroughCopy('fonts');
-  eleventyConfig.addPassthroughCopy('img');
-  eleventyConfig.addPassthroughCopy('js');
-  eleventyConfig.addPassthroughCopy('*.svg');
-  eleventyConfig.addPassthroughCopy('robots.txt');
+  eleventyConfig.addPassthroughCopy('src/CNAME');
+  eleventyConfig.addPassthroughCopy('src/css');
+  eleventyConfig.addPassthroughCopy('src/fonts');
+  eleventyConfig.addPassthroughCopy('src/img');
+  eleventyConfig.addPassthroughCopy('src/js');
+  eleventyConfig.addPassthroughCopy('src/*.svg');
+  eleventyConfig.addPassthroughCopy('src/robots.txt');
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
@@ -29,6 +32,7 @@ module.exports = function (eleventyConfig) {
     ul: true,
     tags: ['h2'],
   });
+  eleventyConfig.addPlugin(require('./eleventy.config.drafts.js'));
 
   eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
 
@@ -54,6 +58,7 @@ module.exports = function (eleventyConfig) {
     if (!Array.isArray(array) || array.length === 0) {
       return [];
     }
+
     if (n < 0) {
       return array.slice(n);
     }
@@ -85,6 +90,8 @@ module.exports = function (eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
+  eleventyConfig.addGlobalData("env", process.env.NODE_ENV);
+
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
     html: true,
@@ -112,7 +119,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function (err, browserSync) {
-        const content_404 = fs.readFileSync('_site/404.html');
+        const content_404 = fs.readFileSync('site/404.html');
 
         browserSync.addMiddleware('*', (req, res) => {
           // Provides the 404 content without redirect.
@@ -153,10 +160,11 @@ module.exports = function (eleventyConfig) {
 
     // These are all optional (defaults are shown):
     dir: {
-      input: '.',
+      input: 'src',
+      output: outputFolder,
       includes: '_includes',
+      layouts: '_includes/layouts',
       data: '_data',
-      output: '_site',
     },
   };
 };
