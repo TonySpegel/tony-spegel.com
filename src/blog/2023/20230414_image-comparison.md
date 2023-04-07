@@ -7,6 +7,7 @@ type: article
 includeToc: true
 draft: true
 tags:  ['Lit', 'Web Components', 'a11y', 'TypeScript', 'Blog']
+socialImage: '/img/2023/image-comparison/2022_1004_14254000.jpg'
 permalink: /blog/image-comparison/
 imports: [
   'theme-switch',
@@ -17,17 +18,51 @@ imports: [
 ---
 {% import 'macros/external-link.njk' as link %}
 
-2020: 5.944
-2021: 1.012
+In diesem Post geht es darum, eine Komponente zu entwickeln welche es ermöglicht, Bilder auf der verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.
 
-Als ich darüber nachgedacht habe wie man Bilder miteinander vergleichen kann, sind mir drei Varianten eingefallen:
-mit einem Slider, einem Overlay oder einfach nebeneinander.
+<image-comparison variant="slider" sliderPrompt="Slider bewegen, um zu vergleichen" class="post-img" id="image-comparison-demo">
+  <label slot="label-before">Ohne Filter</label>
+  <label slot="label-after">Graustufen</label>
+  <img slot="image-before" src="/img/2023/2022_1004_14254000-w3120--opt.jpg" width="440" alt="Blumen in Paris" />
+  <img slot="image-after" src="/img/2023/2022_1004_14254000-w3120_grayscale--opt.jpg" width="440" alt="Blumen in Paris dargestellt in Graustufen" />
+</image-comparison>
+
+<div class="slider-set-wrapper">
+  <fieldset id="slider-variant-set" class="slider-set">
+    <legend>Variante:</legend>
+    <div>
+      <input type="radio" id="slider" name="variant" value="slider" checked>
+      <label for="slider">Slider</label>
+    </div>
+    <div>
+      <input type="radio" id="overlay" name="variant" value="overlay">
+      <label for="overlay">Overlay</label>
+    </div>
+    <div>
+      <input type="radio" id="split" name="variant" value="split">
+      <label for="split">Split</label>
+    </div>
+  </fieldset>
+  <fieldset id="slider-reading-direction-set" class="slider-set">
+    <legend>Leserichtung:</legend>
+    <div>
+      <input type="radio" id="ltr" name="variant" value="ltr" checked>
+      <label for="ltr"><abbr>LTR</abbr> (Left To Right)</label>
+    </div>
+    <div>
+      <input type="radio" id="rtl" name="variant" value="rtl" checked>
+      <label for="rtl"><abbr>RTL</abbr> (Right To Left)</label>
+    </div>
+  </fieldset>
+</div>
+
+<hr>
 
 <div class="disclaimer">
   <span>Hinweis</span>
   <p>
-    Dieser Post geht davon aus, dass ihr euch schon ein wenig mit Web Components beschäftigt habt.
-    Wer noch etwas mehr wissen möchte, kann hier querlesen:
+    Dieser Post geht davon aus, dass ihr euch schon ein wenig mit Web Components beschäftigt habt - wenn nicht, ist das aber auch in Ordnung.
+    Hier ein paar Links:
   </p>
 
   <ul>
@@ -37,39 +72,59 @@ mit einem Slider, einem Overlay oder einfach nebeneinander.
   </ul>
 </div>
 
-## Schöne Blumen
+Einer der Vorteile daran, eine Web Component zu entwickeln, ist deren Eigenschaft frameworkunabhängig zu sein. Sie lassen sich also in Blogs gleichermaßen wie in Web Apps einbinden. Den Anfang macht hier die Slider-Variante.
 
-<image-comparison variant="slider" sliderPrompt="Slider bewegen, um zu vergleichen" class="post-img" id="image-comparison-demo">
+## Slider
+Die Slider-Variante ist die komplexeste der drei Varianten. Komplex in der Implementation und auch nur durch die vielseitigen Interaktions- und Konfigurationsmöglichkeiten aber weniger am CSS. Auf der Seite der Nutzer:innen gilt das folgende HTML.
+
+```html
+<image-comparison
+  variant="slider"
+  sliderPrompt="Move the slider to compare"
+  overlayPrompt="Tap and hold to compare"
+>
   <label slot="label-before">Ohne Filter</label>
   <label slot="label-after">Graustufen</label>
-  <img slot="image-before" src="/img/2022_1004_14254000-w3120--opt.jpg" width="440" alt="Blumen in Paris" />
-  <img slot="image-after" src="/img/2022_1004_14254000-w3120_grayscale--opt.jpg" width="440" alt="Blumen in Paris dargestellt in Graustufen" />
+  <img slot="image-before" src="/img/2023/before.jpg" alt="Rote Zierquitte" />
+  <img slot="image-after" src="/img/2023/after.jpg" alt="Rote Zierquitte (Graustufen)" />
 </image-comparison>
+```
+Auffällig sind hierbei vor allem die drei gesetzten Attribute sowie die zwei Label und Bildelemente. Die `variant` bestimmt sowohl das Verhalten als auch das Aussehen der Komponente, die beiden Attribute geben kurze Hinweise zur Interaktion. Die sogenannten `slot`-Attribute sind eine Eigenheit des shadow-DOM und können als eine Art Schnittstelle gesehen werden. In dieser Komponente werden sie genutzt, um die zu vergleichenden Bilder sowie deren Label anzuzeigen. Intern folgt das HTML diesem vereinfachten Schema:
+```html
+<div id="image-container">
+  <slot name="label-before"></slot>
+  <slot name="label-after"></slot>
 
-<fieldset id="slider-variant-set">
-  <legend>Variante auswählen:</legend>
-  <div>
-    <input type="radio" id="slider" name="variant" value="slider" checked>
-    <label for="slider">Slider</label>
+  <div id="container-before">
+    <slot name="image-before"></slot>
   </div>
-  <div>
-    <input type="radio" id="overlay" name="variant" value="overlay">
-    <label for="overlay">Overlay</label>
-  </div>
-  <div>
-    <input type="radio" id="split" name="variant" value="split">
-    <label for="split">Split</label>
-  </div>
-</fieldset>
 
+  <div id="container-after" style="clip-path: inset(0 50% 0 0)">
+    <slot name="image-after"></slot>
+  </div>
+
+  <button></button>
+</div>
+```
+Neben zusätzlichem Markup, wie dem Button, steckt der größte Teil der <span aria-hidden="true">✨</span>Magie<span aria-hidden="true">✨</span> in der `clip-path: inset(0 50% 0 0)`-Anweisung des zweiten Containers.
+
+## Overlay
 
 ## Barrierefreiheit
+
+Wenn es darum geht, möglichst barrierefreie Lösungen zu entwickeln, ist die [Patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) Seite des W3C ein optimaler Einstieg. Diese bietet diverse, immer wiederkehrende, Patterns wie beispielsweise Tabs, Slide Shows und Ähnliches an und geht dabei auf deren Besonderheiten ein.
+Das [Window Splitter](https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/) passt hierbei am ehesten zur Slider-Variante.
 
 Es gibt Nutzer oder Nutzerinnen welche Probleme damit haben,
 motorisch dauerhauft einen Slider zu bewegen.
 
 ### Keyboard Navigation
-<kbd>←</kbd>
+Die Komponente unterstützt verschiedene Tasten-(kombinationen) um diese auch
+ausschließlich mit einer Tastatur verwenden zu können.
+- Slider
+  - <kbd>←</kbd> / <kbd>→</kbd> ändert die Position um jeweils 1
+  - <kbd><kbd>Shift</kbd> + <kbd>←/→</kbd></kbd> ändert die Position um den Betrag von `sliderSteps` (Standard: 5)
+  - (<kbd>Home</kbd> / <kbd>Pos1</kbd>)
 
 ## Custom Events
 
