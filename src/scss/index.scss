@@ -122,16 +122,6 @@ h1 {
   border: 1px solid transparent;
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-  gap: var(--base-gap);
-}
-
-.menu ul {
-  list-style-type: none;
-}
-
 /**
   * Button which opens the dialog
   */
@@ -144,8 +134,7 @@ h1 {
   background: linear-gradient(
     -45deg,
     hsla(281, 55%, 74%, 1),
-    hsl(191, 98%, 56%) /* hsl(281, 60%, 25%),
-    hsl(338, 78%, 48%) */
+    hsl(191, 98%, 56%)
   );
 
   transition: border 500ms ease-out;
@@ -207,6 +196,12 @@ html {
   block-size: 100%;
   /* Making sure text size is only controlled by font-size */
   -webkit-text-size-adjust: none;
+}
+
+hr {
+  background-color: var(--surface-2);
+  height: 1px;
+  border: 0;
 }
 
 body {
