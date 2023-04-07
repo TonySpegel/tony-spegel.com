@@ -88,6 +88,10 @@ p {
   }
 }
 
+figure {
+  margin-block-end: var(--base-gap);
+}
+
 .disclaimer {
   position: relative;
   display: inline-block;

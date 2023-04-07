@@ -2,16 +2,24 @@
 title: 'Challenge: Progress Stepper'
 description: Fortschritt anzeigen als (CSS) Challenge
 date: 2021-08-23
-layout: blog/post.njk
-type: article
-includeToc: true
-tags:  ['challenge', 'css', 'FrontEndChallengesClub']
-permalink: /blog/challenge-progress-stepper/
-imports: ['index', 'post']
----
+tags:  ['challenge', 'CSS']
 
-Vor einer Weile habe ich auf Twitter diese Challenge entdeckt,
-gespeichert und schließlich für längere Zeit vergessen (kennt man ja).
+imports: ['index', 'post', 'theme-switch']
+includeToc: true
+layout: blog/post.njk
+permalink: /blog/challenge-progress-stepper/
+type: article
+---
+<figure>
+  <img
+    src="/img/2021/fecc-challenge-008.png"
+    alt="Fortschrittsanzeige für einen Checkout-Prozess"
+  >
+  <figcaption>Abbildung von © Andy Bell</figcaption>
+</figure>
+
+
+Vor einer Weile habe ich auf Twitter diese Challenge entdeckt, gespeichert und schließlich für längere Zeit vergessen (kennt man ja).
 
 In dieser Challenge geht es darum, einen so genanten Progress Stepper
 umzusetzen - also etwas das man beispielsweise aus einem Lieferprozess
