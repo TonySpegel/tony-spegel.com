@@ -23,22 +23,22 @@
               <br>
               <br>
               Die meiste Zeit arbeite ich mit JavaScript, TypeScript,
-              Angular, Lit und der E-Commerce Plattform Shopify.
+              Angular, Lit, CSS und der E-Commerce Plattform Shopify.
               <br>
               <br>
               Woran ich arbeite und mich ausprobiere findet sich auch unter den folgenden Links:
             </p>
 
             <ul class="social-links">
-              {% for socialEntry in metadata.author.social %}
+              {% for socialEntry in socials %}
                 {% if socialEntry.include %}
                 <li>
                   <a
-                    href="{{ socialEntry.link }}"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    title="{{ socialEntry.linkTitle }}"
-                  >
+                  href="{{ socialEntry.link }}"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="{{ socialEntry.linkTitle }}"
+                >
                     <img src="{{ socialEntry.img }}" alt="{{ socialEntry.imgAlt }}">
                   </a>
                 </li>
@@ -46,11 +46,22 @@
               {% endfor %}
             </ul>
           </div>
+          <hr>
         {% endif %}
         {{ content | safe }}
       </main>
     </div>
 
+    {% if env.environment == "PRODUCTION" %}
+      <!-- tsp:prod -->
+      <script>
+        if ('serviceWorker' in navigator) {
+          navigator
+            .serviceWorker
+            .register('/sw.js');
+        }
+      </script>
+    {% endif %}
     {% include 'layouts/footer.njk' %}
   </body>
 </html>
