@@ -7,7 +7,7 @@ type: article
 includeToc: true
 tags:  ['JavaScript', 'TypeScript', 'Performance']
 permalink: /blog/beschleunigte-navigation-mit-addPrefetchLink/
-imports: ['index', 'post']
+imports: ['index', 'post', 'theme-switch']
 ---
 
 Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt,
@@ -38,7 +38,10 @@ Ich nutze dazu einfach einen CSS Selektor welche alle Links selektiert,
 deren href-Attribut nicht mit dem entsprechenden Prefix beginnt:
 ```javascript
 /* JavaScript */
-const links = 'a:not([href^="mailto:"]):not([href^="tel:"])';
+const links = document.querySelectorAll(
+  'a:not([href^="mailto:"]):not([href^="tel:"]):not([href^="#"])',
+);
+
 document
   .querySelectorAll(links)
   .forEach((link) => {});
