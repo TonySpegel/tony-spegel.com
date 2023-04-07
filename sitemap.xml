@@ -2,67 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tony-spegel.com/blog/challenge-progress-stepper/</loc>
+    <lastmod>2021-08-23</lastmod>
+  </url>
+  
+  <url>
     <loc>https://tony-spegel.com/blog/beschleunigte-navigation-mit-addPrefetchLink/</loc>
     <lastmod>2021-10-04</lastmod>
   </url>
   
   <url>
+    <loc>https://tony-spegel.com/tags/</loc>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
     <loc>https://tony-spegel.com/blog/</loc>
-    <lastmod>2022-07-18</lastmod>
+    <lastmod>2023-04-07</lastmod>
   </url>
   
   <url>
     <loc>https://tony-spegel.com/barrierefreiheit/</loc>
-    <lastmod>2022-07-18</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tony-spegel.com/datenschutzerklaerung/</loc>
-    <lastmod>2022-07-18</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tony-spegel.com/impressum/</loc>
-    <lastmod>2022-07-18</lastmod>
+    <lastmod>2023-04-07</lastmod>
   </url>
   
   <url>
     <loc>https://tony-spegel.com/</loc>
-    <lastmod>2022-07-18</lastmod>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/datenschutzerklaerung/</loc>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/impressum/</loc>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/</loc>
+    <lastmod>2023-04-07</lastmod>
   </url>
   
   <url>
     <loc>https://tony-spegel.com/page-list/</loc>
-    <lastmod>2022-07-18</lastmod>
+    <lastmod>2023-04-07</lastmod>
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/tags/</loc>
-    <lastmod>2022-07-18</lastmod>
+    <loc>https://tony-spegel.com/tags/challenge/</loc>
+    <lastmod>2023-04-07</lastmod>
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/tags/javascript/</loc>
-    <lastmod>2022-07-18</lastmod>
+    <loc>https://tony-spegel.com/tags/css/</loc>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/lit/</loc>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/web-components/</loc>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/a11y/</loc>
+    <lastmod>2023-04-07</lastmod>
   </url>
   
   <url>
     <loc>https://tony-spegel.com/tags/typescript/</loc>
-    <lastmod>2022-07-18</lastmod>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/blog/</loc>
+    <lastmod>2023-04-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/javascript/</loc>
+    <lastmod>2023-04-07</lastmod>
   </url>
   
   <url>
     <loc>https://tony-spegel.com/tags/performance/</loc>
-    <lastmod>2022-07-18</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tony-spegel.com/tags/npm/</loc>
-    <lastmod>2022-07-18</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tony-spegel.com/tags/footer/</loc>
-    <lastmod>2022-07-18</lastmod>
+    <lastmod>2023-04-07</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,224 @@
+
+
+<!doctype html>
+<html lang="de">
+  
+  <head>
+  
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge: Progress Stepper</title>
+<meta name="description" content="Fortschritt anzeigen als (CSS) Challenge">
+<meta name="generator" content="Eleventy v2.0.1">
+<meta name="theme-color" content="hsla(281, 56%, 84%, 1)" media="(prefers-color-scheme: light)"/>
+
+<meta property="og:title" content="Challenge: Progress Stepper">
+<meta property="og:description" content="Fortschritt anzeigen als (CSS) Challenge">
+
+
+
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/blog-post.css">
+  <link rel="stylesheet" href="/css/components/toc-observer.css">
+  <link rel="stylesheet" href="/css/components/theme-switch.css">
+  <link rel="stylesheet" href="/css/components/image-comparison.css">
+  <link rel="stylesheet" href="/css/prism-a11y-rework.css">
+
+  <script>
+  // Read theme preference from localStorage
+  const themePreference = localStorage.getItem('theme-preference');
+  console.log(themePreference);
+  // Set theme if one is present in localStorage
+  if (themePreference !== null) {
+    document
+      .querySelector('html')
+      .setAttribute('theme-preference', themePreference);
+  }
+</script>
+
+
+  
+    
+    <script type="module" src="/js/index.js"></script>
+  
+    
+    <script type="module" src="/js/post.js"></script>
+  
+    
+    <script type="module" src="/js/theme-switch.js"></script>
+  
+  <link rel="icon" href="/favicon.svg"/>
+</head>
+
+  <body>
+    
+<theme-switch>
+  <h2 slot="heading">Theme Auswahl</h2>
+  <span slot="sub-heading">Wähle ein Theme für die Website</span>
+  <a
+    href="datenschutzerklaerung/#auswertung-des-verhaltens-von-besucherinnen-und-besuchern-cookies"
+    id="read-more"
+    slot="read-more"
+    target="_blank"
+    title="Was wird gespeichert?"
+  >
+    ?
+  </a>
+  <span slot="close-caption">Schließen</span>
+</theme-switch>
+
+    <header id="site-header">
+  <nav>
+    
+      <a class="logo" href="/" title="Zur Startseite">
+        <img src="/tsp_icon.svg" alt="Tony Spegel Logo"/>
+      </a>
+    
+
+    <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+  </nav>
+</header>
+
+    <div class="glass"></div>
+    <div class="bubble"></div>
+    <div class="bubble-2"></div>
+    <div class="main-wrapper post">
+      <main>
+        <div id="sentinel-element"></div>
+        <header>
+          <time class="article-date" datetime="2021-08-23">
+            23.08.2021
+          </time>
+          <h1>Challenge: Progress Stepper</h1>
+          <ul class="post-tags">
+            
+              
+              <li>
+                
+  <a href="/tags/challenge/" class="post-tag ">
+    #challenge
+    
+  </a>
+
+              </li>
+            
+              
+              <li>
+                
+  <a href="/tags/css/" class="post-tag ">
+    #CSS
+    
+  </a>
+
+              </li>
+            
+          </ul>
+        </header>
+
+        <figure>
+  <img
+    src="/img/2021/fecc-challenge-008.png"
+    alt="Fortschrittsanzeige für einen Checkout-Prozess"
+  >
+  <figcaption>Abbildung von © Andy Bell</figcaption>
+</figure>
+<p>Vor einer Weile habe ich auf Twitter diese Challenge entdeckt, gespeichert und schließlich für längere Zeit vergessen (kennt man ja).</p>
+<p>In dieser Challenge geht es darum, einen so genanten Progress Stepper<br>
+umzusetzen - also etwas das man beispielsweise aus einem Lieferprozess<br>
+oder im Checkout eines Onlineshops kennt. Die wichtigsten Punkte welche dieser erfüllen soll sind:</p>
+<ul>
+<li>Die Lösung nutzt semantisches HTML</li>
+<li>Die Lösung funktioniert sowohl mit wenigen als auch beliebig vielen Punkten</li>
+<li>Lange wie kurze Texte sollen unterstützt werden</li>
+</ul>
+<section>
+<h2 id="vorueberlegungen"><a class="header-anchor" href="#vorueberlegungen">Vorüberlegungen</a></h2>
+<ul>
+<li>Da eine zeitliche Abfolge dargestellt werden soll, bietet es sich an ein <code>&lt;ol&gt;</code>-Element zu nutzen - eine ordered list</li>
+<li>verschiedene Zustände müssen dargestellt werden: offen, in Bearbeitung und abgeschlossen</li>
+<li>Auch Screenreader müssen den jeweiligen Status eines Schritts verarbeiten können so dass jede/r weiß was der aktuelle Stand ist</li>
+</ul>
+</section>
+<section>
+<h2 id="html"><a class="header-anchor" href="#html">HTML</a></h2>
+<p>Für ein Layout dieser Form habe ich mich entschieden für jeden Schritt sowie der Liste als Ganzes display: flex; und für den Fortschrittsindikator und den Verbindungsstücken <code>:before</code> bzw. <code>:after</code> zu nutzen. Die Anzeige des jeweiligen Schritts und dessen Beschreibung wird jeweils mit einem <code>&lt;div&gt;</code> umschlossen. Über das data-state=&quot;complete&quot;-Attribut wird ein abgeschlossener Zustand signalisiert und mit <code>aria-current=&quot;step&quot;</code> für Screenreader der aktuelle Schritt gekennzeichnet (mehr zum <code>aria-tag</code> hier).</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>progress-stepper<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">data-state</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>complete<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>step<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Schritt 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>Warenkorb<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">data-state</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>complete<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>step<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Schritt 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>Details<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">aria-current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>step<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>step<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Schritt 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>Zahlungsmittel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>step<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Schritt 4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>Zahlung abschließen<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+</section>
+<section>
+<h2 id="css"><a class="header-anchor" href="#css">CSS</a></h2>
+<p>Um verschieden Lange und beliebig viele Schritte darzustellen nutze ich CSS custom properties / CSS Variablen. Diese Variablen sind hier besonders praktisch, um die Länge der Verbindungsstücke zu berechnen. Der Rest ist vor allem viel Berechnung mit Hilfe von <code>calc()</code> und den Eingangs erwähnten Zuständen via <code>[data-state='complete']</code>.</p>
+<section>
+<h3 id="variablen-and-reset"><a class="header-anchor" href="#variablen-and-reset">Variablen &amp; Reset</a></h3>
+<p>Die hier genutzten Variablen sind relativ überschaubar: ich lege vor allem ein paar Grundfarben sowie Abstände, die Größe des Indikators, die Zeilenhöhe, den Abstand zwischen den Schritten sowie die Breite des Verbindungsstücks fest. Die Farben sind hierbei selbst gewählt und weichen etwas von der Vorgabe ab; oft bietet es sich an, neben surface colors auch Schriftfarben zu definieren.</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token property">--surface-1</span><span class="token punctuation">:</span> #cb99e1<span class="token punctuation">;</span><br>  <span class="token property">--surface-2</span><span class="token punctuation">:</span> #debfed<span class="token punctuation">;</span><br>  <span class="token property">--surface-3</span><span class="token punctuation">:</span> #f2e6f8<span class="token punctuation">;</span><br>  <span class="token property">--surface-4</span><span class="token punctuation">:</span> #f8f2fb<span class="token punctuation">;</span><br><br>  <span class="token property">--base-gap</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span><br>  <span class="token property">--circle-size</span><span class="token punctuation">:</span> 26px<span class="token punctuation">;</span><br><br>  <span class="token property">--line-height</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--circle-size<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">--step-margin</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span><br>  <span class="token property">--connection-width</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token selector">body</span> <span class="token punctuation">{</span><br>  <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif<span class="token punctuation">;</span><br>  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span><br>  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token selector">*,<br>*:before,<br>*:after</span> <span class="token punctuation">{</span><br>  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* Container element */</span><br><span class="token selector">.progress-stepper</span> <span class="token punctuation">{</span><br>  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--base-gap<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* Wrapper for description */</span><br><span class="token selector">.step</span> <span class="token punctuation">{</span><br>  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span><br>  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span><br>  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br><br>  <span class="token property">line-height</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--line-height<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+</section>
+<section>
+<h3 id="die-liste"><a class="header-anchor" href="#die-liste">Die Liste</a></h3>
+<p>Die Liste als solches ist schnell beschrieben: ein <code>flex</code>-Layout in der Vertikalen sowie in der Horizontalen für jeden Schritt. Hierbei noch erwähnenswert ist die Property <code>gap</code> welche mittlerweile auch für <code>flex</code>-Container verfügbar ist und einen Abstand zwischen Elementen erzeugt.</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">ol</span> <span class="token punctuation">{</span><br>  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span><br>  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span><br>  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br>  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br><br>  <span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token selector">li</span> <span class="token punctuation">{</span><br>  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span><br>  <span class="token property">gap</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--base-gap<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--step-margin<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span><br>  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token selector">li:last-child</span> <span class="token punctuation">{</span><br>  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+</section>
+<section>
+<h3 id="fortschrittsindikator"><a class="header-anchor" href="#fortschrittsindikator">Fortschrittsindikator</a></h3>
+<p>Der Fortschrittsindikator (der jeweilige Kreis in jedem Schritt)<br>
+wiederum ist auch nur ein <code>flex</code>-Container und wird mittels <code>align-self: center</code> vertikal zentriert. Ist ein Schritt als abgeschlossen markiert, ändert sich dessen Farbe und ein Haken wird hinzugefügt.</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/**<br> * Circle Element - default<br> */</span><br><span class="token selector">li:before</span> <span class="token punctuation">{</span><br>  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span><br>  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span><br>  <span class="token property">align-self</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br>  <span class="token property">place-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br><br>  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--surface-1<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--circle-size<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--circle-size<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--circle-size<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span><br>  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--surface-4<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/**<br> * Circle Element - complete<br> */</span><br><span class="token selector">li[data-state='complete']:before</span> <span class="token punctuation">{</span><br>    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">'✓'</span><span class="token punctuation">;</span><br>    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--surface-1<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+</section>
+<section>
+<h3 id="verbindungselement"><a class="header-anchor" href="#verbindungselement">Verbindungselement</a></h3>
+<p>Die eigentliche Herausforderung waren die Verbindungselemente zwischen den Kreisen. Diese mussten nahtlos ineinander übergehen und das möglichst bei verschieden langen Beschriftungen. Um nicht zu viel zusätzliches HTML zu schreiben, hat es sich als praktisch erwiesen, das Verbindungselement absolut zu positionieren. Die Länge der Verbindung ergibt sich dann aus Abstand, Höhe des Schritts sowie der Zeilenhöhe. Das Ganze ist auf jeden Fall nicht perfekt und funktioniert nicht mehr optimal bei Beschriftungen die sich über drei Zeilen erstrecken - was hoffentlich selten der Fall sein sollte. Falls jemand noch eine bessere Lösung hat - gern an mich schicken <a class="text-link" target="_blank" rel="noopener noreferrer" href="mailto:tony.spegel@gmail.com" title="E-Mail schreiben">tony.spegel@gmail.com</a></p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Connection - default */</span><br><span class="token selector">li:after</span> <span class="token punctuation">{</span><br>  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span><br>  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span><br>  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--connection-width<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">height</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span><br><br>  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span><br>  <span class="token property">left</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><br>      <span class="token function">var</span><span class="token punctuation">(</span>--circle-size<span class="token punctuation">)</span> / 2 - <span class="token function">var</span><span class="token punctuation">(</span>--connection-width<span class="token punctuation">)</span> / 2<br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token property">z-index</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br>  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--surface-2<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* Finished step */</span><br><span class="token selector">li[data-state='complete']:after</span> <span class="token punctuation">{</span><br>  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span><br>  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% + <span class="token function">var</span><span class="token punctuation">(</span>--step-margin<span class="token punctuation">)</span> + <span class="token function">var</span><span class="token punctuation">(</span>--line-height<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* First connection */</span><br><span class="token selector">li:first-child:after</span> <span class="token punctuation">{</span><br>  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% + <span class="token function">var</span><span class="token punctuation">(</span>--step-margin<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--line-height<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* Last connection */</span><br><span class="token selector">li:last-child:after</span> <span class="token punctuation">{</span><br>  <span class="token property">height</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+</section>
+</section>
+<section>
+<h2 id="fazit"><a class="header-anchor" href="#fazit">Fazit</a></h2>
+<p>Perfekt ist meine Lösung zwar nicht aber interessant war es alle Mal. Besonders geholfen haben hier die CSS Variablen mit denen zwar viel mit festen Werten gerechnet wurde aber diese immerhin voneinander abhängig sind und somit kein großes Problem darstellen sollten. In der Realität müsste es noch einen Prozess geben, welcher den jeweiligen Stand einer Bestellung etc. im HTML widerspiegelt - ob statisch oder dynamisch wäre hierbei egal. Lediglich das für Screenreader wichtige <code>aria-current=&quot;step&quot;</code> sollte im aktuellen Schritt gesetzt sein.<br>
+Den Code als Ganzes gibt es noch einmal hier auf meinem<br>
+<a class="text-link" target="_blank" rel="noopener noreferrer" href="https://codepen.io/TonySpegel/pen/XWgWRgm?editors=1100" title="Progress Stepper auf Codepen">Codepen</a></p>
+</section>
+
+      </main>
+
+      
+        <aside>
+          <toc-observer observeParent>
+            <div slot="toc">
+              <nav class="toc">
+                <ol>
+                    
+                    <li><a href="#vorueberlegungen">Vorüberlegungen</a>
+            		</li>
+
+                    <li><a href="#html">HTML</a>
+            		</li>
+
+                    <li><a href="#css">CSS</a>
+            		</li>
+
+                    <li><a href="#fazit">Fazit</a>
+            		</li>
+                </ol>
+            </nav>
+            </div>
+          </toc-observer>
+        </aside>
+      
+    </div>
+
+    <footer>
+  <span id="copyright">
+    © Tony Spegel
+    2023
+  </span>
+  <ul>
+    
+      <a href="/impressum/">Impressum</a>
+    
+      <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
+    
+      <a href="/barrierefreiheit/">Barrierefreiheit</a>
+    
+  </ul>
+</footer>
+
+  </body>
+</html>

@@ -1,122 +1,117 @@
-<!doctype html>
 <html lang="de">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barrierefreiheit</title>
     <meta name="description" content="Details zur Barrierefreiheit auf dieser Website">
-    <meta name="generator" content="Eleventy v1.0.1">
+    <meta name="generator" content="Eleventy v2.0.1">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/blog-post.css">
+    <link rel="stylesheet" href="/css/components/theme-switch.css">
+    <link rel="icon" href="/favicon.svg"/>
+
+    <script>
+  // Read theme preference from localStorage
+  const themePreference = localStorage.getItem('theme-preference');
+  console.log(themePreference);
+  // Set theme if one is present in localStorage
+  if (themePreference !== null) {
+    document
+      .querySelector('html')
+      .setAttribute('theme-preference', themePreference);
+  }
+</script>
 
 
     
-    <base href="/tony-spegel.com/">
+      
+      <script type="module" src="/js/theme-switch.js"></script>
     
-
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/toc-observer.css">
-    <link rel="stylesheet" href="css/theme-switch.css">
-
-    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Tony Spegel | Modern Web Playground">
-    <link rel="alternate" href="/feed/feed.json" type="application/json" title="Tony Spegel | Modern Web Playground">
-
-    <script type="module" src="js/index.js"></script>
-
-    
-
-    <style>
-      @font-face {
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url('fonts/inter-v7-latin-regular.woff2') format('woff2');
-        unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
-      }
-      @font-face {
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 500;
-        font-display: swap;
-        src: url('fonts/inter-v7-latin-500.woff2') format('woff2');
-        unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
-      }
-
-      @font-face {
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 700;
-        font-display: swap;
-        src: url('fonts/inter-v7-latin-700.woff2') format('woff2');
-        unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
-      }
-    </style>
-
-    <link rel="icon" href="favicon.svg" />
   </head>
+  <body  class="content-page">
+    
+<theme-switch>
+  <h2 slot="heading">Theme Auswahl</h2>
+  <span slot="sub-heading">Wähle ein Theme für die Website</span>
+  <a
+    href="datenschutzerklaerung/#auswertung-des-verhaltens-von-besucherinnen-und-besuchern-cookies"
+    id="read-more"
+    slot="read-more"
+    target="_blank"
+    title="Was wird gespeichert?"
+  >
+    ?
+  </a>
+  <span slot="close-caption">Schließen</span>
+</theme-switch>
 
-  <body>
-    <theme-switch>
-        <h2 slot="heading">Theme Auswahl</h2>
-        <span slot="sub-heading">Wähle ein Theme für die Website</span>
-        <a
-          href="datenschutzerklaerung/#auswertung-des-verhaltens-von-besucherinnen-und-besuchern-cookies"
-          id="read-more"
-          slot="read-more"
-          target="_blank"
-          title="Was wird gespeichert?"
-        >
-          ? 
-        </a>
-        <span slot="close-caption">Schließen</span>
-    </theme-switch>
     <header id="site-header">
   <nav>
-    <a id="logo-link"
-      
-      href="/"
-      title="Zur Startseite"
-      
-    >
-      <div id="logo-base">
-        <img src="tsp_icon.svg" alt="Tony Spegel Logo"/>
-      </div>
-      <h1>Tony Spegel</h1>
-    </a>
+    
+      <a class="logo" href="/" title="Zur Startseite">
+        <img src="/tsp_icon.svg" alt="Tony Spegel Logo"/>
+      </a>
+    
 
-    <div class="menu">
-      <button id="btn-theme-selection" title="Farbschema auswählen"></button>
-      <ul class="nav">
-        <li class="nav-item">
-          <a href="blog">Blog</a>
-        </li>
-      </ul>
-    </div>
+    <button id="btn-theme-selection" title="Farbschema auswählen"></button>
   </nav>
 </header>
-    
-    <div id="sentinel-element"></div>
-    
-    <div id="main-wrapper" >
-      <div></div>
-      <p>Ich möchte, dass diese Website von einem möglichst breiten Publikum genutzt werden kann, unabhängig von Gerät, Browser, Netzgeschwindigkeit oder den eigenen Fähigkeiten.</p>
+
+
+    <div class="glass"></div>
+    <div class="bubble"></div>
+    <div class="bubble-2"></div>
+
+    <div class="main-wrapper">
+      <main>
+        <section>
+<h1 id="barrierefreiheit"><a class="header-anchor" href="#barrierefreiheit">Barrierefreiheit</a></h1>
+<p>Ich möchte, dass diese Website von einem möglichst breiten Publikum genutzt werden kann, unabhängig von Gerät, Browser, Netzgeschwindigkeit oder den eigenen Fähigkeiten.</p>
 <p>Daher bin ich bestrebt, dass diese Website und deren Inhalte die in den</p>
-<p><a class="text-link" target="_blank" rel="noopener noreferrer" title="Web Content Accessibility Guidelines" href="https://www.w3.org/TR/WCAG21/">(WCAG) 2.1</a></p>
-<p><a class="text-link" target="_blank" rel="noopener noreferrer" href="" title=""></a> festgelegten Standards der Stufe AA mindestens erfüllt.</p>
+<a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener noreferrer">
+  (WCAG) 2.1
+</a>
+<p>festgelegten Standards der Stufe AA mindestens erfüllt.</p>
 <p>Diese Seite soll den aktuellen Stand der Barrierefreiheit dieser Website zeigen.</p>
+<section>
+<h2 id="accessibility-features"><a class="header-anchor" href="#accessibility-features">Accessibility features</a></h2>
+<p>Die Seiten dieser Website sind mit semantischen Elementen wie <code>&lt;header&gt;</code>, <code>&lt;navigation&gt;</code>,<br>
+<code>&lt;main&gt;</code> und <code>&lt;footer&gt;</code> strukturiert, welche helfen können, sich schneller zurechtzufinden.</p>
+<p>Überschriften der Ebene 1 markieren den Hauptinhaltsbereich jeder Seite und die weitere Struktur sollte von dort ausgehend einer logischen Reihenfolge an Überschriften folgen. Jede Seite hat einen für Screenreader zugänglichen Link, um direkt zum Inhalt springen zu können.</p>
+<p>Bilder werden mit sogenannten Alt-Tags beschrieben, um sicherzustellen, dass jede/r auf grafische Inhalte zugreifen kann. Eingebettete Audio- und Videodateien sollten mit barrierefreien Beschriftungen und Textbeschreibungen beschrieben werden.</p>
+<p>Die Farben dieser Website wurden so gewählt, dass ein ausreichender Farbkontrast auf jeder Seite gewährleistet ist - mindestens jedoch Stufe AA. Dasselbe gilt für mögliche Farbvarianten der Website wie beispielsweise einem sogenannten Dark-Mode.</p>
+<p>Jede Komponente dieser Website ist mit der Maus, der Tastatur oder durch Berührung zugänglich.<br>
+Diese Website wurde auf modernen Browsern und Endgeräten verschiedener Leistungsstufen getestet.</p>
+</section>
+<section>
+<h2 id="bekannte-probleme"><a class="header-anchor" href="#bekannte-probleme">Bekannte Probleme</a></h2>
+<ul>
+<li>Die Beschriftung mancher Elemente ist noch nicht perfekt zu nutzen in verschiedenen Screenreadern aber ich arbeite daran. Das äußer sicht vor allem in redundanten Bezeichnungen die gegebenenfalls doppelt vorgelesen werden.</li>
+</ul>
+</section>
+<section>
+<h2 id="feedback"><a class="header-anchor" href="#feedback">Feedback</a></h2>
+<p>Barrierefreiheit ist ein wichtiges Thema für mich und als nicht direkt Betroffener schwierig perfekt umzusetzen. Sollte es irgendwelche Probleme geben, schickt mir bitte eine E-Mail an: <a href="mailto:tony.spegel@gmail.com">tony.spegel@gmail.com</a>. Ich nehme Probleme mit der Barrierefreiheit sehr ernst und werde versuchen, diese so schnell wie möglich zu beheben. Für Links oder Ressourcen bin ich auch sehr dankbar.</p>
+</section>
+</section>
 
+      </main>
     </div>
-
     <footer>
   <span id="copyright">
-    © Tony Spegel 2022
+    © Tony Spegel
+    2023
   </span>
-  <ul><li class="nav-item">
-      <a href="/barrierefreiheit/">Barrierefreiheit</a>
-    </li><li class="nav-item">
-      <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
-    </li><li class="nav-item">
+  <ul>
+    
       <a href="/impressum/">Impressum</a>
-    </li></ul>
+    
+      <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
+    
+      <a href="/barrierefreiheit/">Barrierefreiheit</a>
+    
+  </ul>
 </footer>
+
   </body>
 </html>

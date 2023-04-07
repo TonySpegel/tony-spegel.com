@@ -1,12 +1,11 @@
 /**
  * Made by Tony Spegel
- * 
- * Some bits taken from: 
- * - Elly Loel - https://ellyloel.com/ / https://elly.to/CSS-Reset 
+ *
+ * Some bits taken from:
+ * - Elly Loel - https://ellyloel.com/ / https://elly.to/CSS-Reset
  *
  * Notes:
  */
-
 * {
   margin: 0;
   padding: 0;
@@ -18,16 +17,133 @@
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 2em;
+  margin: var(--base-gap) 0;
+}
+
+.glass {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.2901960784);
+  background-color: var(--glass-tint);
+  backdrop-filter: blur(20px);
+  z-index: 0;
+}
+
+.bubble {
+  border-radius: 65% 41% 48% 61%/61% 47% 57% 43%;
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  background-color: var(--bubble-1--color-1);
+  background-image: linear-gradient(19deg, var(--bubble-1--color-1) 0%, var(--bubble-1--color-2) 100%);
+  z-index: -1;
+  position: fixed;
+  right: -35px;
+  top: -50px;
+}
+
+.bubble-2 {
+  border-radius: 72% 80% 70% 63%/83% 50% 100% 43%;
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  background-color: var(--bubble-2--color-1);
+  background-image: linear-gradient(226deg, var(--bubble-2--color-1) 0%, var(--bubble-2--color-2) 100%);
+  z-index: -1;
+  bottom: -120px;
+  position: fixed;
+}
+
+/**
+ * Header
+ * ======
+ */
+#site-header {
+  position: sticky;
+  top: 0;
+  line-height: 1;
+  z-index: 2;
+}
+
+#site-header.opaque {
+  background-color: var(--surface-2);
+  border-bottom: 2px solid var(--surface-4);
+}
+
+#site-header.opaque :is(#logo-base, .header-link) {
+  border: 1px solid var(--surface-1);
+}
+
+#site-header > * {
+  margin: 0;
+}
+
+#site-header > nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: var(--base-gap);
+}
+
+.logo {
+  display: flex;
+  gap: var(--base-gap);
+  align-items: center;
+  border-radius: 15px;
+  padding: var(--logo-padding);
+  width: var(--logo-size);
+  height: var(--logo-size);
+  transition: transform 0.1s ease-in-out;
+  aspect-ratio: 1/1;
+  border: 1px solid transparent;
+  background-color: var(--logo-bg);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.header-link {
+  border: 1px solid transparent;
+}
+
+/**
+  * Button which opens the dialog
+  */
+#btn-theme-selection {
+  border-radius: 50%;
+  border: 2px solid hsla(281, 53%, 97%, 0.63);
+  width: 25px;
+  aspect-ratio: 1;
+  background: linear-gradient(-45deg, hsl(281, 55%, 74%), hsl(191, 98%, 56%));
+  transition: border 500ms ease-out;
+}
+
+#btn-theme-selection:is(:focus, :hover) {
+  border-color: hsla(281, 100%, 63%, 0.75);
+}
+
 :where(html) {
   --base-gap: 16px;
   --base-radius: 8px;
+  --site-max-width: 1280px;
+  --site-width: 960px;
+  --base-line-height: 1.25;
   /* Logo */
   --logo-size: 56px;
   --logo-padding: 2px;
-
   /* Misc. */
   --header-height: 100px;
+}
 
+:where(h1, h2, h3, h4, h5, h6) {
+  line-height: var(--base-line-height);
+}
+
+:where(html) {
   /**
    * Shades
    */
@@ -41,34 +157,181 @@
   --shade-600: hsla(281, 100%, 32%, 1);
   --shade-700: hsla(281, 100%, 27%, 1);
   --shade-800: hsla(281, 100%, 21%, 1);
-  --shade-900: hsla(281, 100%, 17%, 1);
+  --shade-900: hsla(281, 100%, 16%, 1);
+  --blueish-1: hsl(205.38deg 86.67% 94.12%);
+  --blueish-2: #BBDEFB;
   /**
    * Light-Theme
    */
   --text-1-light: var(--shade-800);
   --text-2-light: var(--shade-900);
-
   --surface-1-light: var(--shade-300);
   --surface-2-light: var(--shade-200);
   --surface-3-light: var(--shade-100);
   --surface-4-light: var(--shade-600);
-
+  --surface-5-light: var(--surface-4-light);
+  --circle-bg-light: var(--surface-4-light);
+  --circle-wave-light: #000;
+  --glass-tint-light: hsla(200, 100%, 96%, 0.15);
+  --glass-tint-light-2: var(--shade-50-glass);
   --logo-bg-light: var(--shade-100);
+  --border-light: var(--shade-200);
+  --bubble-size: 350px;
+  --bubble-1--color-1: hsl(191, 98%, 56%);
+  --bubble-1--color-2: hsl(281, 100%, 56%);
+  --bubble-2--color-1: hsl(338, 78%, 48%);
+  --bubble-2--color-2: hsl(199, 98%, 48%);
+  --disclaimer-badge-bg-light: hsl(54deg 100% 73%);
+  --disclaimer-badge-border-light: hsl(53.88deg 100% 80.78%);
+  --disclaimer-box-bg-light: hsl(205.38deg 86.67% 94.12%);
+  --disclaimer-box-border-light: #BBDEFB;
   /**
-   * Default values
+   * Dark Theme
    */
+  --text-1-dark: hsl(0, 0%, 90%);
+  --text-2-dark: hsl(0, 0%, 95%);
+  --surface-1-dark: hsl(281, 56%, 10%);
+  --surface-2-dark: hsl(281, 60%, 15%);
+  --surface-3-dark: hsl(281, 60%, 20%);
+  --surface-4-dark: hsl(281, 60%, 25%);
+  --surface-5-dark: hsl(262, 86%, 8%);
+  --circle-wave-dark: #fff;
+  --circle-bg-dark: #2a1d5445;
+  --glass-tint-dark: hsla(286, 86%, 6%, 0.657);
+  --glass-tint-dark-2: hsla(290, 93%, 5%, 0.7);
+  --border-dark: var(--shade-800);
+  --disclaimer-badge-bg-dark: hsl(54deg 100% 73%);
+  --disclaimer-badge-border-dark: hsl(53.88deg 100% 80.78%);
+  --disclaimer-badge-text: var(--text-1);
+  --disclaimer-box-bg-dark: hsl(205.38deg 64.06% 21.67%);
+  --disclaimer-box-border-dark: #BBDEFB;
+}
+
+/**
+ * LIGHT MODE
+ * Should be present:
+ * - as a default -> :where(html)
+ * - when a preference is set
+ * - OS setting indicates it
+ */
+:where(html),
+[theme-preference=light] {
+  color-scheme: light;
   --surface-1: var(--surface-1-light);
   --surface-2: var(--surface-2-light);
   --surface-3: var(--surface-3-light);
   --surface-4: var(--surface-4-light);
-
-  --logo-bg: var(--logo-bg-light);
-
+  --surface-5: var(--surface-4-light);
   --text-1: var(--shade-900);
+  --text-2: hsl(281deg, 100%, 16%);
+  --circle-bg: var(--circle-bg-light);
+  --circle-border: var(--surface-1-light);
+  --circle-checked: var(--surface-2-light);
+  --circle-wave: var(--circle-wave-light);
+  --glass-tint: var(--glass-tint-light);
+  --glass-tint-2: var(--shade-50-glass);
+  --logo-bg: var(--logo-bg-light);
+  --border-color: none;
+  --disclaimer-badge-bg: var(--disclaimer-badge-bg-light);
+  --disclaimer-badge-border: var(--disclaimer-badge-border-light);
+  --disclaimer-box-bg: var(--disclaimer-box-bg-light);
+  --disclaimer-box-border: var(--disclaimer-box-border-light);
+}
+
+/**
+ * DARK MODE
+ * Should be present:
+ * - when a preference is set
+ */
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    color-scheme: dark;
+    --surface-1: var(--surface-1-dark);
+    --surface-2: var(--surface-2-dark);
+    --surface-3: var(--surface-3-dark);
+    --surface-4: var(--surface-4-dark);
+    --surface-5: var(--surface-5-dark);
+    --text-1: #fff;
+    --text-2: #fff;
+    --circle-bg: var(--circle-bg-dark);
+    --circle-border: #eedcf530;
+    --circle-checked: var(--surface-3-dark);
+    --circle-wave-dark: #fff;
+    --glass-tint: var(--glass-tint-dark);
+    --glass-tint-2: var(--glass-tint-dark-2);
+    --border-color: var(--border-dark);
+    --logo-bg: var(--surface-2);
+    --disclaimer-badge-bg: var(--disclaimer-badge-bg-dark);
+    --disclaimer-badge-border: var(--disclaimer-badge-border-dark);
+    --disclaimer-badge-text: var(--text-1-light);
+    --disclaimer-box-bg: var(--disclaimer-box-bg-dark);
+    --disclaimer-box-border: var(--disclaimer-box-border-dark);
+  }
+}
+[theme-preference=dark] {
+  color-scheme: dark;
+  --surface-1: var(--surface-1-dark);
+  --surface-2: var(--surface-2-dark);
+  --surface-3: var(--surface-3-dark);
+  --surface-4: var(--surface-4-dark);
+  --surface-5: var(--surface-5-dark);
+  --text-1: #fff;
+  --text-2: #fff;
+  --circle-bg: var(--circle-bg-dark);
+  --circle-border: #eedcf530;
+  --circle-checked: var(--surface-3-dark);
+  --circle-wave-dark: #fff;
+  --glass-tint: var(--glass-tint-dark);
+  --glass-tint-2: var(--glass-tint-dark-2);
+  --border-color: var(--border-dark);
+  --logo-bg: var(--surface-2);
+  --disclaimer-badge-bg: var(--disclaimer-badge-bg-dark);
+  --disclaimer-badge-border: var(--disclaimer-badge-border-dark);
+  --disclaimer-badge-text: var(--text-1-light);
+  --disclaimer-box-bg: var(--disclaimer-box-bg-dark);
+  --disclaimer-box-border: var(--disclaimer-box-border-dark);
+}
+[theme-preference=dark] theme-switch {
+  --text-color-1: #fff;
+  --text-color-2: #fff;
+  /* Dialog */
+  --dialog-bg-color: var(--surface-5);
+  --dialog-border-color: var(--surface-2);
+  /* Radio Buttons */
+  --circle-bg-color: #2a1d5445;
+  --circle-bg-color-checked: var(--surface-3-dark);
+  --circle-border-color: #eedcf530;
+  --circle-wave: var(--circle-wave-dark);
+  /* Control elements */
+  --control-color: var(--surface-3);
+  --control-interaction-color: var(--surface-2);
+  /* Checkbox */
+  --checkbox-bg-color: #402e7e45;
+  --checkbox-bg-color-checked: var(--surface-3);
+  --checkmark-color: #fff;
+  --checkbox-border-color: var(--surface-3);
+  --outline-color: #fff;
+}
+
+[theme-preference=dark] .post-tag {
+  color: var(--text-1);
+  background-color: var(--surface-3);
+}
+
+[theme-preference=dark] .post-tag.lit span {
+  background-image: url("/img/flame-white.svg");
 }
 
 /* Make it clear that interactive elements are interactive */
-:where(a[href], area, button, input, label[for], select, summary, textarea, [tabindex]:not([tabindex*='-'])) {
+:where(a[href],
+area,
+button,
+input,
+label[for],
+select,
+summary,
+textarea,
+[tabindex]:not([tabindex*="-"])) {
   cursor: pointer;
   touch-action: manipulation;
 }
@@ -80,105 +343,119 @@ html {
   -webkit-text-size-adjust: none;
 }
 
-body {
-  color: var(--text-1);
-  font-family: 'Inter', sans-serif;
+hr {
+  background-color: var(--surface-2);
+  height: 1px;
+  border: 0;
 }
 
-:where(p, h1, h2, h3, h4, h5, h6) {
+body {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-1);
+  font-family: "Inter", sans-serif;
+}
+
+:where(p, a, h1, h2, h3, h4, h5, h6) {
+  color: var(--text-1);
   overflow-wrap: break-word;
 }
 
-h1 {
-  font-size: 2em;
-  margin: var(--base-gap) 0;
+:where(button, input, a[href]):where(:not(:active)):focus-visible {
+  outline-offset: 5px;
+  transition: outline-offset 145ms ease;
 }
 
-/**
- * Header
- * ======
- */
-#site-header {
-  position: sticky;
-  top: 0;
+@media (prefers-reduced-motion: no-preference) {
+  a {
+    transition: all 0.1s ease-in-out;
+  }
+  a[href]:active {
+    transform: scale(0.95);
+  }
 }
-
-#site-header.opaque {
-  background-color: var(--shade-50-glass);
-  backdrop-filter: blur(10px);
-}
-
-#site-header > nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  height: var(--header-height);
-  padding: var(--base-gap);
-}
-
-#site-header a {
-  text-decoration: none;
-}
-
-#logo-link {
-  display: flex;
-  gap: var(--base-gap);
-  align-items: center;
-}
-
-#logo-base {
-  border-radius: 15px;
-  padding: var(--logo-padding);
-  width: var(--logo-size);
-  height: var(--logo-size);
-  transition: transform 0.1s ease-in-out;
-  aspect-ratio: 1/1;
-
-  background-color: var(--logo-bg);
-}
-
-#logo-base img {
-  width: 100%;
-  height: 100%;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-  gap: var(--base-gap);
-}
-
-.menu ul {
-  list-style-type: none;
-}
-
 /**
  * Main
  * ======
  */
-
-#main-wrapper.post {
-  display: grid;
-  grid-template-areas: '. main toc';
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr) minmax(0, 15rem);
-  gap: calc(var(--base-gap) * 4);
-
-  margin-top: calc(var(--base-gap) * 2);
+.tmpl-home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-#main-wrapper main {
-  grid-area: main;
+.tmpl-home .main-wrapper {
+  flex: 1;
+  padding: var(--base-gap);
 }
 
-.toc {
+.main-wrapper {
+  z-index: 1;
+}
+
+.main-wrapper main {
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--site-width);
+}
+
+.intro {
+  line-height: 1.5;
+  max-width: 470px;
+  text-align: justify;
+}
+
+.social-links {
+  --github-social-size: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--base-gap);
+  margin: var(--base-gap) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-links li {
+  border: 1px solid var(--surface-2);
+  border-radius: 50%;
+  width: var(--github-social-size);
+  height: var(--github-social-size);
+  background-color: var(--surface-3);
+}
+
+.social-links li a {
+  display: flex;
+  border-radius: 50%;
+  height: 100%;
+  padding: calc(var(--base-gap) / 2);
+}
+
+.social-links li a img {
+  width: 100%;
+}
+
+aside.toc {
   grid-area: toc;
   position: sticky;
-  top: calc(var(--header-height) + calc(var(--base-gap) * 2));
+  top: calc(var(--header-height) + var(--base-gap) * 2);
   max-height: 200px;
 }
 
-
+@media screen and (max-width: 750px) {
+  #main-wrapper.post {
+    grid-template-areas: "main";
+    grid-template-columns: 1fr;
+  }
+  aside.toc {
+    display: none;
+  }
+  aside#toc-mobile {
+    display: block;
+  }
+}
+pre[class*=language-] {
+  max-width: 100%;
+}
 
 /**
  * Footer
@@ -190,6 +467,7 @@ footer {
   justify-content: space-between;
   gap: var(--base-gap);
   padding: var(--base-gap);
+  z-index: 1;
 }
 
 footer ul {
@@ -203,47 +481,104 @@ footer ul {
     flex-direction: column-reverse;
     text-align: center;
   }
-
   footer ul {
     flex-direction: column;
   }
 }
-
 /**
  * Tags
  */
-
-#post-tags {
+.post-tags {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: calc((var(--base-gap) / 2) + 4px);
+  gap: calc(var(--base-gap) / 2 + 4px);
   padding: 0;
   margin: 0;
-
   list-style-type: none;
 }
 
-#post-tags > li {
+.post-tags > li {
   display: inherit;
   align-items: center;
   height: 36px;
 }
 
 .post-tag {
+  display: flex;
+  gap: calc(var(--base-gap) / 2);
+}
+
+.post-tag.lit span {
+  background-image: url("/img/flame.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100%;
+  aspect-ratio: 4/5;
+}
+
+.post-tag img {
+  height: 100%;
+}
+
+.post-tag,
+.header-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
   padding: calc(var(--base-gap) / 2);
   border-radius: var(--base-radius);
   text-decoration: none;
-
   background-color: var(--surface-3);
   color: var(--text-1);
-
   transform-origin: center;
 }
 
-.post-tag:is(:hover, :focus) {
+:is(.post-tag, .header-link):is(:hover, :focus) {
   background-color: var(--surface-2);
 }
 
-.post-tag:active {
+:is(.post-tag, .header-link):active {
   transform: scale(0.95);
+}
+
+.single-tag {
+  display: inline-flex;
+  margin-block-end: var(--base-gap);
+}
+
+.all-tags {
+  margin: var(--base-gap) 0 !important;
+}
+
+/**
+ * Posts
+ */
+.posts {
+  display: grid;
+  gap: var(--base-gap);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-bottom: var(--base-gap);
+  max-width: 1280px;
+}
+
+/**
+ * Post card
+ */
+.postlist-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--base-gap);
+  border-radius: var(--base-radius);
+  border: 1px solid var(--surface-2);
+  padding: var(--base-gap);
+  background-color: var(--glass-tint-2);
+}
+
+.postlist-item header {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-tags {
+  margin-top: auto;
 }

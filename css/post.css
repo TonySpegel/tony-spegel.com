@@ -1,9 +1,0 @@
-.wrapper {
-  display: grid;
-  grid-template-areas: '. main toc';
-  gap: var(--base-gap);
-}
-
-main header h1 {
-  margin-top: 0;
-}
