@@ -3,25 +3,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* .post header {
-  margin-bottom: calc(var(--base-gap) * 2);
-} */
-
-/* .post aside {
-  position: sticky;
-  top: calc(var(--header-height) + (var(--base-gap) * 2));
-  height: fit-content;
-} */
-
-:root {
-  --font-size-8: 3.5rem;
-  --font-size-6: 2.5rem;
-  --font-size-5: 2rem;
-  --font-size-4: 1.5rem;
-  --font-size-3: 1.25rem;
-  --font-size-2: 1.1rem;
-}
-
 .post {
   max-width: fit-content;
 }
@@ -32,7 +13,7 @@ body {
   gap: 3rem;
 
   margin: 0 auto;
-  padding: 0 1rem;
+  padding-inline: clamp(1.375rem, 1.2rem + 0.89vw, 2rem);
 }
 
 aside {
@@ -42,7 +23,7 @@ aside {
 kbd {
   padding: 3px 5px;
   border-radius: 6px;
-  background-color: lightgray;
+  background-color: var(--surface-3);
 }
 
 @media screen and (min-width: 1200px) {
@@ -63,19 +44,19 @@ header {
 }
 
 h1 {
-  margin-top: 0;
+  margin-block-start: 0;
+  font-size: clamp(1.5rem, 1.29rem + 1.07vw, 2.25rem);
 }
 
 h2 {
-  font-size: var(--font-size-4);
+  font-size: clamp(1.25rem, 1.11rem + 0.71vw, 1.75rem);
 }
 
 h3 {
-  font-size: var(--font-size-2);
+  font-size: clamp(1.125rem, 1.09rem + 0.18vw, 1.25rem);
 }
 
-h2,
-h3 {
+:is(h2, h3):not([slot]) {
   margin: revert;
   scroll-margin-top: calc(var(--header-height) + var(--base-gap));
 }
@@ -113,7 +94,8 @@ p {
 
   border-radius: calc(var(--base-radius) * 1.5);
   border: 1px solid var(--disclaimer-box-border);
-  margin-block-start: var(--base-gap);
+  margin-block-start: calc(var(--base-gap) * 2);
+  margin-block-end: var(--base-gap);
   max-width: 500px;
   width: 100%;
   padding: var(--base-gap);
@@ -126,6 +108,11 @@ p {
     border-radius: 8px;
     border: 1px solid var(--disclaimer-badge-border);
     background: var(--disclaimer-badge-bg);
+    color: var(--disclaimer-badge-text);
+  }
+
+  ul {
+    margin-block-end: 0;
   }
 }
 
