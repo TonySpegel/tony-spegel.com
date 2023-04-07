@@ -4,10 +4,8 @@
     {% year %}
   </span>
   <ul>
-    {%- for entry in collections.footer -%}
-      <li class="nav-item">
-        <a href="{{ entry.url | url }}">{{ entry.data.title }}</a>
-      </li>
-    {%- endfor -%}
+    {% for page in footer %}
+      <a href="{{ page.url }}">{{ page.text }}</a>
+    {% endfor %}
   </ul>
 </footer>
