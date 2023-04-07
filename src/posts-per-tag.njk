@@ -19,6 +19,6 @@ info: Lists all posts per tag
 ---
 <h1>Tag: #{{ tag }}</h1>
 
-<a href="{{ 'tags/' | url }}" class="post-tag single-tag">Alle Tags ›</a>
+{# <a href="{{ 'tags/' | url }}" class="post-tag single-tag">Alle Tags ›</a> #}
 {% set postslist = collections[ tag ] %}
 {% include "postslist.njk" %}
