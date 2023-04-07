@@ -14,10 +14,10 @@
   },
   "wireit": {
     "build:eleventy:dev": {
-      "command": "NODE_ENV=DEV eleventy --config=.eleventy-2.js",
+      "command": "NODE_ENV=DEV eleventy --config=.eleventy.js",
       "files": [
         "src/**/*",
-        ".eleventy-2.js"
+        ".eleventy.js"
       ],
       "output": [
         "_dev"
@@ -25,10 +25,10 @@
       "clean": "if-file-deleted"
     },
     "build:eleventy:prod": {
-      "command": "ENVIRONMENT=PRODUCTION eleventy --config=.eleventy-2.js",
+      "command": "ENVIRONMENT=PRODUCTION eleventy --config=.eleventy.js",
       "files": [
         "src/**/*",
-        ".eleventy-2.js"
+        ".eleventy.js"
       ],
       "output": [
         "_prod"
@@ -55,7 +55,7 @@
       "clean": "if-file-deleted"
     },
     "wire-serve:dev": {
-      "command": "wds --config web-dev-server.config-2.mjs",
+      "command": "wds --config web-dev-server.config.mjs",
       "service": true,
       "files": [],
       "dependencies": [
