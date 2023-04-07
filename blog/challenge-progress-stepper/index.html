@@ -27,7 +27,6 @@
   <script>
   // Read theme preference from localStorage
   const themePreference = localStorage.getItem('theme-preference');
-  console.log(themePreference);
   // Set theme if one is present in localStorage
   if (themePreference !== null) {
     document
@@ -204,6 +203,17 @@ Den Code als Ganzes gibt es noch einmal hier auf meinem<br>
       
     </div>
 
+    
+  <!-- tsp:prod -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator
+        .serviceWorker
+        .register('/sw.js');
+    }
+  </script>
+
+
     <footer>
   <span id="copyright">
     © Tony Spegel
@@ -211,11 +221,17 @@ Den Code als Ganzes gibt es noch einmal hier auf meinem<br>
   </span>
   <ul>
     
-      <a href="/impressum/">Impressum</a>
+      <li>
+        <a href="/impressum/">Impressum</a>
+      </li>
     
-      <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
+      <li>
+        <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
+      </li>
     
-      <a href="/barrierefreiheit/">Barrierefreiheit</a>
+      <li>
+        <a href="/barrierefreiheit/">Barrierefreiheit</a>
+      </li>
     
   </ul>
 </footer>

@@ -17,7 +17,6 @@
   <script>
   // Read theme preference from localStorage
   const themePreference = localStorage.getItem('theme-preference');
-  console.log(themePreference);
   // Set theme if one is present in localStorage
   if (themePreference !== null) {
     document
@@ -88,9 +87,9 @@
     <header id="site-header">
   <nav>
     
-      <a class="logo">
+      <span class="logo">
         <img src="/tsp_icon.svg" alt="Tony Spegel Logo"/>
-      </a>
+      </span>
     
 
     <button id="btn-theme-selection" title="Farbschema auswählen"></button>
@@ -118,7 +117,7 @@
               Angular, Lit, CSS und der E-Commerce Plattform Shopify.
               <br>
               <br>
-              Woran ich arbeite und mich ausprobiere findet sich auch unter den folgenden Links:
+              Woran ich arbeite und mich ausprobiere, findet sich auch unter den folgenden Links:
             </p>
 
             <ul class="social-links">
@@ -126,12 +125,17 @@
                 
                 <li>
                   <a
-                  href="https://github.com/TonySpegel"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  title="GitHub Profil: Tony Spegel"
-                >
-                    <img src="/img/socials/GitHub-Mark-120px-plus.png" alt="GitHub Logo">
+                    href="https://github.com/TonySpegel"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    title="GitHub Profil: Tony Spegel"
+                  >
+                    <img
+                      src="/img/socials/GitHub-Mark-120px-plus.png"
+                      alt="GitHub Logo"
+                      width="120"
+                      height="120"
+                    >
                   </a>
                 </li>
                 
@@ -139,12 +143,17 @@
                 
                 <li>
                   <a
-                  href="https://www.npmjs.com/~tonyspegel"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  title="NPM Profil: Tony Spegel"
-                >
-                    <img src="/img/socials/npm-logo-black.svg" alt="NPM Logo">
+                    href="https://www.npmjs.com/~tonyspegel"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    title="NPM Profil: Tony Spegel"
+                  >
+                    <img
+                      src="/img/socials/npm-logo-black.svg"
+                      alt="NPM Logo"
+                      width="300"
+                      height="96"
+                    >
                   </a>
                 </li>
                 
@@ -284,15 +293,16 @@
     </div>
 
     
-      <!-- tsp:prod -->
-      <script>
-        if ('serviceWorker' in navigator) {
-          navigator
-            .serviceWorker
-            .register('/sw.js');
-        }
-      </script>
-    
+  <!-- tsp:prod -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator
+        .serviceWorker
+        .register('/sw.js');
+    }
+  </script>
+
+
     <footer>
   <span id="copyright">
     © Tony Spegel
@@ -300,11 +310,17 @@
   </span>
   <ul>
     
-      <a href="/impressum/">Impressum</a>
+      <li>
+        <a href="/impressum/">Impressum</a>
+      </li>
     
-      <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
+      <li>
+        <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
+      </li>
     
-      <a href="/barrierefreiheit/">Barrierefreiheit</a>
+      <li>
+        <a href="/barrierefreiheit/">Barrierefreiheit</a>
+      </li>
     
   </ul>
 </footer>
