@@ -1,3 +1,9 @@
+*.pem
+.vscode
+.wireit
+_dev
+_prod
 _site/
 node_modules/
 package-lock.json
+site/
