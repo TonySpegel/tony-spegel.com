@@ -1,8 +1,7 @@
 export default {
+  basePath: '/_dev',
   nodeResolve: true,
-  rootDir: '_site',
-  watch: true,
-  nodeResolve: true,
-  basePath: '/_site',
   open: true,
+  rootDir: '_dev',
+  watch: true,
 };
