@@ -3,23 +3,17 @@
   "version": "6.0.0",
   "description": "My personal website. I blog about the modern web.",
   "scripts": {
-    "build": "npx @11ty/eleventy",
-    "build:prod": "ENVIRONMENT=production npx @11ty/eleventy",
-    "bench": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
-    "watch": "npx @11ty/eleventy --watch",
-    "serve": "npx @11ty/eleventy --serve",
-    "start": "npx @11ty/eleventy --serve",
-    "debug": "DEBUG=* npx @11ty/eleventy",
-    "11ty-wds": "concurrently \"npx eleventy --watch\" \"web-dev-server  --node-resolve\"",
-    "build-rollup-live": "rollup --config rollup.config.live.js",
-    "build:dev:eleventy": "wireit",
-    "build:prod:eleventy": "wireit",
+    "build:eleventy:dev": "wireit",
+    "build:eleventy:prod": "wireit",
+    "build:rollup:prod": "rollup --config rollup.config.live.js",
     "sass:dev": "wireit",
+    "sass:prod": "wireit",
     "wire-serve:dev": "wireit",
-    "dev": "npm run wire-serve:dev --watch"
+    "dev": "npm run wire-serve:dev --watch",
+    "wds:prod": "wds --config web-dev-server.config.prod.mjs"
   },
   "wireit": {
-    "build:dev:eleventy": {
+    "build:eleventy:dev": {
       "command": "NODE_ENV=DEV eleventy --config=.eleventy-2.js",
       "files": [
         "src/**/*",
@@ -30,8 +24,8 @@
       ],
       "clean": "if-file-deleted"
     },
-    "build:prod:eleventy": {
-      "command": "NODE_ENV=PROD eleventy --config=.eleventy-2.js",
+    "build:eleventy:prod": {
+      "command": "ENVIRONMENT=PRODUCTION eleventy --config=.eleventy-2.js",
       "files": [
         "src/**/*",
         ".eleventy-2.js"
@@ -50,13 +44,23 @@
       ],
       "clean": "if-file-deleted"
     },
+    "sass:prod": {
+      "command": "sass src/scss:_prod/css --no-source-map",
+      "files": [
+        "src/scss/*"
+      ],
+      "output": [
+        "_prod/css"
+      ],
+      "clean": "if-file-deleted"
+    },
     "wire-serve:dev": {
       "command": "wds --config web-dev-server.config-2.mjs",
       "service": true,
       "files": [],
       "dependencies": [
         {
-          "script": "build:dev:eleventy",
+          "script": "build:eleventy:dev",
           "cascade": false
         },
         {
@@ -99,11 +103,13 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@web/dev-server": "^0.1.35",
-    "concurrently": "^7.2.2",
     "rollup": "^2.76.0",
+    "rollup-plugin-html-literals": "^1.1.6",
     "rollup-plugin-summary": "^1.4.3",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-workbox": "^6.2.0",
     "sass": "^1.59.2",
+    "tslib": "^2.5.0",
     "wireit": "^0.9.5"
   }
 }
