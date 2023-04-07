@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: '16'
       - run: npm install
+      # Set up GitHub Actions caching for Wireit.
+      - name: Wireit 🔌
+        uses: google/wireit@setup-github-actions-caching/v1
       # Build 11ty
       - run: npm run build:eleventy:prod
       # Build CSS files
