@@ -24,7 +24,6 @@ document
   .querySelector('#btn-theme-selection')
   .addEventListener('click', (event) => {
     const { target } = event;
-    console.log(target);
     window.dispatchEvent(new DialogEvent(target));
   });
 
