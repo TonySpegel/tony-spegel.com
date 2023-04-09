@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 
 <!doctype html>
 <html lang="de">
@@ -10,7 +10,7 @@
 <title>Beschleunigte Navigation mit Link prefetching</title>
 <meta name="description" content="Wie man rel=&quot;prefetch&quot; durch Interaktionen wie bspw. mouseover oder focus optimieren kann">
 <meta name="generator" content="Eleventy v2.0.1">
-<meta name="theme-color" content="hsla(281, 56%, 84%, 1)" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="hsla(281, 56%, 84%, 1)" media="(prefers-color-scheme: light)">
 
 <meta property="og:title" content="Beschleunigte Navigation mit Link prefetching">
 <meta property="og:description" content="Wie man rel=&quot;prefetch&quot; durch Interaktionen wie bspw. mouseover oder focus optimieren kann">
@@ -46,7 +46,7 @@
     
     <script type="module" src="/js/theme-switch.js"></script>
   
-  <link rel="icon" href="/favicon.svg"/>
+  <link rel="icon" href="/favicon.svg">
 </head>
 
   <body>
@@ -54,8 +54,7 @@
 <theme-switch>
   <h2 slot="heading">Theme Auswahl</h2>
   <span slot="sub-heading">Wähle ein Theme für die Website</span>
-  <a
-    href="datenschutzerklaerung/#auswertung-des-verhaltens-von-besucherinnen-und-besuchern-cookies"
+  <a href="datenschutzerklaerung/#auswertung-des-verhaltens-von-besucherinnen-und-besuchern-cookies"
     id="read-more"
     slot="read-more"
     target="_blank"
@@ -70,7 +69,7 @@
   <nav>
     
       <a class="logo" href="/" title="Zur Startseite">
-        <img src="/tsp_icon.svg" alt="Tony Spegel Logo"/>
+        <img src="/tsp_icon.svg" alt="Tony Spegel Logo">
       </a>
     
 
@@ -124,13 +123,15 @@
           </ul>
         </header>
 
-        <p>Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt,<br>
-um diese schneller aufrufen zu können. Das kann beispielsweise so aussehen:<br>
-<code>&lt;link rel=&quot;prefetch&quot; href=&quot;/img/catsarecute.jpg&quot; /&gt;</code>.<br>
-Browser werden diese Ressource dann herunterladen und zwischenspeichern (allerdings nur im <a class="text-link" target="_blank" rel="noopener noreferrer" title="Idle" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined">Idle</a>).</p>
+        <p>Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt, um diese schneller aufrufen zu können. Das kann beispielsweise so aussehen: <code>&lt;link rel=&quot;prefetch&quot; href=&quot;/img/catsarecute.jpg&quot; /&gt;</code>. Browser werden diese Ressource dann herunterladen und zwischenspeichern (allerdings nur im <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined" target="_blank" rel="noopener noreferrer">Idle</a>).</p>
 <p>Alle Links einer Seite für das Prefetching hinzuzufügen ist natürlich wenig sinnvoll.<br>
-Um das zu optimieren ist mein Ansatz, Links nur auf eine Interaktion hin zu prefetchen - also beispielsweise das Zeigen mit der Maus oder das Fokussieren mit einer Tastatur. Inspiration habe ich mir hierbei durch das von Google entwickelte <a href="https://getquick.link/">Quicklink</a> geholt. Der entscheidende Unterschied zu meiner Lösung ist, dass Quicklink alle Links im sichtbaren Bereichen vorlädt (wenn der Browser im Idle ist) und nicht durch eine Interaktion.</p>
+Um das zu optimieren ist mein Ansatz, Links nur auf eine Interaktion hin zu prefetchen - also beispielsweise das Zeigen mit der Maus oder das Fokussieren mit einer Tastatur. Inspiration habe ich mir hierbei durch das von Google entwickelte <a href="https://getquick.link/" target="_blank" rel="noopener noreferrer">Quicklink</a> geholt. Der entscheidende Unterschied zu meiner Lösung ist, dass Quicklink alle Links im sichtbaren Bereichen vorlädt (wenn der Browser im Idle ist) und nicht durch eine Interaktion.</p>
 <p>Links zu meiner Lösung <em>addPrefetchLink</em>:</p>
+<ul>
+<li><a href="https://codepen.io/TonySpegel/full/PojrqZb" target="_blank" rel="noopener noreferrer">Demo (Codepen)</a></li>
+<li><a href="https://www.npmjs.com/package/add-prefetch-link" target="_blank" rel="noopener noreferrer">NPM</a></li>
+<li><a href="https://github.com/TonySpegel/addPrefetchLink" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+</ul>
 <section>
 <h2 id="anforderungen"><a class="header-anchor" href="#anforderungen">Anforderungen</a></h2>
 <ul>
@@ -225,7 +226,7 @@ Da es mein erstes NPM-Modul ist, freue ich mich natürlich besonders über Feedb
     </div>
 
     
-  <!-- tsp:prod -->
+  
   <script>
     if ('serviceWorker' in navigator) {
       navigator

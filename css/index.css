@@ -308,6 +308,9 @@ h1 {
     --disclaimer-box-bg: var(--disclaimer-box-bg-dark);
     --disclaimer-box-border: var(--disclaimer-box-border-dark);
   }
+  .social-links img {
+    filter: brightness(0) invert(1);
+  }
 }
 [theme-preference=dark] {
   color-scheme: dark;
@@ -352,6 +355,9 @@ h1 {
   --checkmark-color: #fff;
   --checkbox-border-color: var(--surface-3);
   --outline-color: #fff;
+}
+[theme-preference=dark] .social-links img {
+  filter: brightness(0) invert(1);
 }
 
 [theme-preference=dark] .post-tag {
