@@ -18,7 +18,7 @@
   --shade-900: hsla(281, 100%, 16%, 1);
 
   --blueish-1: hsl(205.38deg 86.67% 94.12%);
-  --blueish-2: #BBDEFB;
+  --blueish-2: #bbdefb;
 
   /**
    * Light-Theme
@@ -51,7 +51,7 @@
   --disclaimer-badge-border-light: hsl(53.88deg 100% 80.78%);
 
   --disclaimer-box-bg-light: hsl(205.38deg 86.67% 94.12%);
-  --disclaimer-box-border-light: #BBDEFB;
+  --disclaimer-box-border-light: #bbdefb;
   /**
    * Dark Theme
    */
@@ -77,7 +77,11 @@
   --disclaimer-badge-text: var(--text-1);
 
   --disclaimer-box-bg-dark: hsl(205.38deg 64.06% 21.67%);
-  --disclaimer-box-border-dark: #BBDEFB;
+  --disclaimer-box-border-dark: #bbdefb;
+
+  theme-switch {
+    --dialog-bg-color: var(--purple-50);
+  }
 }
 
 // LIGHT MODE
@@ -92,14 +96,37 @@
 :where(html),
 [theme-preference='light'] {
   @include light;
+
+  theme-switch {
+    --dialog-bg-color: var(--purple-50);
+    --dialog-border-color: var(--purple-500);
+    --text-color-1: var(--purple-950);
+    --text-color-2: var(--purple-900);
+    // Control elements
+    --control-color: var(--purple-300);
+    --control-interaction-color: var(--purple-400);
+    --circle-bg-color: var(--purple-100);
+    --circle-bg-color-checked: var(--purple-300);
+    --circle-border-color: var(--purple-500);
+    // Checkbox
+    --checkbox-bg-color: var(--purple-50);
+    --checkbox-bg-color-checked: var(--purple-200);
+    --checkmark-color: var(--purple-900);
+    --checkbox-border-color: var(--purple-500);
+  }
 }
 
 /**
  * DARK MODE
  * Should be present:
  * - when a preference is set
+ * - OS setting indicates it
  */
 @media (prefers-color-scheme: dark) {
+  :where(html) {
+    @include theme-switch-dark;
+  }
+
   :where(html) {
     @include dark;
   }
