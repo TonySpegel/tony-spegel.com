@@ -130,9 +130,17 @@
   :where(html) {
     @include dark;
   }
+
+  .social-links img {
+    filter: brightness(0) invert(1);
+  }
 }
 
 [theme-preference='dark'] {
   @include dark;
   @include theme-switch-dark;
+
+  .social-links img {
+    filter: brightness(0) invert(1);
+  }
 }

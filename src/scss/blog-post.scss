@@ -131,3 +131,13 @@ td {
   text-align: left;
   padding: calc(var(--base-gap) / 2) var(--base-gap);
 }
+
+code {
+  overflow-x: auto;
+
+  &:not([class^='language-']) {
+    border-radius: calc(var(--base-radius) / 2);
+    padding: calc(var(--base-gap) / 4);
+    background-color: var(--surface-3);
+  }
+}

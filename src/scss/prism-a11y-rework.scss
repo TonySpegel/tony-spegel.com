@@ -42,16 +42,6 @@ pre[class*='language-'] {
   align-items: center;
 }
 
-code {
-  overflow-x: auto;
-
-  &:not([class^='language-']) {
-    border-radius: calc(var(--base-radius) / 2);
-    padding: calc(var(--base-gap) / 4);
-    background-color: var(--surface-3);
-  }
-}
-
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background: var(--color-bg);
