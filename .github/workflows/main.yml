@@ -31,6 +31,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
           folder: _prod # The folder the action should deploy.
-      - name: List files in the repository
-        run: |
-          ls -lR | more ${{ github.workspace }}/_prod
