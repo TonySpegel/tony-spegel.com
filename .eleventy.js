@@ -10,6 +10,7 @@ const pluginTOC = require('eleventy-plugin-nesting-toc');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginNavigation = require('@11ty/eleventy-navigation');
+const externalLinks = require('eleventy-plugin-external-links');
 
 const DEV = process.env.NODE_ENV === 'DEV';
 const outputFolder = DEV ? '_dev' : '_prod';
@@ -34,6 +35,16 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addPlugin(require('./eleventy.config.drafts.js'));
 
+  eleventyConfig.addPlugin(externalLinks, {
+    // Plugin defaults:
+    name: 'external-links', // Plugin name
+    regex: /^(([a-z]+:)|(\/\/))/i, // Regex that test if href is external
+    target: '_blank', // 'target' attribute for external links
+    rel: 'noopener noreferrer', // 'rel' attribute for external links
+    extensions: ['.html'], // Extensions to apply transform to
+    includeDoctype: true, // Default to include '<!DOCTYPE html>' at the beginning of the file
+  });
+
   eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
 
   eleventyConfig.addFilter('readableDate', (dateObj) => {
@@ -42,10 +53,6 @@ module.exports = function (eleventyConfig) {
       month: '2-digit',
       day: '2-digit',
     }).format(dateObj);
-  });
-
-  eleventyConfig.addNunjucksShortcode('externalLink', (text, title, link) => {
-    return `<a class="text-link" target="_blank" rel="noopener noreferrer" title="${title}" href="${link}">${text}</a>`;
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
@@ -90,7 +97,7 @@ module.exports = function (eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
-  eleventyConfig.addGlobalData("env", process.env.NODE_ENV);
+  eleventyConfig.addGlobalData('env', process.env.NODE_ENV);
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({

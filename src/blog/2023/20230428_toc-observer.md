@@ -10,10 +10,7 @@ tags:  ['Lit', 'Web Components', 'a11y', 'TypeScript', 'Blog']
 permalink: /blog/toc-observer/
 imports: ['index', 'post', 'theme-switch']
 ---
-{% import 'macros/external-link.njk' as link %}
-
-Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet
-sich häufig in Blogs oder Artikeln wieder.
+Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder.
 
 <div class="disclaimer">
   <span>Hinweis</span>
@@ -22,11 +19,9 @@ sich häufig in Blogs oder Artikeln wieder.
     Wer noch etwas mehr wissen möchte, kann hier querlesen:
   </p>
 
-  <ul>
-    <li>{{ link.externalLink('https://developer.mozilla.org/en-US/docs/Web/Web_Components', 'MDN Web Docs: Web Components') }}</li>
-    <li>{{ link.externalLink('https://lit.dev/docs/', 'lit.dev: What is Lit?') }}</li>
-    <li>{{ link.externalLink('https://web.dev/learn/html/template/', 'Learn HTML!: Template, slot, and shadow') }}</li>
-  </ul>
+- [MDN Web Docs: Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [lit.dev: What is Lit?](https://lit.dev/docs/)
+- [Learn HTML!: Template, slot, and shadow](https://web.dev/learn/html/template/)
 </div>
 
 ## IntersectionObserver

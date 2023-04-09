@@ -16,8 +16,6 @@ imports: [
   'image-comparison'
 ]
 ---
-{% import 'macros/external-link.njk' as link %}
-
 In diesem Post geht es darum, eine Komponente zu entwickeln welche es ermöglicht, Bilder auf der verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.
 
 <image-comparison variant="slider" sliderPrompt="Slider bewegen, um zu vergleichen" class="post-img" id="image-comparison-demo">
@@ -29,7 +27,7 @@ In diesem Post geht es darum, eine Komponente zu entwickeln welche es ermöglich
 
 <div class="slider-set-wrapper">
   <fieldset id="slider-variant-set" class="slider-set">
-    <legend>Variante:</legend>
+    <legend>Variante</legend>
     <div>
       <input type="radio" id="slider" name="variant" value="slider" checked>
       <label for="slider">Slider</label>
@@ -43,17 +41,18 @@ In diesem Post geht es darum, eine Komponente zu entwickeln welche es ermöglich
       <label for="split">Split</label>
     </div>
   </fieldset>
-  <fieldset id="slider-reading-direction-set" class="slider-set">
-    <legend>Leserichtung:</legend>
+
+  <!-- <fieldset id="slider-reading-direction-set" class="slider-set">
+    <legend>Leserichtung</legend>
     <div>
-      <input type="radio" id="ltr" name="variant" value="ltr" checked>
+      <input type="radio" id="ltr" name="reading-direction" value="ltr" checked>
       <label for="ltr"><abbr>LTR</abbr> (Left To Right)</label>
     </div>
     <div>
-      <input type="radio" id="rtl" name="variant" value="rtl" checked>
+      <input type="radio" id="rtl" name="reading-direction" value="rtl">
       <label for="rtl"><abbr>RTL</abbr> (Right To Left)</label>
     </div>
-  </fieldset>
+  </fieldset> -->
 </div>
 
 <hr>
@@ -65,11 +64,9 @@ In diesem Post geht es darum, eine Komponente zu entwickeln welche es ermöglich
     Hier ein paar Links:
   </p>
 
-  <ul>
-    <li>{{ link.externalLink('https://developer.mozilla.org/en-US/docs/Web/Web_Components', 'MDN Web Docs: Web Components') }}</li>
-    <li>{{ link.externalLink('https://lit.dev/docs/', 'lit.dev: What is Lit?') }}</li>
-    <li>{{ link.externalLink('https://web.dev/learn/html/template/', 'Learn HTML!: Template, slot, and shadow') }}</li>
-  </ul>
+- [MDN Web Docs: Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [lit.dev: What is Lit?](https://lit.dev/docs/)
+- [Learn HTML!: Template, slot, and shadow](https://web.dev/learn/html/template/)
 </div>
 
 Einer der Vorteile daran, eine Web Component zu entwickeln, ist deren Eigenschaft frameworkunabhängig zu sein. Sie lassen sich also in Blogs gleichermaßen wie in Web Apps einbinden. Den Anfang macht hier die Slider-Variante.
@@ -115,12 +112,10 @@ Neben zusätzlichem Markup, wie dem Button, steckt der größte Teil der <span a
 Wenn es darum geht, möglichst barrierefreie Lösungen zu entwickeln, ist die [Patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) Seite des W3C ein optimaler Einstieg. Diese bietet diverse, immer wiederkehrende, Patterns wie beispielsweise Tabs, Slide Shows und Ähnliches an und geht dabei auf deren Besonderheiten ein.
 Das [Window Splitter](https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/) passt hierbei am ehesten zur Slider-Variante.
 
-Es gibt Nutzer oder Nutzerinnen welche Probleme damit haben,
-motorisch dauerhauft einen Slider zu bewegen.
+Es gibt Nutzer oder Nutzerinnen welche Probleme damit haben, motorisch dauerhauft einen Slider zu bewegen.
 
 ### Keyboard Navigation
-Die Komponente unterstützt verschiedene Tasten-(kombinationen) um diese auch
-ausschließlich mit einer Tastatur verwenden zu können.
+Die Komponente unterstützt verschiedene Tasten-(kombinationen) um diese auch ausschließlich mit einer Tastatur verwenden zu können.
 - Slider
   - <kbd>←</kbd> / <kbd>→</kbd> ändert die Position um jeweils 1
   - <kbd><kbd>Shift</kbd> + <kbd>←/→</kbd></kbd> ändert die Position um den Betrag von `sliderSteps` (Standard: 5)
@@ -140,8 +135,7 @@ internationalization—preparing your content and designs for an international a
 
 ## Drei Komponenten in Einer
 
-Sollte man wirklich drei Komponenten in Einer verwirklichen? Wahrscheinlich eher nicht aber interessant war es trotzdem.
-Jede Lit-Komponente besitzt eine sog. `render()`-Methode welche das HTML-Template sowie die dazugehörige Logik zu rendert.
+Sollte man wirklich drei Komponenten in Einer verwirklichen? Wahrscheinlich eher nicht aber interessant war es trotzdem. Jede Lit-Komponente besitzt eine sog. `render()`-Methode welche das HTML-Template sowie die dazugehörige Logik zu rendert.
 
 Damit "live" zwischen den Varianten wechseln zu können bin ich wie folgt vorgegangen.
 - Einen Typ für Varianten definieren

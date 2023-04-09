@@ -219,5 +219,4 @@ li:last-child:after {
 ## Fazit
 
 Perfekt ist meine Lösung zwar nicht aber interessant war es alle Mal. Besonders geholfen haben hier die CSS Variablen mit denen zwar viel mit festen Werten gerechnet wurde aber diese immerhin voneinander abhängig sind und somit kein großes Problem darstellen sollten. In der Realität müsste es noch einen Prozess geben, welcher den jeweiligen Stand einer Bestellung etc. im HTML widerspiegelt - ob statisch oder dynamisch wäre hierbei egal. Lediglich das für Screenreader wichtige `aria-current="step"` sollte im aktuellen Schritt gesetzt sein.
-Den Code als Ganzes gibt es noch einmal hier auf meinem
-<a class="text-link" target="_blank" rel="noopener noreferrer" href="https://codepen.io/TonySpegel/pen/XWgWRgm?editors=1100" title="Progress Stepper auf Codepen">Codepen</a>
+Den Code als Ganzes gibt es noch einmal hier auf meinem [Codepen](https://codepen.io/TonySpegel/pen/XWgWRgm?editors=1100).

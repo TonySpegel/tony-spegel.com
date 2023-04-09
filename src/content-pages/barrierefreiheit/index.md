@@ -7,18 +7,11 @@ layout: content-page.njk
 permalink: /barrierefreiheit/
 templateClass: content-page
 ---
-{% import 'macros/external-link.njk' as link %}
-
 # Barrierefreiheit
 
 Ich möchte, dass diese Website von einem möglichst breiten Publikum genutzt werden kann, unabhängig von Gerät, Browser, Netzgeschwindigkeit oder den eigenen Fähigkeiten.
 
-Daher bin ich bestrebt, dass diese Website und deren Inhalte die in den
-
-{{ link.externalLink('https://www.w3.org/TR/WCAG21/', '(WCAG) 2.1', 'Web Content Accessibility Guidelines') }}
-
-festgelegten Standards der Stufe AA mindestens erfüllt.
-
+Daher bin ich bestrebt, dass diese Website und deren Inhalte die in den [(WCAG) 2.1 Web Content Accessibility Guidelines](https://www.w3.org/TR/WCAG21/) festgelegten Standards der Stufe AA mindestens erfüllt.
 Diese Seite soll den aktuellen Stand der Barrierefreiheit dieser Website zeigen.
 
 ## Accessibility features
