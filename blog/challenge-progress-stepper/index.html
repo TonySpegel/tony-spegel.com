@@ -122,9 +122,7 @@
   <figcaption>Abbildung von © Andy Bell</figcaption>
 </figure>
 <p>Vor einer Weile habe ich auf Twitter diese Challenge entdeckt, gespeichert und schließlich für längere Zeit vergessen (kennt man ja).</p>
-<p>In dieser Challenge geht es darum, einen so genanten Progress Stepper<br>
-umzusetzen - also etwas das man beispielsweise aus einem Lieferprozess<br>
-oder im Checkout eines Onlineshops kennt. Die wichtigsten Punkte welche dieser erfüllen soll sind:</p>
+<p>In dieser Challenge geht es darum, einen so genanten Progress Stepper umzusetzen - also etwas das man beispielsweise aus einem Lieferprozess oder im Checkout eines Onlineshops kennt. Die wichtigsten Punkte welche dieser erfüllen soll sind:</p>
 <ul>
 <li>Die Lösung nutzt semantisches HTML</li>
 <li>Die Lösung funktioniert sowohl mit wenigen als auch beliebig vielen Punkten</li>
@@ -158,8 +156,7 @@ oder im Checkout eines Onlineshops kennt. Die wichtigsten Punkte welche dieser e
 </section>
 <section>
 <h3 id="fortschrittsindikator"><a class="header-anchor" href="#fortschrittsindikator">Fortschrittsindikator</a></h3>
-<p>Der Fortschrittsindikator (der jeweilige Kreis in jedem Schritt)<br>
-wiederum ist auch nur ein <code>flex</code>-Container und wird mittels <code>align-self: center</code> vertikal zentriert. Ist ein Schritt als abgeschlossen markiert, ändert sich dessen Farbe und ein Haken wird hinzugefügt.</p>
+<p>Der Fortschrittsindikator (der jeweilige Kreis in jedem Schritt) wiederum ist auch nur ein <code>flex</code>-Container und wird mittels <code>align-self: center</code> vertikal zentriert. Ist ein Schritt als abgeschlossen markiert, ändert sich dessen Farbe und ein Haken wird hinzugefügt.</p>
 <pre class="language-css"><code class="language-css"><span class="token comment">/**<br> * Circle Element - default<br> */</span><br><span class="token selector">li:before</span> <span class="token punctuation">{</span><br>  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span><br>  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span><br>  <span class="token property">align-self</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br>  <span class="token property">place-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br><br>  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--surface-1<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--circle-size<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--circle-size<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--circle-size<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span><br>  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--surface-4<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/**<br> * Circle Element - complete<br> */</span><br><span class="token selector">li[data-state='complete']:before</span> <span class="token punctuation">{</span><br>    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">'✓'</span><span class="token punctuation">;</span><br>    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--surface-1<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
 </section>
 <section>
@@ -219,7 +216,7 @@ Den Code als Ganzes gibt es noch einmal hier auf meinem<br>
     © Tony Spegel
     2023
   </span>
-  <ul>
+  <ul class="footer-links">
     
       <li>
         <a href="/impressum/">Impressum</a>

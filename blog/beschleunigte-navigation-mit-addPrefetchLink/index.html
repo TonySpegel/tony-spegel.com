@@ -127,13 +127,9 @@
         <p>Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt,<br>
 um diese schneller aufrufen zu können. Das kann beispielsweise so aussehen:<br>
 <code>&lt;link rel=&quot;prefetch&quot; href=&quot;/img/catsarecute.jpg&quot; /&gt;</code>.<br>
-Browser werden diese Ressource dann herunterladen und zwischenspeichern<br>
-(allerdings nur im <a class="text-link" target="_blank" rel="noopener noreferrer" title="Idle" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined">Idle</a>)</p>
+Browser werden diese Ressource dann herunterladen und zwischenspeichern (allerdings nur im <a class="text-link" target="_blank" rel="noopener noreferrer" title="Idle" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined">Idle</a>).</p>
 <p>Alle Links einer Seite für das Prefetching hinzuzufügen ist natürlich wenig sinnvoll.<br>
-Um das zu optimieren ist mein Ansatz, Links nur auf eine Interaktion hin zu prefetchen - also beispielsweise<br>
-das Zeigen mit der Maus oder das Fokussieren mit einer Tastatur. Inspiration habe ich mir hierbei<br>
-durch das von Google entwickelte<br>
-geholt. Der entscheidende Unterschied zu meiner Lösung ist, dass Quicklink alle Links im sichtbaren Bereichen vorlädt (wenn der Browser im Idle ist) und nicht durch eine Interaktion.</p>
+Um das zu optimieren ist mein Ansatz, Links nur auf eine Interaktion hin zu prefetchen - also beispielsweise das Zeigen mit der Maus oder das Fokussieren mit einer Tastatur. Inspiration habe ich mir hierbei durch das von Google entwickelte <a href="https://getquick.link/">Quicklink</a> geholt. Der entscheidende Unterschied zu meiner Lösung ist, dass Quicklink alle Links im sichtbaren Bereichen vorlädt (wenn der Browser im Idle ist) und nicht durch eine Interaktion.</p>
 <p>Links zu meiner Lösung <em>addPrefetchLink</em>:</p>
 <section>
 <h2 id="anforderungen"><a class="header-anchor" href="#anforderungen">Anforderungen</a></h2>
@@ -145,16 +141,13 @@ geholt. Der entscheidende Unterschied zu meiner Lösung ist, dass Quicklink alle
 </section>
 <section>
 <h2 id="die-richtigen-links-selektieren"><a class="header-anchor" href="#die-richtigen-links-selektieren">Die richtigen Links selektieren</a></h2>
-<p>Da es bei E-Mail Links oder Telefonnummern keinen Sinn ergibt, diese zu prefetchen, sollten diese ignoriert werden.<br>
-Ich nutze dazu einfach einen CSS Selektor welche alle Links selektiert,<br>
-deren href-Attribut nicht mit dem entsprechenden Prefix beginnt:</p>
+<p>Da es bei E-Mail Links, Telefonnummern oder Linkf auf aktuellen Seite keinen Sinn ergibt, diese zu prefetchen, sollten diese ignoriert werden. Ich nutze dazu einfach einen CSS Selektor welche alle Links selektiert, deren href-Attribut nicht mit dem entsprechenden Prefix beginnt:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token comment">/* JavaScript */</span><br><span class="token keyword">const</span> links <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><br>  <span class="token string">'a:not([href^="mailto:"]):not([href^="tel:"]):not([href^="#"])'</span><span class="token punctuation">,</span><br><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>document<br>  <span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>links<span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">link</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Man könnte natürlich auch ein Array erstellen und dieses entsprechend filtern.</p>
 </section>
 <section>
 <h2 id="links-prefetchen"><a class="header-anchor" href="#links-prefetchen">Links prefetchen</a></h2>
-<p>Als erstes definiere ich eine Funktion welche Links zum <code>&lt;head&gt;</code> hinzufügen soll, als einzigen Parameter ein<br>
-Event erwartet und als Rückgabetyp zunächst <code>void</code> definiert:</p>
+<p>Als erstes definiere ich eine Funktion welche Links zum <code>&lt;head&gt;</code> hinzufügen soll, als einzigen Parameter ein Event erwartet und als Rückgabetyp zunächst <code>void</code> definiert:</p>
 <pre class="language-typescript"><code class="language-typescript"><span class="token comment">/* TypeScript */</span><br><span class="token keyword">const</span> addToHead <span class="token operator">=</span><br>  <span class="token punctuation">(</span>event<span class="token operator">:</span> Event<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
 <p><code>event</code> nutzt schließlich dessen Property <code>target</code> als Referenz auf das Objekt (hier ein Link) welches das Event ausgelöst hat.</p>
 <section>
@@ -247,7 +240,7 @@ Da es mein erstes NPM-Modul ist, freue ich mich natürlich besonders über Feedb
     © Tony Spegel
     2023
   </span>
-  <ul>
+  <ul class="footer-links">
     
       <li>
         <a href="/impressum/">Impressum</a>

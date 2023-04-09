@@ -69,7 +69,7 @@ aside {
   height: fit-content;
 }
 
-ul:not(.post-tags) {
+ul:not(.post-tags, .footer-links) {
   line-height: 2;
   margin: var(--base-gap) 0;
   padding: revert;

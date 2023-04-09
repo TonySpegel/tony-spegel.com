@@ -159,7 +159,7 @@ h1 {
   --shade-800: hsla(281, 100%, 21%, 1);
   --shade-900: hsla(281, 100%, 16%, 1);
   --blueish-1: hsl(205.38deg 86.67% 94.12%);
-  --blueish-2: #BBDEFB;
+  --blueish-2: #bbdefb;
   /**
    * Light-Theme
    */
@@ -184,7 +184,7 @@ h1 {
   --disclaimer-badge-bg-light: hsl(54deg 100% 73%);
   --disclaimer-badge-border-light: hsl(53.88deg 100% 80.78%);
   --disclaimer-box-bg-light: hsl(205.38deg 86.67% 94.12%);
-  --disclaimer-box-border-light: #BBDEFB;
+  --disclaimer-box-border-light: #bbdefb;
   /**
    * Dark Theme
    */
@@ -204,7 +204,10 @@ h1 {
   --disclaimer-badge-border-dark: hsl(53.88deg 100% 80.78%);
   --disclaimer-badge-text: var(--text-1);
   --disclaimer-box-bg-dark: hsl(205.38deg 64.06% 21.67%);
-  --disclaimer-box-border-dark: #BBDEFB;
+  --disclaimer-box-border-dark: #bbdefb;
+}
+:where(html) theme-switch {
+  --dialog-bg-color: var(--purple-50);
 }
 
 /**
@@ -237,13 +240,51 @@ h1 {
   --disclaimer-box-bg: var(--disclaimer-box-bg-light);
   --disclaimer-box-border: var(--disclaimer-box-border-light);
 }
+:where(html) theme-switch,
+[theme-preference=light] theme-switch {
+  --dialog-bg-color: var(--purple-50);
+  --dialog-border-color: var(--purple-500);
+  --text-color-1: var(--purple-950);
+  --text-color-2: var(--purple-900);
+  --control-color: var(--purple-300);
+  --control-interaction-color: var(--purple-400);
+  --circle-bg-color: var(--purple-100);
+  --circle-bg-color-checked: var(--purple-300);
+  --circle-border-color: var(--purple-500);
+  --checkbox-bg-color: var(--purple-50);
+  --checkbox-bg-color-checked: var(--purple-200);
+  --checkmark-color: var(--purple-900);
+  --checkbox-border-color: var(--purple-500);
+}
 
 /**
  * DARK MODE
  * Should be present:
  * - when a preference is set
+ * - OS setting indicates it
  */
 @media (prefers-color-scheme: dark) {
+  :where(html) theme-switch {
+    --text-color-1: #fff;
+    --text-color-2: #fff;
+    /* Dialog */
+    --dialog-bg-color: var(--surface-5);
+    --dialog-border-color: var(--surface-2);
+    /* Radio Buttons */
+    --circle-bg-color: #2a1d5445;
+    --circle-bg-color-checked: var(--surface-3-dark);
+    --circle-border-color: #eedcf530;
+    --circle-wave: var(--circle-wave-dark);
+    /* Control elements */
+    --control-color: var(--surface-3);
+    --control-interaction-color: var(--surface-2);
+    /* Checkbox */
+    --checkbox-bg-color: #402e7e45;
+    --checkbox-bg-color-checked: var(--surface-3);
+    --checkmark-color: #fff;
+    --checkbox-border-color: var(--surface-3);
+    --outline-color: #fff;
+  }
   :where(html) {
     color-scheme: dark;
     --surface-1: var(--surface-1-dark);
