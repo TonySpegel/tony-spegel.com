@@ -21,9 +21,7 @@ type: article
 
 Vor einer Weile habe ich auf Twitter diese Challenge entdeckt, gespeichert und schließlich für längere Zeit vergessen (kennt man ja).
 
-In dieser Challenge geht es darum, einen so genanten Progress Stepper
-umzusetzen - also etwas das man beispielsweise aus einem Lieferprozess
-oder im Checkout eines Onlineshops kennt. Die wichtigsten Punkte welche dieser erfüllen soll sind:
+In dieser Challenge geht es darum, einen so genanten Progress Stepper umzusetzen - also etwas das man beispielsweise aus einem Lieferprozess oder im Checkout eines Onlineshops kennt. Die wichtigsten Punkte welche dieser erfüllen soll sind:
 
 - Die Lösung nutzt semantisches HTML
 - Die Lösung funktioniert sowohl mit wenigen als auch beliebig vielen Punkten
@@ -149,8 +147,7 @@ li:last-child {
 
 ### Fortschrittsindikator
 
-Der Fortschrittsindikator (der jeweilige Kreis in jedem Schritt)
-wiederum ist auch nur ein `flex`-Container und wird mittels `align-self: center` vertikal zentriert. Ist ein Schritt als abgeschlossen markiert, ändert sich dessen Farbe und ein Haken wird hinzugefügt.
+Der Fortschrittsindikator (der jeweilige Kreis in jedem Schritt) wiederum ist auch nur ein `flex`-Container und wird mittels `align-self: center` vertikal zentriert. Ist ein Schritt als abgeschlossen markiert, ändert sich dessen Farbe und ein Haken wird hinzugefügt.
 
 ```css
 /**

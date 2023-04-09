@@ -13,14 +13,10 @@ imports: ['index', 'post', 'theme-switch']
 Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt,
 um diese schneller aufrufen zu können. Das kann beispielsweise so aussehen:
 `<link rel="prefetch" href="/img/catsarecute.jpg" />`.
-Browser werden diese Ressource dann herunterladen und zwischenspeichern
-(allerdings nur im {% externalLink 'Idle', 'Idle', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined' %})
+Browser werden diese Ressource dann herunterladen und zwischenspeichern (allerdings nur im {% externalLink 'Idle', 'Idle', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined' %}).
 
 Alle Links einer Seite für das Prefetching hinzuzufügen ist natürlich wenig sinnvoll.
-Um das zu optimieren ist mein Ansatz, Links nur auf eine Interaktion hin zu prefetchen - also beispielsweise
-das Zeigen mit der Maus oder das Fokussieren mit einer Tastatur. Inspiration habe ich mir hierbei
-durch das von Google entwickelte
-geholt. Der entscheidende Unterschied zu meiner Lösung ist, dass Quicklink alle Links im sichtbaren Bereichen vorlädt (wenn der Browser im Idle ist) und nicht durch eine Interaktion.
+Um das zu optimieren ist mein Ansatz, Links nur auf eine Interaktion hin zu prefetchen - also beispielsweise das Zeigen mit der Maus oder das Fokussieren mit einer Tastatur. Inspiration habe ich mir hierbei durch das von Google entwickelte [QUICKLINK] geholt. Der entscheidende Unterschied zu meiner Lösung ist, dass Quicklink alle Links im sichtbaren Bereichen vorlädt (wenn der Browser im Idle ist) und nicht durch eine Interaktion.
 
 Links zu meiner Lösung _addPrefetchLink_:
 
@@ -33,9 +29,7 @@ Links zu meiner Lösung _addPrefetchLink_:
 ## Die richtigen Links selektieren
 
 
-Da es bei E-Mail Links oder Telefonnummern keinen Sinn ergibt, diese zu prefetchen, sollten diese ignoriert werden.
-Ich nutze dazu einfach einen CSS Selektor welche alle Links selektiert,
-deren href-Attribut nicht mit dem entsprechenden Prefix beginnt:
+Da es bei E-Mail Links, Telefonnummern oder Linkf auf aktuellen Seite keinen Sinn ergibt, diese zu prefetchen, sollten diese ignoriert werden. Ich nutze dazu einfach einen CSS Selektor welche alle Links selektiert, deren href-Attribut nicht mit dem entsprechenden Prefix beginnt:
 ```javascript
 /* JavaScript */
 const links = document.querySelectorAll(
@@ -49,8 +43,7 @@ document
 Man könnte natürlich auch ein Array erstellen und dieses entsprechend filtern.
 
 ## Links prefetchen
-Als erstes definiere ich eine Funktion welche Links zum `<head>` hinzufügen soll, als einzigen Parameter ein
-Event erwartet und als Rückgabetyp zunächst `void` definiert:
+Als erstes definiere ich eine Funktion welche Links zum `<head>` hinzufügen soll, als einzigen Parameter ein Event erwartet und als Rückgabetyp zunächst `void` definiert:
 ```typescript
 /* TypeScript */
 const addToHead =
