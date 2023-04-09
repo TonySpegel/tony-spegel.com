@@ -2,7 +2,7 @@
 title: Barrierefreiheit
 description: Details zur Barrierefreiheit auf dieser Website
 
-imports: ['theme-switch']
+imports: ['index', 'theme-switch']
 layout: content-page.njk
 permalink: /barrierefreiheit/
 templateClass: content-page
