@@ -2,7 +2,7 @@
 title: Datenschutzerklärung
 description: Datenschutzerklärung für diese Website
 
-imports: ['theme-switch']
+imports: ['index', 'theme-switch']
 layout: content-page.njk
 permalink: /impressum/
 templateClass: content-page
