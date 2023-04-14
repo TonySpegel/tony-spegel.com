@@ -134,6 +134,10 @@
   .social-links img {
     filter: brightness(0) invert(1);
   }
+
+  header.opaque .logo {
+    border-color: var(--surface-4);
+  }
 }
 
 [theme-preference='dark'] {
@@ -142,5 +146,9 @@
 
   .social-links img {
     filter: brightness(0) invert(1);
+  }
+
+  header.opaque .logo {
+    border-color: var(--surface-4);
   }
 }
