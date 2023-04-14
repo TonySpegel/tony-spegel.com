@@ -9,6 +9,10 @@ toc-observer {
     padding: 0;
   }
 
+  ol:not(:first-child) {
+    padding-inline: .85em;
+  }
+
   a {
     display: flex;
     border-left: 2px solid var(--toc-item-border-default-color);
