@@ -614,13 +614,11 @@ private readingDirectionHandler = (mutations: MutationRecord[]) => {
 Sollte man wirklich drei Components in Einer verwirklichen? Wahrscheinlich eher nicht aber interessant war es trotzdem und in meinen Tests mit einem älteren Smartphone gab es auch nicht wirklich Performance Probleme. Um "live" zwischen den Varianten wechseln zu können bin ich wie folgt vorgegangen.
 Einen Typ für Varianten definieren:
 ```typescript
-/* TypeScript */
 type Variants = 'overlay' | 'slider' | 'split';
 ```
 
 Eine Property für die Component definieren:
 ```typescript
-/* TypeScript */
 @property({ type: String })
 private variant: Variants = 'slider';
 ```
@@ -628,7 +626,6 @@ Mit Hilfe dieses Decorators wird ein Attribut erstellt auf dessen Änderungen au
 
 Templates definieren und auf Property reagieren lassen:
 ```typescript
-/* TypeScript */
 render() {
   const sliderTemplate = html``;
   const overlayTemplate = html``;
@@ -645,7 +642,6 @@ render() {
 ```
 Die zu Lit gehörende [`choose`](https://lit.dev/docs/templates/directives/#choose)-Direktive kann nun auf diese Art typensicher eines von drei Templates rendern und dies allein durch das ändern des `variant`-Attributes:
 ```html
-<!-- HTML -->
 <image-comparison variant="slider"></image-comparison>
 <image-comparison variant="overlay"></image-comparison>
 <image-comparison variant="split"></image-comparison>
@@ -672,7 +668,7 @@ Um diese Component beispielsweise in WordPress zu integrieren, reicht es aus, fo
 </image-comparison>
 ```
 In anderen Umgebungen sieht das dann ähnlich aus. Wenn man die Component über NPM installiert hat und dessen Attribute über Radio Buttons ändern möchte könnte man so etwas machen:
-```ts
+```typescript
 import 'image-comparison-component/image-comparison.js';
 
 const imageComparisonDemoComponent = document.querySelector(
