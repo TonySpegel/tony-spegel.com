@@ -31,7 +31,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(pluginTOC, {
     ul: true,
-    tags: ['h2'],
+    tags: ['h2', 'h3'],
   });
   eleventyConfig.addPlugin(require('./eleventy.config.drafts.js'));
 
