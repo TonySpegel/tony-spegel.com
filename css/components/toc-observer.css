@@ -8,6 +8,9 @@ toc-observer ol {
   line-height: 1;
   padding: 0;
 }
+toc-observer ol:not(:first-child) {
+  padding-inline: 0.85em;
+}
 toc-observer a {
   display: flex;
   border-left: 2px solid var(--toc-item-border-default-color);

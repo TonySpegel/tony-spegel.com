@@ -311,6 +311,9 @@ h1 {
   .social-links img {
     filter: brightness(0) invert(1);
   }
+  header.opaque .logo {
+    border-color: var(--surface-4);
+  }
 }
 [theme-preference=dark] {
   color-scheme: dark;
@@ -358,6 +361,9 @@ h1 {
 }
 [theme-preference=dark] .social-links img {
   filter: brightness(0) invert(1);
+}
+[theme-preference=dark] header.opaque .logo {
+  border-color: var(--surface-4);
 }
 
 [theme-preference=dark] .post-tag {
