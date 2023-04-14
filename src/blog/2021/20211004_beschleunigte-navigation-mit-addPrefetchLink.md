@@ -3,11 +3,15 @@ title: Beschleunigte Navigation mit Link prefetching
 description: 'Wie man rel="prefetch" durch Interaktionen wie bspw. mouseover oder focus optimieren kann'
 date: 2021-10-04
 layout: blog/post.njk
-type: article
 includeToc: true
 tags:  ['JavaScript', 'TypeScript', 'Performance']
 permalink: /blog/beschleunigte-navigation-mit-addPrefetchLink/
-imports: ['index', 'post', 'theme-switch']
+type: article
+imports: [
+  'theme-switch',
+  'index',
+  'post'
+]
 ---
 
 Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt, um diese schneller aufrufen zu können. Das kann beispielsweise so aussehen: `<link rel="prefetch" href="/img/catsarecute.jpg" />`. Browser werden diese Ressource dann herunterladen und zwischenspeichern (allerdings nur im [Idle](https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined)).
@@ -77,16 +81,38 @@ const addToHead =
 }
 ```
 Allerdings besitzt nicht jeder Browser Informationen über dessen Verbindungstyp so dass hier zuerst über `navigator.connection`
-auf das Vorhandensein hin geprüft wird. Die hier geworfenen Fehler werden nicht verwendet oder angezeigt
-um nicht unnötig zu stören - es soll vor allem einfach nicht prefetched werden.
+auf das Vorhandensein hin geprüft wird. Die hier geworfenen Fehler werden nicht verwendet oder angezeigt um nicht unnötig zu stören - es soll vor allem einfach nicht prefetched werden.
 
-TypeScript wirft hier zunächst einen Fehler, da es die beiden Properties `saveData` und `effectiveType` nicht kennt.
-Um das zu beheben, habe ich das entsprechende Interface
+TypeScript wirft hier zunächst einen Fehler, da es die beiden Properties `saveData` und `effectiveType` nicht kennt. Um das zu beheben, habe ich das entsprechende Interface erweitert:
+```typescript
+/* TypeScript */
+export {};
 
+declare global {
+  interface NetworkInformation {
+    saveData: boolean;
+    effectiveType: 'slow-2g' | '2g' | '3g' | '4g';
+  }
+}
+```
 
-### Links zum \<head> hinzufügen
+### Links prefetchen
 Das eigentliche Prefetching ist unspektakulär. Es wird ein Link-Element erzeugt, dessen `href`- auf einen Link
 und das `rel`-Attribut auf `prefetch` gesetzt und schließlich zum `<head>` hinzugefügt:
+```typescript
+const addToHead = (event: Event): void | Error => {
+  // (...) previous code
+
+  if (event.target !== null) {
+    const link = document.createElement('link');
+
+    link.href = (<HTMLAnchorElement>event.target).href;
+    link.rel = 'prefetch';
+
+    document.head.appendChild(link);
+  }
+};
+```
 
 ## Eine Interaktion pro Link
 Um unnötige Netzwerkanfragen zu vermeiden, soll nur eine Interaktion pro Link das Prefetching auslösen.
@@ -101,8 +127,7 @@ element.addEventListener(
 );
 ```
 Pro Element nur ein einziges Event auszulösen ist etwas komplizierter.
-Vorbereitend wird wieder eine leere Funktion erstellt. Diese erwartet einen Link und ein Array an Events,
-hier vorbelegt mit `mouseover` und `focus`.
+Vorbereitend wird wieder eine leere Funktion erstellt. Diese erwartet einen Link und ein Array an Events - hier vorbelegt mit `mouseover` und `focus`.
 ```typescript
 /* TypeScript */
 export const addPrefetchLink = (
@@ -113,8 +138,7 @@ export const addPrefetchLink = (
   ],
 ) => {}
 ```
-Der Rest des Codes wird in zwei Teile unterteilt, einen der EventListener entfernt und das hinzufügen zum
-`<head>` übernimmt und einen welcher EventListener hinzufügt.
+Der Rest des Codes wird in zwei Teile unterteilt, einen der EventListener entfernt und das hinzufügen zum `<head>` übernimmt und einen welcher EventListener hinzufügt.
 ```typescript
 /* TypeScript */
 export const addPrefetchLink = (
@@ -138,10 +162,8 @@ export const addPrefetchLink = (
   );
 };
 ```
-Die hier als `handler` benannte Funktion entfernt zunächst alle auf einen Link gebundenen Events und fügt dann
-den Link via `addToHead` hinzu. Fertig! Wobei da eine Sache noch bleibt: sollte ein Link öfters vorhanden sein,
-wird dieser dennoch ein weiteres mal hinzugefügt. Lösen könnte man das wohl mit einem `Set` - das kommt (vielleicht)
-in einem Update.
+
+Die hier als `handler` benannte Funktion entfernt zunächst alle auf einen Link gebundenen Events und fügt dann den Link via `addToHead` hinzu. Fertig! Wobei da eine Sache noch bleibt: sollte ein Link öfters vorhanden sein, wird dieser dennoch ein weiteres mal hinzugefügt. Lösen könnte man das wohl mit einem `Set` - das kommt (vielleicht) in einem Update.
 
 ## Fazit
 Neben der Herausforderung keine unnötigen Netzwerkanfragen auszulösen, war das Ganze
