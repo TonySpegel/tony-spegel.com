@@ -1,6 +1,7 @@
 image-comparison {
   width: fit-content;
   height: fit-content;
+  margin-block-end: var(--base-gap);
   line-height: 1;
 
   [slot^='label'] {
@@ -16,7 +17,6 @@ image-comparison {
   }
 
   [slot^='image'] {
-    aspect-ratio: 3/2;
     max-inline-size: 440px;
   }
 
@@ -30,6 +30,10 @@ image-comparison {
     aspect-ratio: 3/2;
     width: 100%;
     max-width: 440px;
+  }
+
+  &#kasimir-overlay {
+    aspect-ratio: 4/3;
   }
 }
 
