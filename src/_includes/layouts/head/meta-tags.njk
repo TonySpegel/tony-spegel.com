@@ -7,6 +7,6 @@
 
 <meta property="og:title" content="{{ title or metadata.title }}">
 <meta property="og:description" content="{{ description or metadata.description }}">
-{% if socialImage is defined %}
-<meta property="og:image" content="{{ socialImage }}">
-{% endif %}
+{# {% if (socialImage is defined) and (env.environment == "PRODUCTION") %}
+  <meta property="og:image" content="https://tony-spegel.com{{ socialImage }}">
+{% endif %} #}
