@@ -16,7 +16,7 @@ imports: [
   'image-comparison'
 ]
 ---
-In diesem Post geht es darum, eine Component zu entwickeln welche es ermöglicht, Bilder auf verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.
+In diesem Post geht es darum, eine Component zu entwickeln, welche es ermöglicht, Bilder auf verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.
 
 <image-comparison variant="slider" sliderPrompt="Slider bewegen, um zu vergleichen" class="post-img" id="image-comparison-demo">
   <label slot="label-before">Ohne Filter</label>
@@ -76,7 +76,7 @@ In diesem Post geht es darum, eine Component zu entwickeln welche es ermöglicht
 Die Slider-Variante ist die komplexeste der drei Varianten. Komplex vor allem durch die vielseitigen Interaktions- und Konfigurationsmöglichkeiten aber weniger durch das CSS.
 
 ### HTML & CSS
-Wenn man die Component nutzen möchte, gilt folgendes HTML. Die Label sind zwar optional aber zu mindestens die `alt`-Attribute der Bilder sollten gesetzt werden:
+Wenn man die Component nutzen möchte, gilt folgendes HTML. Die Label sind zwar optional aber zumindest die `alt`-Attribute der Bilder sollten gesetzt werden:
 ```html
 <image-comparison
   variant="slider"
@@ -155,8 +155,8 @@ button:after {
   top: calc(var(--thumb-size) - var(--thumb-border-width));
 }
 ```
-Wie am Anfang beschrieben werden nun beide Container sowie der Button mit `grid-area: images` übereinander gestapelt. Die Reihenfolge im Markup entscheidet dann darüber, welches Element ganz oben liegt - hier ist es der Button. Dieser wird dann mit `align-self: center` vertikal zentriert und horionztal um die Hälfte der eigenen Breite verschoben. Um dann schließlich den Divider des Sliders zu erzeugen, positioniere ich einfach die Pseudo-Elemente `:before` und `:after` ober- und unterhalb des Buttons und nutze dafür einige CSS Variablen. Auf diese Weise habe ich zwar einige Variablen aber das macht es für mich nachvollziehbarer und einfacher zu rechnen, was wie platziert wird.
-Außerdem ist es so für andere ebenso leichter weil klar ist, was angepasst werden kann. Das war es auf der CSS Seite des Sliders somit, eine Demo zu diesem Stand könnt ihr auf [Codepen](https://codepen.io/TonySpegel/pen/oNabodW?editors=1100) betrachten.
+Wie am Anfang beschrieben, werden nun beide Container sowie der Button mit `grid-area: images` übereinander gestapelt. Die Reihenfolge im Markup entscheidet dann darüber, welches Element ganz oben liegt - hier ist es der Button. Dieser wird dann mit `align-self: center` vertikal zentriert und horionztal um die Hälfte der eigenen Breite verschoben. Um dann schließlich den Divider des Sliders zu erzeugen, positioniere ich einfach die Pseudo-Elemente `:before` und `:after` ober- und unterhalb des Buttons und nutze dafür einige CSS Variablen. Auf diese Weise habe ich zwar einige Variablen aber das macht es für mich nachvollziehbarer und einfacher zu rechnen, was wie platziert wird.
+Außerdem ist es so für Dritte ebenso leichter weil klar ist, was angepasst werden kann. Das war es auf der CSS Seite des Sliders. Eine Demo zu diesem Stand könnt ihr auf [Codepen](https://codepen.io/TonySpegel/pen/oNabodW?editors=1100) betrachten.
 
 ### Entwicklung der Slider-Funktion
 
@@ -172,14 +172,14 @@ Lit nutzt an vielen Stellen so genannte Decorators, ein Pattern welches es einem
 "Lit components receive input and store their state as JavaScript class fields or properties. Reactive properties are properties that can trigger the reactive update cycle when changed, re-rendering the component, and optionally be read or written to attributes."
 </blockquote>
 
-In diesem Decorator werden zwei [Optionen](https://lit.dev/docs/components/properties/#property-options) genutzt. Zum einen `type`, diese gibt an auf welche Art ein Attribut intern konvertiert werden soll. Zum anderen sorgt `reflect` dafür, dass der interne Wert auch wieder nach außen an das Attribut gegeben wird. Vereinfacht ausgedrückt ermöglicht das eine Synchronisation des äußeren wie innneren Zustands.
+In diesem Decorator werden zwei [Optionen](https://lit.dev/docs/components/properties/#property-options) genutzt. Zum einen `type`, diese gibt an auf welche Art ein Attribut intern konvertiert werden soll. Zum anderen sorgt `reflect` dafür, dass der interne Wert auch wieder nach außen an das Attribut gegeben wird. Vereinfacht ausgedrückt, ermöglicht das eine Synchronisation des äußeren wie innneren Zustands.
 ```ts
 <image-comparison sliderposition="50" variant="slider"></image-comparison>
 // ↓↑
 @property({ type: Number, reflect: true })
 public sliderPosition: number = 50;
 ```
-Jetzt zur eigentlichen Funktionalität, welche diesen Wert setzen wird. Lit setzt grundsätzlich auf einen deklarativen Ansatz um dessen Templates zu beschreiben. Statt Schritt für Schritt anzugeben, wie sich ein Template verändert, gibt man in deklarativen Ansätzen vor, wie ein Template in dessen finalten Zustand auszusehen hat. Das bedeutet nicht, dass man nicht beide Ansätzen mischen kann.
+Jetzt zur eigentlichen Funktionalität, welche diesen Wert setzen wird. Lit setzt grundsätzlich auf einen deklarativen Ansatz, um dessen Templates zu beschreiben. Statt Schritt für Schritt anzugeben, wie sich ein Template verändert, gibt man in deklarativen Ansätzen vor, wie ein Template in dessen finalen Zustand auszusehen hat. Das bedeutet nicht, dass man nicht beide Ansätzen mischen kann.
 
 Dazu folgt der grundsätzliche weitere Aufbau des Templates. Alles was im Template anzuzeigen ist, wird in der `render()`-Methode aufgerufen:
 ```ts
@@ -222,7 +222,7 @@ export class ImageComparison extends LitElement {
   }
 }
 ```
-Hier nutze ich zwei neue Konzepte im Lit Kontext: die [@-Syntax](https://lit.dev/docs/components/events/#adding-event-listeners-in-the-element-template) definiert JavaScript-typische EventListener, der `@state()`-Decorator einen ausschließlich internen Zustand. Inbesondere `isRtl` wird später wichtig sein um eine so genannte <abbr>RTL</abbr> (Right-to-left) script Unterstützung, also Sprachen welche von Rechts nach Links gelesen werden, zu bieten. Hier hat das den einfachen Hintergrund, dass ich das Vorzeichen im `left`-Attribut ändern oder im `inset()` das Rechteck von der anderen Seite aus aufziehen kann.
+Hier nutze ich zwei neue Konzepte im Lit Kontext: die [@-Syntax](https://lit.dev/docs/components/events/#adding-event-listeners-in-the-element-template) definiert JavaScript-typische EventListener, der `@state()`-Decorator einen ausschließlich internen Zustand. Inbesondere `isRtl` wird später wichtig sein, um eine so genannte <abbr>RTL</abbr> (Right-to-left) script Unterstützung, also Sprachen welche von Rechts nach Links gelesen werden, zu bieten. Hier hat das den einfachen Hintergrund, dass ich das Vorzeichen im `left`-Attribut ändern oder im `inset()` das Rechteck von der anderen Seite aus aufziehen kann.
 
 Jetzt zu den eigentlichen Methoden, ich gehe dabei nur auf die wirklich wichtigen und etwas komplizierteren ein:
 ```ts
@@ -273,11 +273,11 @@ convertCursorToSliderPosition(event: TouchEvent | MouseEvent): number {
 ```
 Abhängig davon ob es sich beim ausgeführten Event um ein `Touch`- oder `Mouse`-Event handelt, stehen unterschiedliche Properties zur Verfügung. In beiden Fällen wird jedoch `getBoundingClientRect()` genutzt, um die Position und Breite des Containers zu ermitteln. Mit Hilfe dieser wird in Abhängigkeit dann bestimmt, wo sich das Eingabegerät relativ zu diesem befindet, um am Ende diesen Wert in eine Zahl zwischen 0 und 100 zu konvertieren. Ich gebe zu, dass das etwas kompliziert und nicht einfach zu verstehen ist - aber damit werden diverse Eventualitäten abgedeckt die sonst zu einem Fehlverhalten führen würden.
 
-Im Grunde genommen ist dass die Funktionalität die notwendig ist, um den Slider zu bewegen und Bilder vergleichen zu können. Das allein ist aber noch nicht ausreichend. Zum einen muss noch der Barrierefreiheit wegen (unter anderem) eine Tasaturunterstützung und zum anderen etwas was ich Housekeeping nenne, implementiert werden.
+Im Grunde genommen ist, dass die Funktionalität die notwendig ist, um den Slider zu bewegen und Bilder vergleichen zu können. Das allein ist aber noch nicht ausreichend. Zum einen muss noch der Barrierefreiheit wegen (unter anderem) eine Tastatur Unterstützung und zum anderen etwas was ich Housekeeping nenne, implementiert werden.
 
 ### Barrierefreiheit des Sliders
-Zur Barrierefreiheit des Sliders zähle ich, dass dieser nicht nur mit einer Maus sondern möglichst mit beliebigen Eingabegeräten genutzt werden kann und auch seinen internen Zustand nach außen an Screenreader zu kommunizieren weiß. Wenn es darum geht, möglichst barrierefreie Lösungen zu entwickeln, ist die [Patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) Seite des W3C ein optimaler Einstieg. Diese bietet diverse, immer wiederkehrende, Patterns wie beispielsweise Tabs, Slide Shows und Ähnliches an und geht dabei auf deren Besonderheiten ein. Das [Window Splitter](https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/) Pattern passt hierbei am ehesten zur Slider-Variante.
-Um Tasatureingaben abzufangen, extrahiere ich aus dem `KeyboardEvent` zum einen die gedrückten Tasten zu denen vor allem die Cursortasten zählen sowie `ctrlKey`, `metaKey` (<kbd>Win</kbd> / <kbd>⌘</kbd>) und `shiftKey` um diese in Kombination mit den Cursortasten zu nutzen.
+Zur Barrierefreiheit des Sliders zähle ich, dass dieser nicht nur mit einer Maus, sondern möglichst mit beliebigen Eingabegeräten genutzt werden kann und auch seinen internen Zustand nach außen an Screenreader zu kommunizieren weiß. Wenn es darum geht, möglichst barrierefreie Lösungen zu entwickeln, ist die [Patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) Seite des W3C ein optimaler Einstieg. Diese bietet diverse, immer wiederkehrende, Patterns wie beispielsweise Tabs, Slide Shows und ähnliches an und geht dabei auf deren Besonderheiten ein. Das [Window Splitter](https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/) Pattern passt hierbei am ehesten zur Slider-Variante.
+Um Tastatureingaben abzufangen, extrahiere ich aus dem `KeyboardEvent` zum einen die gedrückten Tasten, zu denen vor allem die Cursortasten zählen sowie `ctrlKey`, `metaKey` (<kbd>Win</kbd> / <kbd>⌘</kbd>) und `shiftKey`, um diese in Kombination mit den Cursortasten zu nutzen.
 
 ```ts
 /**
@@ -328,7 +328,7 @@ private keyboardSliderHandler = (event: KeyboardEvent): void => {
   this.sliderPosition = clamp(position, 0, 100);
 };
 ```
-Eine weitere Möglichkeit den Slider zu bedienen, ist die direkte Eingabe in dem man auf die gewünschte Position tippt. Das kann Menschen helfen, welche motorisch nicht dauerhaft etwas gedrückt halten und ziehen können und fühlt sich meiner Meinung nach auch intuitiver an. Damit man ohne störendes Verhalten Bilder weiter über das Kontextmenü speichern kann, habe ich die Aktion auf die (in der Regel) linke und mittlere Maustaste beschränkt. Außerdem lässt sich der Slider durch doppeltes klicken/tippen zentrieren.
+Eine weitere Möglichkeit den Slider zu bedienen, ist die direkte Eingabe, in dem man auf die gewünschte Position tippt. Das kann Menschen helfen, welche motorisch nicht dauerhaft etwas gedrückt halten und ziehen können und fühlt sich meiner Meinung nach auch intuitiver an. Damit man ohne störendes Verhalten Bilder weiter über das Kontextmenü speichern kann, habe ich die Aktion auf die (in der Regel) linke und mittlere Maustaste beschränkt. Außerdem lässt sich der Slider durch doppeltes klicken/tippen zentrieren.
 
 ```ts
 html`
@@ -353,7 +353,7 @@ html`
 Jetzt bleibt noch die Kommunikation mit Screenreadern übrig, um hier eine gute Integration zu ermöglichen, nutze ich ich diverse [WAI-ARIA Roles](https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/#:~:text=the%20arrow%20keys.-,WAI%2DARIA%20Roles%2C%20States%2C%20and%20Properties,-The%20element%20that) wie aus dem W3C Pattern zu entnehmen ist. Diese kommunizieren vor allem die minimale, maximale und aktuellen Position des Sliders.
 
 ### Housekeeping 🧽 mit Lifecycle-Callbacks
-Im einem vorherigen Abschnitt bin ich darauf eingegangen, dass die [@-Syntax](https://lit.dev/docs/components/events/#adding-event-listeners-in-the-element-template) es ermöglicht, EventListener hinzuzufügen. EventListener werden üblicherweise entfernt, wenn eine Component aus dem DOM entfernt wird. Das gilt aber nur für solche Events, die direkt an ein Element gebunden sind, also beispielsweise ein Click-Event an einem Button. Globale EventListener, also solche die die Tastatur oder Mauseingaben verarbeiten und auch außerhalb einer Component verfügbar sein müssen, sind davon ausgenommen.
+Im einem vorherigen Abschnitt bin ich darauf eingegangen, dass die [@-Syntax](https://lit.dev/docs/components/events/#adding-event-listeners-in-the-element-template) es ermöglicht, EventListener hinzuzufügen. EventListener werden üblicherweise entfernt, wenn eine Component aus dem DOM entfernt wird. Das gilt aber nur für solche Events, die direkt an ein Element gebunden sind, also beispielsweise ein Click-Event an einem Button. Globale EventListener, also solche, die die Tastatur oder Mauseingaben verarbeiten und auch außerhalb einer Component verfügbar sein müssen, sind davon ausgenommen.
 
 Das ist an sich aber nicht weiter tragisch, denn Web Components unterstützen so genannte Lifecycles. Das sind Callbacks die zu unterschiedlichen Zeitpunkten ausgelöst werden so dass hier genau solche Arbeiten durchgeführt werden können. `connectedCallback` ist hierbei genau der richtige Zeipunkt, denn die Component wurde zum DOM hinzugefügt.
 ```ts
@@ -417,7 +417,7 @@ override attributeChangedCallback(
 Damit stelle ich sicher, dass EventListener nur dann hinzugefügt bzw. entfernt werden, wenn es auch wirklich notwendig ist.
 
 ## Overlay
-Die Overlay Variante ist deutlich kompakter und arbeitet im Grunde genommen aber auch hier wieder mit einem praktischen Trick den ich mir durch das Stappeln des Grid-Layouts zu nutzen mache.
+Die Overlay Variante ist deutlich kompakter und arbeitet im Grunde genommen aber auch hier wieder mit einem praktischen Trick, den ich mir durch das Stappeln des Grid-Layouts zu nutzen mache.
 
 <image-comparison variant="overlay" overlayPrompt="Tippen und gedrückt, um zu vergleichen" id="kasimir-overlay" class="post-img">
   <label slot="label-before">Ohne Filter</label>
@@ -530,7 +530,7 @@ In Class field `targetElement` steckt dann auch das bekannte `sliderPosition`-At
 
 ## Internationalisierung
 An manchen Stellen habe ich bereits angeschnitten, dass die Component auch Sprachen unterstützt, welche von rechts nach links gelesen werden. Meistens ist das auch kein Problem, denn Layouts wie `Grid` oder `Flex` untzerstützen diese bereits von Haus aus so dass kein weiterer Code nötig ist. Leider gibt es noch nicht in allen Browsern die CSS Pseudo Klasse `:dir()` so dass dann doch an einigen Stellen auf JavaScript zurückgegriffen werden muss. In HTML bestimmt das `dir`-Attribut die Leserichtung eines Elements und wirkt sich auf alle Kind-Elemente aus.
-Normalerweise könnte man mit `closest()` ohne weiteres ausgehend von einem Element bis zum `Document` suchen bis man ein Element mit dem entsprechenden Attribut gefunden hat - im ShadowDOM ist das allerdings etwas komplizierter, da dieses in sich geschlossen ist. Der folgende Ansatz ist deswegen auch leider nicht perfekt, sollte aber in den meisten Fällen ausreichend sein. Auf diese Einschränkung gehe ich gleich noch etwas genauer ein. Grundsätzlich nutze ich aber einen `MutationObserver` und gebe diesem einen Selektor welche entweder das nächste Element mit einem `dir`-Attribut oder das `Document` an sich ist. Ähnlich den EventListern werden auch Observer im `connectedCallback` aktiviert und im `disconnectedCallback` deaktiviert.
+Normalerweise könnte man mit `closest()` ohne weiteres ausgehend von einem Element bis zum `Document` suchen bis man ein Element mit dem entsprechenden Attribut gefunden hat - im ShadowDOM ist das allerdings etwas komplizierter, da dieses in sich geschlossen ist. Der folgende Ansatz ist deswegen auch leider nicht perfekt, sollte aber in den meisten Fällen ausreichend sein. Auf diese Einschränkung gehe ich gleich noch etwas genauer ein. Grundsätzlich nutze ich aber einen `MutationObserver` und gebe diesem einen Selektor, welche entweder das nächste Element mit einem `dir`-Attribut oder das `Document` an sich ist. Ähnlich den EventListern werden auch Observer im `connectedCallback` aktiviert und im `disconnectedCallback` deaktiviert.
 
 ```ts
 export class ImageComparison extends LitElement {
@@ -566,7 +566,7 @@ export class ImageComparison extends LitElement {
       this.closest('[dir]') ??
       this.ownerDocument?.querySelector('html')!;
 
-    // Found one? Is is 'rtl'?
+    // Found one? Is it 'rtl'?
     this.isRtl = this.textDirectionElement.dir === 'rtl';
 
     // Start observing 🔍
@@ -593,26 +593,12 @@ In den aller meisten Fällen ist die folgende Integration ausreichend:
   </image-comparison>
 </div>
 ```
-Die Component würde korrekterweise in rtl gelesen und genutzt werden können. Was nicht funktionieren würde, ist das die Component selbst in einem `Slot` oder im ShadowDOM benutzt wird. Es ist auf jeden Fall eine Limitierung, umgehen könnte man eventuell noch in dem man ein weiteres Attribut für die Component selbst einführt. Ich denke man kann damit aber leben. Die meisten Personen mit denen ich gesprochen habe, die ein rtl-Layout betreffen würde, wären zum Beispiel gar nicht davon ausgegangen, dass sich die Bilder drehen müssten. Das ist natürlich nur anekdotisch.
+Die Component würde korrekterweise in rtl gelesen und genutzt werden können. Was nicht funktionieren würde, ist das die Component selbst in einem `Slot` oder im ShadowDOM benutzt wird. Es ist auf jeden Fall eine Limitierung. Umgehen könnte man das eventuell noch in dem man ein weiteres Attribut für die Component selbst einführt. Ich denke man kann damit aber leben. Die meisten Personen mit denen ich gesprochen habe, die ein rtl-Layout betreffen würde, wären zum Beispiel gar nicht davon ausgegangen, dass sich die Bilder drehen müssten. Das ist natürlich nur anekdotisch.
 
-```ts
-/**
- * Callback to handle any mutations made to the dir-attribute
- */
-private readingDirectionHandler = (mutations: MutationRecord[]) => {
-  for (const mutation of mutations) {
-    if (mutation.attributeName === 'dir') {
-      const { dir } = mutation.target as HTMLElement;
-      this.isRtl = dir === 'rtl';
-    }
-  }
-};
-```
+## Drei Components in einer
 
-## Drei Components in Einer
-
-Sollte man wirklich drei Components in Einer verwirklichen? Wahrscheinlich eher nicht aber interessant war es trotzdem und in meinen Tests mit einem älteren Smartphone gab es auch nicht wirklich Performance Probleme. Um "live" zwischen den Varianten wechseln zu können bin ich wie folgt vorgegangen.
-Einen Typ für Varianten definieren:
+Sollte man wirklich drei Components in einer verwirklichen? Wahrscheinlich eher nicht, aber interessant war es trotzdem und in meinen Tests mit einem älteren Smartphone gab es auch nicht wirklich Performance Probleme. Um "live" zwischen den Varianten wechseln zu können, bin ich wie folgt vorgegangen.
+Einen Type für Varianten definieren:
 ```typescript
 type Variants = 'overlay' | 'slider' | 'split';
 ```
@@ -685,4 +671,4 @@ radioButtonVariants.forEach((radioButton) =>
 );
 ```
 ## Fazit
-Die Arbeit an dieser Component hatte ich bereits vor einer Weile abgeschlossen und konnte jetzt durch das Schreiben des Posts noch einiges dazu lernen. Dazu zählte auf jeden Fall das hinzufügen von Default-Styles, die Integration in einen statischen Seitengenerator und insbesondere das Handling des `rtl`-Attributs. Etwas später in der Entwicklung habe ich dann auch noch eine Component Library entdeckt, welche ebenfalls in Lit geschrieben ist und auch eine solche Component enthält. Wer also eine ausgewachsenere Variante nutzen möchte dem kann ich nur [Shoelace](https://shoelace.style/components/image-comparer) empfehlen. Viel Spaß mit der Component :)
+Die Arbeit an dieser Component hatte ich bereits vor einer Weile abgeschlossen und konnte jetzt durch das Schreiben des Posts noch einiges dazu lernen. Dazu zählte auf jeden Fall das hinzufügen von Default-Styles, die Integration in einen statischen Seitengenerator und insbesondere das Handling des `rtl`-Attributs. Etwas später in der Entwicklung habe ich dann auch noch eine Component Library entdeckt, welche ebenfalls in Lit geschrieben ist und auch eine solche Component enthält. Wer also eine ausgewachsenere Variante nutzen möchte, dem kann ich nur [Shoelace](https://shoelace.style/components/image-comparer) empfehlen. Viel Spaß mit der Component :)
