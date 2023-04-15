@@ -6,7 +6,7 @@ layout: blog/post.njk
 type: article
 includeToc: true
 draft: false
-tags:  ['Lit', 'Web Components', 'a11y', 'TypeScript', 'Blog']
+tags:  ['Lit', 'Web Components', 'a11y', 'TypeScript']
 socialImage: '/img/2023/image-comparison/2022_1004_14254000.jpg'
 permalink: /blog/image-comparison-component/
 imports: [
