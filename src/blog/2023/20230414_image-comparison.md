@@ -18,7 +18,7 @@ imports: [
 ---
 In diesem Post geht es darum, eine Component zu entwickeln, welche es ermöglicht, Bilder auf verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.
 
-<image-comparison variant="slider" sliderPrompt="Slider bewegen, um zu vergleichen" class="post-img" id="image-comparison-demo">
+<image-comparison variant="slider" sliderPrompt="Slider bewegen, um zu vergleichen" overlayPrompt="Tippen und gedrückt halten, um zu vergleichen" class="post-img" id="image-comparison-demo">
   <label slot="label-before">Ohne Filter</label>
   <label slot="label-after">Graustufen</label>
   <img slot="image-before" src="/img/2023/image-comparison/2022_1004_14254000-w3120--opt.jpg" width="440" alt="Blumen in Paris" />
@@ -419,7 +419,7 @@ Damit stelle ich sicher, dass EventListener nur dann hinzugefügt bzw. entfernt 
 ## Overlay
 Die Overlay Variante ist deutlich kompakter und arbeitet im Grunde genommen aber auch hier wieder mit einem praktischen Trick, den ich mir durch das Stappeln des Grid-Layouts zu nutzen mache.
 
-<image-comparison variant="overlay" overlayPrompt="Tippen und gedrückt, um zu vergleichen" id="kasimir-overlay" class="post-img">
+<image-comparison variant="overlay" overlayPrompt="Tippen und gedrückt halten, um zu vergleichen" id="kasimir-overlay" class="post-img">
   <label slot="label-before">Ohne Filter</label>
   <label slot="label-after">Graustufen</label>
   <img slot="image-before" src="/img/2023/image-comparison/kasimir--opt.jpg" width="440" alt="Tabby Katze" />
