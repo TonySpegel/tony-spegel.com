@@ -1,3 +1,9 @@
 theme-switch {
   --base-gap: 16px;
+
+  &:not(:defined) {
+    [slot] {
+      display: none;
+    }
+  }
 }
