@@ -14,6 +14,8 @@ type: article
   <img
     src="/img/2021/fecc-challenge-008.png"
     alt="Fortschrittsanzeige für einen Checkout-Prozess"
+    width="320"
+    height="303"
   >
   <figcaption>Abbildung von © Andy Bell</figcaption>
 </figure>
