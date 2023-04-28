@@ -165,6 +165,7 @@ h1 {
 }
 
 @import './themes/_theme';
+@import './drop-down.scss';
 
 [theme-preference='dark'] .post-tag {
   color: var(--text-1);
@@ -301,6 +302,10 @@ aside.toc {
   max-height: 200px;
 }
 
+.dropdown {
+  display: none;
+}
+
 @media screen and (max-width: 750px) {
   #main-wrapper.post {
     grid-template-areas: 'main';
@@ -313,6 +318,12 @@ aside.toc {
 
   aside#toc-mobile {
     display: block;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .dropdown {
+    display: flex;
   }
 }
 

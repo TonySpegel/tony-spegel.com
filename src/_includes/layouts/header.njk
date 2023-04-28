@@ -1,5 +1,5 @@
 <header id="site-header">
-  <nav>
+  <nav aria-label="Hauptnavigation">
     {% if page.url !== '/' %}
       <a class="logo" href="{{ '/' | url }}" title="Zur Startseite">
         <img src="/tsp_icon.svg" alt="Tony Spegel Logo"/>
@@ -10,6 +10,24 @@
       </span>
     {% endif %}
 
-    <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+    <ul  class="header-links">
+      <li class="dropdown">
+        <button type="button"id="dropdown__title">
+          Inhalt
+          <span class="material-symbols-outlined">toc</span>
+        </button>
+
+        <div class="dropdown__toc" id="drop-down-container">
+          <toc-observer observeParent>
+            <div slot="toc">
+              {{ content | toc | safe }}
+            </div>
+          </toc-observer>
+        </div>
+      </li>
+      <li>
+        <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+      </li>
+    </ul>
   </nav>
 </header>
