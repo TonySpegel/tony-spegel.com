@@ -24,6 +24,12 @@ kbd {
   padding: 3px 5px;
   border-radius: 6px;
   background-color: var(--surface-3);
+  box-shadow: 0 2px 0 1px var(--kbd-border);
+}
+
+.sample-img {
+  max-inline-size: 620px;
+  width: 100%;
 }
 
 @media screen and (min-width: 1200px) {
@@ -73,7 +79,7 @@ aside {
   height: fit-content;
 }
 
-ul:not(.post-tags, .footer-links) {
+ul:not(.post-tags, .footer-links, .header-links) {
   line-height: 2;
   margin: var(--base-gap) 0;
   padding: revert;
@@ -92,6 +98,14 @@ blockquote {
 
 figure {
   margin-block-end: var(--base-gap);
+}
+
+figure:has(.sample-img) {
+  max-inline-size: 620px;
+}
+
+figcaption {
+  text-align: center;
 }
 
 .disclaimer {
@@ -139,7 +153,7 @@ code {
 
   &:not([class^='language-']) {
     border-radius: calc(var(--base-radius) / 2);
-    padding: calc(var(--base-gap) / 4);
+    padding: calc(var(--base-gap) / 4) calc(var(--base-gap) / 2);
     background-color: var(--surface-3);
   }
 }
@@ -149,4 +163,15 @@ blockquote {
   border-radius: var(--base-radius);
   border: 2px solid var(--surface-3);
   padding: var(--base-gap);
+}
+
+#toc-nav {
+  display: none;
+  top: var(--header-height);
+  position: fixed;
+  right: 0;
+}
+
+#toc-opener:is(:focus, :hover) + #toc-nav {
+  display: block;
 }
