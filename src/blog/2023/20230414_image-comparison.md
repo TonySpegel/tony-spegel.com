@@ -155,7 +155,7 @@ button:after {
   top: calc(var(--thumb-size) - var(--thumb-border-width));
 }
 ```
-Wie am Anfang beschrieben, werden nun beide Container sowie der Button mit `grid-area: images` übereinander gestapelt. Die Reihenfolge im Markup entscheidet dann darüber, welches Element ganz oben liegt - hier ist es der Button. Dieser wird dann mit `align-self: center` vertikal zentriert und horionztal um die Hälfte der eigenen Breite verschoben. Um dann schließlich den Divider des Sliders zu erzeugen, positioniere ich einfach die Pseudo-Elemente `:before` und `:after` ober- und unterhalb des Buttons und nutze dafür einige CSS Variablen. Auf diese Weise habe ich zwar einige Variablen aber das macht es für mich nachvollziehbarer und einfacher zu rechnen, was wie platziert wird.
+Wie am Anfang beschrieben, werden nun beide Container sowie der Button mit `grid-area: images` übereinander gestapelt. Die Reihenfolge im Markup entscheidet dann darüber, welches Element ganz oben liegt - hier ist es der Button. Dieser wird dann mit `align-self: center` vertikal zentriert und horizontal um die Hälfte der eigenen Breite verschoben. Um dann schließlich den Divider des Sliders zu erzeugen, positioniere ich einfach die Pseudo-Elemente `:before` und `:after` ober- und unterhalb des Buttons und nutze dafür einige CSS Variablen. Auf diese Weise habe ich zwar einige Variablen aber das macht es für mich nachvollziehbarer und einfacher zu rechnen, was wie platziert wird.
 Außerdem ist es so für Dritte ebenso leichter weil klar ist, was angepasst werden kann. Das war es auf der CSS Seite des Sliders. Eine Demo zu diesem Stand könnt ihr auf [Codepen](https://codepen.io/TonySpegel/pen/oNabodW?editors=1100) betrachten.
 
 ### Entwicklung der Slider-Funktion
@@ -172,7 +172,7 @@ Lit nutzt an vielen Stellen so genannte Decorators, ein Pattern welches es einem
 "Lit components receive input and store their state as JavaScript class fields or properties. Reactive properties are properties that can trigger the reactive update cycle when changed, re-rendering the component, and optionally be read or written to attributes."
 </blockquote>
 
-In diesem Decorator werden zwei [Optionen](https://lit.dev/docs/components/properties/#property-options) genutzt. Zum einen `type`, diese gibt an auf welche Art ein Attribut intern konvertiert werden soll. Zum anderen sorgt `reflect` dafür, dass der interne Wert auch wieder nach außen an das Attribut gegeben wird. Vereinfacht ausgedrückt, ermöglicht das eine Synchronisation des äußeren wie innneren Zustands.
+In diesem Decorator werden zwei [Optionen](https://lit.dev/docs/components/properties/#property-options) genutzt. Zum einen `type`, diese gibt an auf welche Art ein Attribut intern konvertiert werden soll. Zum anderen sorgt `reflect` dafür, dass der interne Wert auch wieder nach außen an das Attribut gegeben wird. Vereinfacht ausgedrückt, ermöglicht das eine Synchronisation des äußeren wie inneren Zustands.
 ```ts
 <image-comparison sliderposition="50" variant="slider"></image-comparison>
 // ↓↑
@@ -290,7 +290,7 @@ private sliderSteps: number = 5;
  * Handle arrow, home & end keys and use more steps when shift is pressed
  */
 private keyboardSliderHandler = (event: KeyboardEvent): void => {
-  const { code, key, ctrlKey, metaKey, shiftKey } = event;
+  const { code, ctrlKey, key, metaKey, shiftKey} = event;
   const { isRtl } = this;
   const isLtr = !isRtl;
   const steps = shiftKey ? this.sliderSteps : 1;
@@ -355,7 +355,7 @@ Jetzt bleibt noch die Kommunikation mit Screenreadern übrig, um hier eine gute 
 ### Housekeeping 🧽 mit Lifecycle-Callbacks
 Im einem vorherigen Abschnitt bin ich darauf eingegangen, dass die [@-Syntax](https://lit.dev/docs/components/events/#adding-event-listeners-in-the-element-template) es ermöglicht, EventListener hinzuzufügen. EventListener werden üblicherweise entfernt, wenn eine Component aus dem DOM entfernt wird. Das gilt aber nur für solche Events, die direkt an ein Element gebunden sind, also beispielsweise ein Click-Event an einem Button. Globale EventListener, also solche, die die Tastatur oder Mauseingaben verarbeiten und auch außerhalb einer Component verfügbar sein müssen, sind davon ausgenommen.
 
-Das ist an sich aber nicht weiter tragisch, denn Web Components unterstützen so genannte Lifecycles. Das sind Callbacks die zu unterschiedlichen Zeitpunkten ausgelöst werden so dass hier genau solche Arbeiten durchgeführt werden können. `connectedCallback` ist hierbei genau der richtige Zeipunkt, denn die Component wurde zum DOM hinzugefügt.
+Das ist an sich aber nicht weiter tragisch, denn Web Components unterstützen so genannte Lifecycles. Das sind Callbacks die zu unterschiedlichen Zeitpunkten ausgelöst werden so dass hier genau solche Arbeiten durchgeführt werden können. `connectedCallback` ist hierbei genau der richtige Zeitpunkt, denn die Component wurde zum DOM hinzugefügt.
 ```ts
 /**
  * Component is added to the document's DOM,
@@ -417,7 +417,7 @@ override attributeChangedCallback(
 Damit stelle ich sicher, dass EventListener nur dann hinzugefügt bzw. entfernt werden, wenn es auch wirklich notwendig ist.
 
 ## Overlay
-Die Overlay Variante ist deutlich kompakter und arbeitet im Grunde genommen aber auch hier wieder mit einem praktischen Trick, den ich mir durch das Stappeln des Grid-Layouts zu nutzen mache.
+Die Overlay Variante ist deutlich kompakter und arbeitet im Grunde genommen aber auch hier wieder mit einem praktischen Trick, den ich mir durch das Stapeln des Grid-Layouts zu nutzen mache.
 
 <image-comparison variant="overlay" overlayPrompt="Tippen und gedrückt halten, um zu vergleichen" id="kasimir-overlay" class="post-img">
   <label slot="label-before">Ohne Filter</label>
@@ -529,8 +529,8 @@ window.addEventListener('drag-event', (e) => console.log(e));
 In Class field `targetElement` steckt dann auch das bekannte `sliderPosition`-Attribut und dessen Wert.
 
 ## Internationalisierung
-An manchen Stellen habe ich bereits angeschnitten, dass die Component auch Sprachen unterstützt, welche von rechts nach links gelesen werden. Meistens ist das auch kein Problem, denn Layouts wie `Grid` oder `Flex` untzerstützen diese bereits von Haus aus so dass kein weiterer Code nötig ist. Leider gibt es noch nicht in allen Browsern die CSS Pseudo Klasse `:dir()` so dass dann doch an einigen Stellen auf JavaScript zurückgegriffen werden muss. In HTML bestimmt das `dir`-Attribut die Leserichtung eines Elements und wirkt sich auf alle Kind-Elemente aus.
-Normalerweise könnte man mit `closest()` ohne weiteres ausgehend von einem Element bis zum `Document` suchen bis man ein Element mit dem entsprechenden Attribut gefunden hat - im ShadowDOM ist das allerdings etwas komplizierter, da dieses in sich geschlossen ist. Der folgende Ansatz ist deswegen auch leider nicht perfekt, sollte aber in den meisten Fällen ausreichend sein. Auf diese Einschränkung gehe ich gleich noch etwas genauer ein. Grundsätzlich nutze ich aber einen `MutationObserver` und gebe diesem einen Selektor, welche entweder das nächste Element mit einem `dir`-Attribut oder das `Document` an sich ist. Ähnlich den EventListern werden auch Observer im `connectedCallback` aktiviert und im `disconnectedCallback` deaktiviert.
+An manchen Stellen habe ich bereits angeschnitten, dass die Component auch Sprachen unterstützt, welche von rechts nach links gelesen werden. Meistens ist das auch kein Problem, denn Layouts wie `Grid` oder `Flex` unterstützen diese bereits von Haus aus so dass kein weiterer Code nötig ist. Leider gibt es noch nicht in allen Browsern die CSS Pseudo Klasse `:dir()` so dass dann doch an einigen Stellen auf JavaScript zurückgegriffen werden muss. In HTML bestimmt das `dir`-Attribut die Leserichtung eines Elements und wirkt sich auf alle Kind-Elemente aus.
+Normalerweise könnte man mit `closest()` ohne weiteres ausgehend von einem Element bis zum `Document` suchen bis man ein Element mit dem entsprechenden Attribut gefunden hat - im ShadowDOM ist das allerdings etwas komplizierter, da dieses in sich geschlossen ist. Der folgende Ansatz ist deswegen auch leider nicht perfekt, sollte aber in den meisten Fällen ausreichend sein. Auf diese Einschränkung gehe ich gleich noch etwas genauer ein. Grundsätzlich nutze ich aber einen `MutationObserver` und gebe diesem einen Selektor, welche entweder das nächste Element mit einem `dir`-Attribut oder das `Document` an sich ist. Ähnlich der EventListener werden auch Observer im `connectedCallback` aktiviert und im `disconnectedCallback` deaktiviert.
 
 ```ts
 export class ImageComparison extends LitElement {
@@ -626,7 +626,7 @@ render() {
   `;
 }
 ```
-Die zu Lit gehörende [`choose`](https://lit.dev/docs/templates/directives/#choose)-Direktive kann nun auf diese Art typensicher eines von drei Templates rendern und dies allein durch das ändern des `variant`-Attributes:
+Die zu Lit gehörende [`choose`](https://lit.dev/docs/templates/directives/#choose)-Direktive kann nun auf diese Art typsicher eines von drei Templates rendern und dies allein durch das ändern des `variant`-Attributes:
 ```html
 <image-comparison variant="slider"></image-comparison>
 <image-comparison variant="overlay"></image-comparison>
