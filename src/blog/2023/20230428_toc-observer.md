@@ -13,6 +13,7 @@ socialImage: '/img/2023/toc-observer/toc-observer-demo.jpg'
 ---
 Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter "Inhalt" oder neben dem Post an der Seite sehen.
 
+Links zum Download gibt es hier: [GitHub](https://github.com/TonySpegel/toc-observer), [NPM](https://www.npmjs.com/package/toc-observer-component).
 <div class="disclaimer">
   <span>Hinweis</span>
   <p>
