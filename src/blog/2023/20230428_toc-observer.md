@@ -1,6 +1,6 @@
 ---
 title: Table of Contents Component
-description: 'Artikelüberschriften dynamisch hervorheben'
+description: 'Links in einem Inhaltsverzeichnis dynamisch hervorheben'
 date: 2023-04-28
 layout: blog/post.njk
 type: article
