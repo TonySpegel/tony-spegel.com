@@ -25,6 +25,12 @@ templateClass: content-page
         </ul>
       </li>
       <li>Flutter (Dart)</li>
+      <li>JavaScript Laufzeitumgebungen
+        <ul>
+          <li>NodeJS</li>
+          <li>Deno 🦕</li>
+        </ul>
+      </li>
     </ul>
   </p>
 </details>
