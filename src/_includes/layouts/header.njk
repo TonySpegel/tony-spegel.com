@@ -11,6 +11,7 @@
     {% endif %}
 
     <ul  class="header-links">
+      {% if page.url !== '/' %}
       <li class="dropdown">
         <button type="button"id="dropdown__title">
           Inhalt
@@ -25,6 +26,7 @@
           </toc-observer>
         </div>
       </li>
+      {% endif %}
       <li>
         <button id="btn-theme-selection" title="Farbschema auswählen"></button>
       </li>
