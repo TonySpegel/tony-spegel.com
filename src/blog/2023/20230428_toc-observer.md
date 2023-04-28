@@ -11,7 +11,7 @@ permalink: /blog/toc-observer/
 imports: ['index', 'post', 'theme-switch']
 socialImage: '/img/2023/toc-observer/toc-observer-demo.jpg'
 ---
-Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden.
+Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter "Inhalt" oder neben dem Post an der Seite sehen.
 
 <div class="disclaimer">
   <span>Hinweis</span>
@@ -140,11 +140,10 @@ private createIdObserverMap(
             entries.forEach((entry) => {
               if (entry.intersectionRatio > 0) {
                 this.selectTocLink(hash)?.classList.add(this.tocActiveClass);
-              } else {
-                this.selectTocLink(hash)?.classList.remove(
-                  this.tocActiveClass,
-                );
+                return;
               }
+
+              this.selectTocLink(hash)?.classList.remove(this.tocActiveClass);
             });
           },
           // IntersectionObserver options
@@ -179,8 +178,14 @@ Das eingangs erwähnte, vereinfachte Markup geht davon aus, dass Sections eine I
   <h2 id="beschreibung">
     <a href="#beschreibung">Beschreibung</a>
   </h2>
-  <p>…</p>
+  <p>Opossums sind die größten Beutelratten.</p>
 </section>
+```
+Das liegt daran, dass solche SSG häufig mit Markdown-Dateien arbeiten und anhand derer HTML erzeugt wird. Es ist also naheliegend, die ID direkt an Überschriften anzuhängen.
+
+```md
+## Beschreibung
+Opossums sind die größten Beutelratten.
 ```
 Das Problem hiermit ist, dass man nun ausgehend vom Link dessen Elternelement auswählen muss, wenn man eine Section überwachen möchte. Am einfachsten wäre es, den CSS Selektor `:has()` zu nutzen - Stand jetzt wird dieser aber noch nicht von allen Browsern unterstützt.
 
@@ -237,7 +242,7 @@ override firstUpdated(): void {
   }
 }
 ```
-Die hier verwendete `firstUpdated` Methode ist ein so genannter Lifecycle einer (Web)-Component und wie in dessen Kommentar beschrieben, der Zeitpunkt an dem der Inhalt des Slots verfügbar ist. Zum einen wird die `anchorHashObserverMap` erstellt und die enthaltenen Observer beginnen ihre Elemente zu überwachen. Abhängig davon, ob die Component mit dem `observeParent`-Attribut versehen wird oder nicht, wird entweder by default ein Abschnitt oder ein beliebig wählbares Element überwacht.
+Die hier verwendete `firstUpdated` Methode ist ein so genannter [Lifecycle](https://lit.dev/docs/components/lifecycle/) und wie in dessen Kommentar beschrieben, der Zeitpunkt, an dem der Inhalt des Slots verfügbar ist. Es wird die `anchorHashObserverMap` erstellt und die enthaltenen Observer beginnen ihre Elemente zu überwachen. Abhängig davon, ob die Component mit dem `observeParent`-Attribut versehen wird oder nicht, wird entweder by default ein Abschnitt oder ein beliebig wählbares Element überwacht.
 
 ```html
 <toc-observer observeParent>
@@ -260,7 +265,7 @@ override disconnectedCallback(): void {
 }
 ```
 
-Eine Lit Web Component besitzt außerdem eine `render`-Methode. Diese fällt allerdings sehr kurz aus, da die Component ausschließlich imperativ arbeitet.
+Eine Lit Web Component besitzt außerdem eine `render`-[Methode](https://lit.dev/docs/components/rendering/). Diese fällt allerdings sehr kurz aus, da die Component ausschließlich imperativ mit dem Inhalt des Slots arbeitet.
 
 ```typescript
 override render() {
