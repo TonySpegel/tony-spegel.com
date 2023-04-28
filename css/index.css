@@ -185,6 +185,7 @@ h1 {
   --disclaimer-badge-border-light: hsl(53.88deg 100% 80.78%);
   --disclaimer-box-bg-light: hsl(205.38deg 86.67% 94.12%);
   --disclaimer-box-border-light: #bbdefb;
+  --kbd-border-light: var(--surface-2);
   /**
    * Dark Theme
    */
@@ -239,6 +240,7 @@ h1 {
   --disclaimer-badge-border: var(--disclaimer-badge-border-light);
   --disclaimer-box-bg: var(--disclaimer-box-bg-light);
   --disclaimer-box-border: var(--disclaimer-box-border-light);
+  --kbd-border: var(--kbd-border-light);
 }
 :where(html) theme-switch,
 [theme-preference=light] theme-switch {
@@ -364,6 +366,58 @@ h1 {
 }
 [theme-preference=dark] header.opaque .logo {
   border-color: var(--surface-4);
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: var(--base-gap);
+}
+.header-links > li {
+  list-style-type: none;
+}
+
+#dropdown__title {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--base-gap) / 2);
+  padding: calc(var(--base-gap) / 4) calc(var(--base-gap) / 2);
+  border-radius: var(--base-radius);
+  border: 2px solid hsla(281, 53%, 97%, 0.63);
+  background-color: transparent;
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown:hover .dropdown__toc, .dropdown:focus-within .dropdown__toc {
+  opacity: 1;
+  transform: rotateX(0) translateX(0%);
+  visibility: visible;
+}
+.dropdown .dropdown__toc {
+  display: grid;
+  position: absolute;
+  top: calc(100% - 0.25rem);
+  right: 0%;
+  transform: rotateX(-90deg) translateX(0%);
+  transform-origin: top center;
+  opacity: 0.3;
+  transition: 280ms all ease-out;
+  background-color: var(--surface-3);
+  border-radius: 4px;
+  box-shadow: 0 0.15em 0.25em rgba(0, 0, 0, 0.25);
+  margin-block-start: var(--base-gap);
+  padding: calc(var(--base-gap) / 2);
+  min-width: 15ch;
+}
+.dropdown .dropdown__toc a {
+  color: var(text-1);
+  display: block;
+  padding: 0.5em;
 }
 
 [theme-preference=dark] .post-tag {
@@ -495,6 +549,10 @@ aside.toc {
   max-height: 200px;
 }
 
+.dropdown {
+  display: none;
+}
+
 @media screen and (max-width: 750px) {
   #main-wrapper.post {
     grid-template-areas: "main";
@@ -505,6 +563,11 @@ aside.toc {
   }
   aside#toc-mobile {
     display: block;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .dropdown {
+    display: flex;
   }
 }
 pre[class*=language-] {

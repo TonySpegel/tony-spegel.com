@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<!doctype html>
+<html lang="de">
+  
+  <head>
+  
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table of Contents Component</title>
+<meta name="description" content="Artikelüberschriften dynamisch hervorheben">
+<meta name="generator" content="Eleventy v2.0.1">
+<meta name="theme-color" content="hsla(281, 56%, 84%, 1)" media="(prefers-color-scheme: light)">
+
+<meta property="og:title" content="Table of Contents Component">
+<meta property="og:description" content="Artikelüberschriften dynamisch hervorheben">
+
+  <meta property="og:image" content="https://tony-spegel.com/img/2023/toc-observer/toc-observer-demo.jpg">
+
+
+
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/blog-post.css">
+  <link rel="stylesheet" href="/css/components/toc-observer.css">
+  <link rel="stylesheet" href="/css/components/theme-switch.css">
+  <link rel="stylesheet" href="/css/components/image-comparison.css">
+  <link rel="stylesheet" href="/css/prism-a11y-rework.css">
+
+  <script>
+  // Read theme preference from localStorage
+  const themePreference = localStorage.getItem('theme-preference');
+  // Set theme if one is present in localStorage
+  if (themePreference !== null) {
+    document
+      .querySelector('html')
+      .setAttribute('theme-preference', themePreference);
+  }
+</script>
+
+
+  
+    
+    <script type="module" src="/js/index.js"></script>
+  
+    
+    <script type="module" src="/js/post.js"></script>
+  
+    
+    <script type="module" src="/js/theme-switch.js"></script>
+  
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" >
+</head>
+
+  <body>
+    
+<theme-switch>
+  <h2 slot="heading">Theme Auswahl</h2>
+  <span slot="sub-heading">Wähle ein Theme für die Website</span>
+  <a href="datenschutzerklaerung/#auswertung-des-verhaltens-von-besucherinnen-und-besuchern-cookies"
+    id="read-more"
+    slot="read-more"
+    target="_blank"
+    title="Was wird gespeichert?"
+  >
+    ?
+  </a>
+  <span slot="close-caption">Schließen</span>
+</theme-switch>
+
+    <header id="site-header">
+  <nav aria-label="Hauptnavigation">
+    
+      <a class="logo" href="/" title="Zur Startseite">
+        <img src="/tsp_icon.svg" alt="Tony Spegel Logo">
+      </a>
+    
+
+    <ul class="header-links">
+      
+      <li class="dropdown">
+        <button type="button"id="dropdown__title">
+          Inhalt
+          <span class="material-symbols-outlined">toc</span>
+        </button>
+
+        <div class="dropdown__toc" id="drop-down-container">
+          <toc-observer observeParent>
+            <div slot="toc">
+              <nav class="toc">
+                <ol>
+                    
+                    <li><a href="#ueberlegungen-zur-funktionsweise">Überlegungen zur Funktionsweise</a>
+            		</li>
+
+                    <li><a href="#intersection-observer-and-datenstruktur">IntersectionObserver & Datenstruktur</a>
+            		</li>
+
+                    <li><a href="#verschiedene-html-strukturen-unterstuetzen">Verschiedene HTML Strukturen unterstützen</a>
+            		</li>
+
+                    <li><a href="#limitationen-and-fazit">Limitationen & Fazit</a>
+            		</li>
+                </ol>
+            </nav>
+            </div>
+          </toc-observer>
+        </div>
+      </li>
+      
+      <li>
+        <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+    <div class="glass"></div>
+    <div class="bubble"></div>
+    <div class="bubble-2"></div>
+    <div class="main-wrapper post">
+      <main>
+        <div id="sentinel-element"></div>
+        <header>
+          <time class="article-date" datetime="2023-04-28">
+            28.04.2023
+          </time>
+          <h1>Table of Contents Component</h1>
+          <ul class="post-tags">
+            
+              
+              <li>
+                
+  <a href="/tags/lit/" class="post-tag lit">
+    #Lit
+    
+      <span></span>
+    
+  </a>
+
+              </li>
+            
+              
+              <li>
+                
+  <a href="/tags/web-components/" class="post-tag ">
+    #Web Components
+    
+  </a>
+
+              </li>
+            
+              
+              <li>
+                
+  <a href="/tags/typescript/" class="post-tag ">
+    #TypeScript
+    
+  </a>
+
+              </li>
+            
+              
+              <li>
+                
+  <a href="/tags/blog/" class="post-tag ">
+    #Blog
+    
+  </a>
+
+              </li>
+            
+          </ul>
+        </header>
+
+        <p>Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter &quot;Inhalt&quot; oder neben dem Post an der Seite sehen.</p>
+<div class="disclaimer">
+  <span>Hinweis</span>
+  <p>
+    Dieser Post geht davon aus, dass ihr euch schon ein wenig mit Web Components beschäftigt habt - wenn nicht, ist das aber auch in Ordnung.
+    Hier ein paar Links:
+  </p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank" rel="noopener noreferrer">MDN Web Docs: Web Components</a></li>
+<li><a href="https://lit.dev/docs/" target="_blank" rel="noopener noreferrer">lit.dev: What is Lit?</a></li>
+<li><a href="https://web.dev/learn/html/template/" target="_blank" rel="noopener noreferrer">Learn HTML!: Template, slot, and shadow</a></li>
+</ul>
+</div>
+<section>
+<h2 id="ueberlegungen-zur-funktionsweise"><a class="header-anchor" href="#ueberlegungen-zur-funktionsweise">Überlegungen zur Funktionsweise</a></h2>
+<p>&quot;Live&quot;-Inhaltsverzeichnisse, wie zuvor beschrieben gibt es einige - unterscheiden kann man diese vor allem darin, ob diese Abschnitte oder Überschriften hervorheben.</p>
+<figure>
+  <img src="/img/2023/toc-observer/mdn-web-docs--toc-example.webp"
+    alt="Beispielhaftes Inhaltsverzeichnis mit Textabschnitt des Artikel 'Web Components' von MDN Web Docs"
+    class="sample-img"
+  >
+  <figcaption>
+    Beispielhaftes
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank" rel="noopener noreferrer">Inhaltsverzeichnis</a> von MDN Web Docs
+  </figcaption>
+</figure>
+<p>Hier am Beispiel der MDN Web Docs kann man sehen, dass der Menüpunkt &quot;Concepts and usage&quot; weiterhin hervorgehoben wird, obwohl von diesem Abschnitt nur noch eine Zeile lesbar ist und der Abschnitt &quot;Guides&quot; bereits einen viel größeren Platz einnimmt. Ich habe mich dann gefragt, was diese Art des Inhaltsverzeichnisses überhaupt darstellen oder aussagen möchte. Denn wenn die beiden Abschnitte gleich viel Platz einnehmen würden, wäre immer noch &quot;Concepts and usage&quot; hervorgehoben. Aber geht es darum, was man gerade liest oder wo man sich im Post befindet? Insbesondere was man gerade liest lässt sich ja nicht wirklich sagen. Nach etwas Recherche bin ich dann auf diesen <a href="https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/" target="_blank" rel="noopener noreferrer">Post</a> von <a href="https://www.bram.us/about/" target="_blank" rel="noopener noreferrer">Bramus Van Damme</a> gestoßen - dieser schlägt folgendes, vereinfachtes Markup vor:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beschreibung<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Beschreibung<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>…<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span></code></pre>
+<p>Also Abschnitte mit ID mit darauf folgender Überschrift. Auf diese Art werden später ganze Abschnitte erfasst und somit potentiell auch mehrere Links im TOC hervorgehoben. Das ist, wie ich finde, eine genauere Darstellung dessen was gerade auf der Seite angezeigt wird bzw. wo man sich gerade befindet. Weswegen diese Struktur aber für mich auch problematisch wurde, führe ich später noch genauer aus. Für diese Component gilt beispielhaft das folgende Markup:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>toc-observer</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toc<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#beschreibung<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Beschreibung<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#lebensweise<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Lebensweise<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#nahrung<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Nahrung<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>toc-observer</span><span class="token punctuation">></span></span></code></pre>
+<p>Hierbei besonders wichtig ist, dass zum einen ein <code>ul</code> mit <code>slot=&quot;toc&quot;</code> vorhanden ist und zum anderen Links zu diesen passenden Abschnitten oder Überschriften enthalten sind. Die Ordnung dieser Überschriften ist dabei nicht von Relevanz.</p>
+</section>
+<section>
+<h2 id="intersection-observer-and-datenstruktur"><a class="header-anchor" href="#intersection-observer-and-datenstruktur">IntersectionObserver &amp; Datenstruktur</a></h2>
+<p>Dieses &quot;Live&quot;-Inhaltsverzeichnis wird häufig mit dem so genannten &quot;ScrollSpy&quot;-Feature in Verbindung gebracht und heutzutage mit dem <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API" target="_blank" rel="noopener noreferrer">IntersectionObserver</a> realisiert. Diese API ist in der Lage, dass Überschneiden von Elementen mit einem Elternelement oder des Dokuments zu überwachen und bietet somit genau das - was für diese Component benötigt wird.</p>
+<p>Die hier entstehende Component ist verhältnismäßig kompakt, enthält kein eigenes Styling und arbeitet vor allem (imperativ) mit dem <code>Slot</code>-Element.</p>
+<pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span>LitElement<span class="token punctuation">,</span> html<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lit'</span><span class="token punctuation">;</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span><br>  customElement<span class="token punctuation">,</span><br>  queryAssignedElements<span class="token punctuation">,</span><br><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lit/decorators.js'</span><span class="token punctuation">;</span><br><br><span class="token decorator"><span class="token at operator">@</span><span class="token function">customElement</span></span><span class="token punctuation">(</span><span class="token string">'toc-observer'</span><span class="token punctuation">)</span><br><span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">TocObserver</span> <span class="token keyword">extends</span> <span class="token class-name">LitElement</span> <span class="token punctuation">{</span><br>  <span class="token comment">/**<br>   * Converts '_tocList' into a getter that returns the assignedElements of the given slot.<br>   * Provides a declarative way to use HTMLSlotElement.assignedElements<br>   */</span><br>  <span class="token decorator"><span class="token at operator">@</span><span class="token function">queryAssignedElements</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>slot<span class="token operator">:</span> <span class="token string">'toc'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><br>  <span class="token keyword">private</span> _tocList<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>HTMLUListElement<span class="token operator">></span><span class="token punctuation">;</span><br>  <span class="token comment">/**<br>   * Receive any items within '_tocList' if present<br>   */</span><br>  <span class="token keyword">private</span> <span class="token keyword">get</span> <span class="token function">_tocListItems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> HTMLAnchorElement<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_tocList<span class="token operator">?.</span>length<br>      <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">this</span><span class="token punctuation">.</span>_tocList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token generic-function"><span class="token function">querySelectorAll</span><span class="token generic class-name"><span class="token operator">&lt;</span>HTMLAnchorElement<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token string">'[href^="#"]'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><br>      <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span></code></pre>
+<p>Wie zuvor demonstriert, wird das Inhaltsverzeichnis von &quot;außen&quot; über eine mit dem Slot-Attribut versehene Liste in die Component gegeben. Das hat zur Folge, dass alle Kind-Elemente dieser Liste manuell, wie hier in der <code>_tocListItems</code> Methode gezeigt, selektiert werden müssen.<br>
+Das Slot-Element selbst wähle ich mit Hilfe des <code>@queryAssignedElements</code>-<a href="https://lit.dev/docs/components/shadow-dom/#query-assigned-nodes" target="_blank" rel="noopener noreferrer">Decorators</a> aus.</p>
+<p>Diese <code>_tocListItems</code> (die Links des TOC) bilden nun die Grundlage der (plural) IntersectionObserver. Grundsätzlich kann man nämlich entweder einen IntersectionObserver haben, welcher mehrere Elemente überwacht oder jeweils einen pro Element. Ich habe mich für letzteres entschieden, da ich es als einfacher nachzuvollziehen empfunden habe. Angemessen wäre noch ein Test ob es hierbei zu Performanceeinbußen kommen kann. Diese Observer entsprechen als Datenstruktur folgender <code>Map</code>:</p>
+<pre class="language-typescript"><code class="language-typescript"><span class="token keyword">private</span> anchorHashObserverMap<span class="token operator">:</span> Map<span class="token operator">&lt;</span><br>  HTMLAnchorElement<span class="token punctuation">[</span><span class="token string">'hash'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  IntersectionObserver<br><span class="token operator">></span><span class="token punctuation">;</span></code></pre>
+<p>oder vereinfacht am Beispiel:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span><br>  <span class="token punctuation">[</span><span class="token string">'#beschreibung'</span>, IntersectionObserver<span class="token punctuation">]</span>,<br>  <span class="token punctuation">[</span><span class="token string">'#lebensweise'</span>, IntersectionObserver<span class="token punctuation">]</span>,<br>  <span class="token punctuation">[</span><span class="token string">'#nahrung'</span>, IntersectionObserver<span class="token punctuation">]</span><br><span class="token punctuation">]</span></code></pre>
+<p>Nun zum eigentlichen IntersectionObserver und zum hervorheben der Links:</p>
+<pre class="language-typescript"><code class="language-typescript"><span class="token keyword">private</span> <span class="token function">createIdObserverMap</span><span class="token punctuation">(</span><br>  anchors<span class="token operator">:</span> HTMLAnchorElement<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br><span class="token punctuation">)</span><span class="token operator">:</span> Map<span class="token operator">&lt;</span>HTMLAnchorElement<span class="token punctuation">[</span><span class="token string">'hash'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> IntersectionObserver<span class="token operator">></span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><br>    anchors<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>anchor<span class="token operator">:</span> HTMLAnchorElement<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token keyword">const</span> <span class="token punctuation">{</span>hash<span class="token punctuation">}</span> <span class="token operator">=</span> anchor<span class="token punctuation">;</span><br><br>      <span class="token keyword">return</span> <span class="token punctuation">[</span><br>        hash<span class="token punctuation">,</span><br>        <span class="token keyword">new</span> <span class="token class-name">IntersectionObserver</span><span class="token punctuation">(</span><br>          <span class="token punctuation">(</span>entries<span class="token operator">:</span> IntersectionObserverEntry<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>            entries<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>              <span class="token keyword">if</span> <span class="token punctuation">(</span>entry<span class="token punctuation">.</span>intersectionRatio <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">selectTocLink</span><span class="token punctuation">(</span>hash<span class="token punctuation">)</span><span class="token operator">?.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>tocActiveClass<span class="token punctuation">)</span><span class="token punctuation">;</span><br>                <span class="token keyword">return</span><span class="token punctuation">;</span><br>              <span class="token punctuation">}</span><br><br>              <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">selectTocLink</span><span class="token punctuation">(</span>hash<span class="token punctuation">)</span><span class="token operator">?.</span>classList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>tocActiveClass<span class="token punctuation">)</span><span class="token punctuation">;</span><br>            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>          <span class="token punctuation">}</span><span class="token punctuation">,</span><br>          <span class="token comment">// IntersectionObserver options</span><br>          <span class="token punctuation">{</span><br>            root<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ownerDocument<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>rootElement<span class="token operator">!</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">null</span><span class="token punctuation">,</span><br>            rootMargin<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>rootMargin<span class="token punctuation">,</span><br>          <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token punctuation">)</span><span class="token punctuation">,</span><br>      <span class="token punctuation">]</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Mit diesem Code iteriere ich über ein Array von Links, extrahiere jeweils den Hash um diesen in der <code>selectTocLink</code>-Methode als Selektor zu nutzen.<br>
+Zu diesen ausgewählten Links, wird dann eine CSS Klasse hinzugefügt/entfernt sobald der dazugehörige Observer einen <code>intersectionRatio</code>-Wert von größer/kleiner 0 besitzt.</p>
+<pre class="language-typescript"><code class="language-typescript"><span class="token keyword">private</span> <span class="token function">selectTocLink</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> HTMLAnchorElement <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_tocList<span class="token operator">?.</span>length<br>    <span class="token operator">?</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_tocList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token generic-function"><span class="token function">querySelector</span><span class="token generic class-name"><span class="token operator">&lt;</span>HTMLAnchorElement<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[href="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"]</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><br>    <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Auch hier wieder manuelles selektieren der Links. Das ist eigentlich ganz grob auch schon alles, was die reine Funktionalität betrifft. Aber wie eingangs erwähnt, bringt die Entscheidung auch Abschnitte zu unterstützen ein paar Herausforderungen mit sich, auf die ich im nächsten Abschnitt eingehe.</p>
+</section>
+<section>
+<h2 id="verschiedene-html-strukturen-unterstuetzen"><a class="header-anchor" href="#verschiedene-html-strukturen-unterstuetzen">Verschiedene HTML Strukturen unterstützen</a></h2>
+<p>Das eingangs erwähnte, vereinfachte Markup geht davon aus, dass Sections eine ID besitzen. Üblicher ist es aber in <abr>SSG</abr> (Static site generators), eine Section zu haben auf die eine Überschrift mit ID und einem Link folgt. Also eher so:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beschreibung<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#beschreibung<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Beschreibung<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Opossums sind die größten Beutelratten.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span></code></pre>
+<p>Das liegt daran, dass solche SSG häufig mit Markdown-Dateien arbeiten und anhand derer HTML erzeugt wird. Es ist also naheliegend, die ID direkt an Überschriften anzuhängen.</p>
+<pre class="language-md"><code class="language-md"><span class="token title important"><span class="token punctuation">##</span> Beschreibung</span><br>Opossums sind die größten Beutelratten.</code></pre>
+<p>Das Problem hiermit ist, dass man nun ausgehend vom Link dessen Elternelement auswählen muss, wenn man eine Section überwachen möchte. Am einfachsten wäre es, den CSS Selektor <code>:has()</code> zu nutzen - Stand jetzt wird dieser aber noch nicht von allen Browsern unterstützt.</p>
+<pre class="language-typescript"><code class="language-typescript"><span class="token comment">/**<br> * Useful for observing nested markup like this:<br> * &lt;section><br> *   &lt;!-- ^observe --><br> *   &lt;h2 id="possum">Possum&lt;/h2><br> * &lt;/section><br> *<br> * Observing wrapper elements instead of just headings<br> * has the advantage that those have more area to intersect with.<br> *<br> *     ┌─────────┐<br> *     │ #possum │<br> *   ┌─┼─────────┼─┐<br> *   │ │         │ │<br> *   │ └─────────┘ │&lt; Viewport<br> *   │ ^section    │<br> *   └─────────────┘<br> */</span><br><span class="token decorator"><span class="token at operator">@</span><span class="token function">property</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token operator">:</span> Boolean<span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token keyword">public</span> observeParent <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br><br><span class="token comment">// Should be used together with observeParent</span><br><span class="token decorator"><span class="token at operator">@</span><span class="token function">property</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token operator">:</span> String<span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token keyword">public</span> parentSelector <span class="token operator">=</span> <span class="token string">'section'</span><span class="token punctuation">;</span><br><br><span class="token comment">/**<br> * The 'firstUpdated' lifecycle is called after the component's DOM<br> * has been updated the first time, immediately before updated() is called.<br> * Only then an element's slot content (our toc items) is available and can be observed.<br> */</span><br>override <span class="token function">firstUpdated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span><br>  <span class="token comment">// Observe items when at least one is available</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_tocListItems<span class="token operator">?.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span>anchorHashObserverMap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">createIdObserverMap</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_tocListItems<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token keyword">this</span><span class="token punctuation">.</span>anchorHashObserverMap<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observer<span class="token punctuation">,</span> anchorHash<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token keyword">const</span> item <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ownerDocument<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span>anchorHash<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>observeParent <span class="token operator">===</span> <span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> item<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        observer<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span>observeParent <span class="token operator">===</span> <span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span><br>        item<span class="token operator">!</span><span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>parentSelector<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token keyword">null</span><br>      <span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        observer<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span>item<span class="token operator">!</span><span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>parentSelector<span class="token punctuation">)</span><span class="token operator">!</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Die hier verwendete <code>firstUpdated</code> Methode ist ein so genannter <a href="https://lit.dev/docs/components/lifecycle/" target="_blank" rel="noopener noreferrer">Lifecycle</a> und wie in dessen Kommentar beschrieben, der Zeitpunkt, an dem der Inhalt des Slots verfügbar ist. Es wird die <code>anchorHashObserverMap</code> erstellt und die enthaltenen Observer beginnen ihre Elemente zu überwachen. Abhängig davon, ob die Component mit dem <code>observeParent</code>-Attribut versehen wird oder nicht, wird entweder by default ein Abschnitt oder ein beliebig wählbares Element überwacht.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>toc-observer</span> <span class="token attr-name">observeParent</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toc<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>toc-observer</span><span class="token punctuation">></span></span></code></pre>
+<p>Übrig bleibt nun nur noch, das Überwachen der Elemente zu beenden, für den Fall das <code>&lt;toc-observer&gt;</code> aus dem DOM entfernt wird. Auch das. lässt sich bequem in einem Lifecycle lösen:</p>
+<pre class="language-typescript"><code class="language-typescript"><span class="token comment">/**<br> * Stop observing when the component is removed from the DOM<br> */</span><br>override <span class="token function">disconnectedCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span><br>  <span class="token comment">/**<br>   * As there are no toc-items left to highlight,<br>   * observing elements should be stopped<br>   */</span><br>  <span class="token keyword">this</span><span class="token punctuation">.</span>anchorHashObserverMap<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>obs<span class="token punctuation">)</span> <span class="token operator">=></span> obs<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Eine Lit Web Component besitzt außerdem eine <code>render</code>-<a href="https://lit.dev/docs/components/rendering/" target="_blank" rel="noopener noreferrer">Methode</a>. Diese fällt allerdings sehr kurz aus, da die Component ausschließlich imperativ mit dem Inhalt des Slots arbeitet.</p>
+<pre class="language-typescript"><code class="language-typescript">override <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;slot name="toc">&lt;/slot></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+</section>
+<section>
+<h2 id="limitationen-and-fazit"><a class="header-anchor" href="#limitationen-and-fazit">Limitationen &amp; Fazit</a></h2>
+<p>Das imperative selektieren von DOM-Elementen außerhalb des Shadow-DOM fühlt sich meiner Empfindung nach immer etwas umständlich an, da nicht direkt ersichtlich ist, in welchem Zusammenhang Logik und User Interface stehen und man sich darauf verlassen muss, dass die hinzugefügten Elemente den intern vorhergesehenen entsprechen. Als Limitation sehe ich, dass im Moment noch die (reactive) <code>observeParent</code>-Property verwendet werden muss, statt auf den CSS-Selektor <code>:has()</code> zurückgreifen zu können. Außerdem ist der Hash in <code>Map&lt;HTMLAnchorElement['hash'], IntersectionObserver&gt;</code> doch nicht ganz ideal, da so auch Elemente erfasst werden, die lediglich als Sprungmarken zu Überschriften gedacht sind. Als Verbesserung werde ich den Selektor konfigurierbar machen, so dass dieser spezifischer ist und nur die Elemente überwacht werden, welche wirklich relevant sind.</p>
+</section>
+
+      </main>
+
+      
+        <aside>
+          <toc-observer observeParent>
+            <div slot="toc">
+              <nav class="toc">
+                <ol>
+                    
+                    <li><a href="#ueberlegungen-zur-funktionsweise">Überlegungen zur Funktionsweise</a>
+            		</li>
+
+                    <li><a href="#intersection-observer-and-datenstruktur">IntersectionObserver & Datenstruktur</a>
+            		</li>
+
+                    <li><a href="#verschiedene-html-strukturen-unterstuetzen">Verschiedene HTML Strukturen unterstützen</a>
+            		</li>
+
+                    <li><a href="#limitationen-and-fazit">Limitationen & Fazit</a>
+            		</li>
+                </ol>
+            </nav>
+            </div>
+          </toc-observer>
+        </aside>
+      
+    </div>
+
+    
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator
+        .serviceWorker
+        .register('/sw.js');
+    }
+  </script>
+
+
+    <footer>
+  <span id="copyright">
+    © Tony Spegel
+    2023
+  </span>
+  <ul class="footer-links">
+    
+      <li>
+        <a href="/impressum/">Impressum</a>
+      </li>
+    
+      <li>
+        <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
+      </li>
+    
+      <li>
+        <a href="/barrierefreiheit/">Barrierefreiheit</a>
+      </li>
+    
+  </ul>
+</footer>
+
+  </body>
+</html>

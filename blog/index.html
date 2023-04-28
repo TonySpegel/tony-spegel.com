@@ -87,14 +87,34 @@
 </theme-switch>
 
     <header id="site-header">
-  <nav>
+  <nav aria-label="Hauptnavigation">
     
       <a class="logo" href="/" title="Zur Startseite">
         <img src="/tsp_icon.svg" alt="Tony Spegel Logo">
       </a>
     
 
-    <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+    <ul class="header-links">
+      
+      <li class="dropdown">
+        <button type="button"id="dropdown__title">
+          Inhalt
+          <span class="material-symbols-outlined">toc</span>
+        </button>
+
+        <div class="dropdown__toc" id="drop-down-container">
+          <toc-observer observeParent>
+            <div slot="toc">
+              
+            </div>
+          </toc-observer>
+        </div>
+      </li>
+      
+      <li>
+        <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+      </li>
+    </ul>
   </nav>
 </header>
 
@@ -118,7 +138,79 @@
 
 
 
-<div reversed class="posts" style="counter-reset: start-from 4">
+<div reversed class="posts" style="counter-reset: start-from 5">
+  
+    <article class="postlist-item">
+      <header>
+        <a href="/blog/toc-observer/" class="postlist-link">
+          
+            Table of Contents Component
+          
+        </a>
+
+        <span>
+          vom
+          <time class="postlist-date" datetime="2023-04-28">
+            28.04.2023
+          </time>
+        </span>
+      </header>
+
+      <p class="post-summary">
+        Artikelüberschriften dynamisch hervorheben
+      </p>
+
+      <ul class="post-tags">
+        
+          
+
+          <li>
+            
+  <a href="/tags/lit/" class="post-tag lit">
+    #Lit
+    
+      <span></span>
+    
+  </a>
+
+          </li>
+        
+          
+
+          <li>
+            
+  <a href="/tags/web-components/" class="post-tag ">
+    #Web Components
+    
+  </a>
+
+          </li>
+        
+          
+
+          <li>
+            
+  <a href="/tags/typescript/" class="post-tag ">
+    #TypeScript
+    
+  </a>
+
+          </li>
+        
+          
+
+          <li>
+            
+  <a href="/tags/blog/" class="post-tag ">
+    #Blog
+    
+  </a>
+
+          </li>
+        
+      </ul>
+
+    </article>
   
     <article class="postlist-item">
       <header>

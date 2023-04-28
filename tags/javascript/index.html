@@ -84,14 +84,34 @@
 </theme-switch>
 
     <header id="site-header">
-  <nav>
+  <nav aria-label="Hauptnavigation">
     
       <a class="logo" href="/" title="Zur Startseite">
         <img src="/tsp_icon.svg" alt="Tony Spegel Logo">
       </a>
     
 
-    <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+    <ul class="header-links">
+      
+      <li class="dropdown">
+        <button type="button"id="dropdown__title">
+          Inhalt
+          <span class="material-symbols-outlined">toc</span>
+        </button>
+
+        <div class="dropdown__toc" id="drop-down-container">
+          <toc-observer observeParent>
+            <div slot="toc">
+              
+            </div>
+          </toc-observer>
+        </div>
+      </li>
+      
+      <li>
+        <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+      </li>
+    </ul>
   </nav>
 </header>
 

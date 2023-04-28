@@ -84,14 +84,34 @@
 </theme-switch>
 
     <header id="site-header">
-  <nav>
+  <nav aria-label="Hauptnavigation">
     
       <a class="logo" href="/" title="Zur Startseite">
         <img src="/tsp_icon.svg" alt="Tony Spegel Logo">
       </a>
     
 
-    <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+    <ul class="header-links">
+      
+      <li class="dropdown">
+        <button type="button"id="dropdown__title">
+          Inhalt
+          <span class="material-symbols-outlined">toc</span>
+        </button>
+
+        <div class="dropdown__toc" id="drop-down-container">
+          <toc-observer observeParent>
+            <div slot="toc">
+              
+            </div>
+          </toc-observer>
+        </div>
+      </li>
+      
+      <li>
+        <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+      </li>
+    </ul>
   </nav>
 </header>
 
@@ -123,6 +143,10 @@
   <tr>
     <td><a href="/blog/image-comparison-component/"><code>/blog/image-comparison-component/</code></a></td>
     <td>Image Comparison Component</td>
+  </tr>
+  <tr>
+    <td><a href="/blog/toc-observer/"><code>/blog/toc-observer/</code></a></td>
+    <td>Table of Contents Component</td>
   </tr>
   <tr>
     <td><a href="/tags/"><code>/tags/</code></a></td>
@@ -161,6 +185,18 @@
     <td>Tag CSS</td>
   </tr>
   <tr>
+    <td><a href="/tags/javascript/"><code>/tags/javascript/</code></a></td>
+    <td>Tag JavaScript</td>
+  </tr>
+  <tr>
+    <td><a href="/tags/typescript/"><code>/tags/typescript/</code></a></td>
+    <td>Tag TypeScript</td>
+  </tr>
+  <tr>
+    <td><a href="/tags/performance/"><code>/tags/performance/</code></a></td>
+    <td>Tag Performance</td>
+  </tr>
+  <tr>
     <td><a href="/tags/lit/"><code>/tags/lit/</code></a></td>
     <td>Tag Lit</td>
   </tr>
@@ -173,20 +209,8 @@
     <td>Tag a11y</td>
   </tr>
   <tr>
-    <td><a href="/tags/typescript/"><code>/tags/typescript/</code></a></td>
-    <td>Tag TypeScript</td>
-  </tr>
-  <tr>
     <td><a href="/tags/blog/"><code>/tags/blog/</code></a></td>
     <td>Tag Blog</td>
-  </tr>
-  <tr>
-    <td><a href="/tags/javascript/"><code>/tags/javascript/</code></a></td>
-    <td>Tag JavaScript</td>
-  </tr>
-  <tr>
-    <td><a href="/tags/performance/"><code>/tags/performance/</code></a></td>
-    <td>Tag Performance</td>
   </tr>
   </tbody>
 </table>

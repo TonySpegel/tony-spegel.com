@@ -26,12 +26,20 @@ toc-observer a:is(:hover, :focus) {
   background-color: var(--toc-item-bg-active-color);
 }
 
+[theme-preference=dark] .dropdown__toc {
+  border: 1px solid var(--surface-4);
+  background-color: var(--surface-5);
+}
 [theme-preference=dark] toc-observer {
   --toc-item-border-default-color: var(--surface-4);
   --toc-item-border-active-color: var(--shade-50);
 }
 
 @media (prefers-color-scheme: dark) {
+  .dropdown__toc {
+    border: 1px solid var(--surface-4);
+    background-color: var(--surface-5) !important;
+  }
   toc-observer {
     --toc-item-border-default-color: var(--surface-4);
     --toc-item-border-active-color: var(--shade-50);
