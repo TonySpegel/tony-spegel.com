@@ -46,7 +46,7 @@ Links zum Download gibt es hier: [GitHub](https://github.com/TonySpegel/toc-obse
   </figcaption>
 </figure>
 
-Hier am Beispiel der MDN Web Docs kann man sehen, dass der Menüpunkt "Concepts and usage" weiterhin hervorgehoben wird, obwohl von diesem Abschnitt nur noch eine Zeile lesbar ist und der Abschnitt "Guides" bereits einen viel größeren Platz einnimmt. Ich habe mich dann gefragt, was diese Art des Inhaltsverzeichnisses überhaupt darstellen oder aussagen möchte. Denn wenn die beiden Abschnitte gleich viel Platz einnehmen würden, wäre immer noch "Concepts and usage" hervorgehoben. Aber geht es darum, was man gerade liest oder wo man sich im Post befindet? Insbesondere was man gerade liest lässt sich ja nicht wirklich sagen. Nach etwas Recherche bin ich dann auf diesen [Post](https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/) von [Bramus Van Damme](https://www.bram.us/about/) gestoßen - dieser schlägt folgendes, vereinfachtes Markup vor:
+Hier am Beispiel der MDN Web Docs kann man sehen, dass der Menüpunkt "Concepts and usage" weiterhin hervorgehoben wird, obwohl von diesem Abschnitt nur noch eine Zeile lesbar ist und der Abschnitt "Guides" bereits einen viel größeren Platz einnimmt. Ich habe mich dann gefragt, was diese Art des Inhaltsverzeichnisses überhaupt darstellen oder aussagen möchte. Denn wenn die beiden Abschnitte gleich viel Platz einnehmen würden, wäre immer noch "Concepts and usage" hervorgehoben. Aber geht es darum, was man gerade liest oder wo man sich im Post befindet? Insbesondere was man gerade liest, lässt sich ja nicht wirklich sagen. Nach etwas Recherche bin ich dann auf diesen [Post](https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/) von [Bramus Van Damme](https://www.bram.us/about/) gestoßen - dieser schlägt folgendes, vereinfachtes Markup vor:
 
 ```html
 <section id="beschreibung">
@@ -69,7 +69,7 @@ Also Abschnitte mit ID mit darauf folgender Überschrift. Auf diese Art werden s
       </ul>
     </li>
   </ul>
-<toc-observer>
+</toc-observer>
 ```
 Hierbei besonders wichtig ist, dass zum einen ein `ul` mit `slot="toc"` vorhanden ist und zum anderen Links zu diesen passenden Abschnitten oder Überschriften enthalten sind. Die Ordnung dieser Überschriften ist dabei nicht von Relevanz.
 
@@ -107,7 +107,7 @@ export class TocObserver extends LitElement {
 Wie zuvor demonstriert, wird das Inhaltsverzeichnis von "außen" über eine mit dem Slot-Attribut versehene Liste in die Component gegeben. Das hat zur Folge, dass alle Kind-Elemente dieser Liste manuell, wie hier in der `_tocListItems` Methode gezeigt, selektiert werden müssen.
 Das Slot-Element selbst wähle ich mit Hilfe des `@queryAssignedElements`-[Decorators](https://lit.dev/docs/components/shadow-dom/#query-assigned-nodes) aus.
 
-Diese `_tocListItems` (die Links des TOC) bilden nun die Grundlage der (plural) IntersectionObserver. Grundsätzlich kann man nämlich entweder einen IntersectionObserver haben, welcher mehrere Elemente überwacht oder jeweils einen pro Element. Ich habe mich für letzteres entschieden, da ich es als einfacher nachzuvollziehen empfunden habe. Angemessen wäre noch ein Test ob es hierbei zu Performanceeinbußen kommen kann. Diese Observer entsprechen als Datenstruktur folgender `Map`:
+Diese `_tocListItems` (die Links des TOC) bilden nun die Grundlage der (plural) IntersectionObserver. Grundsätzlich kann man nämlich entweder einen IntersectionObserver haben, welcher mehrere Elemente überwacht oder jeweils einen pro Element. Ich habe mich für letzteres entschieden, da ich es als einfacher nachzuvollziehen empfunden habe. Angemessen wäre noch ein Test, ob es hierbei zu Performanceeinbußen kommen kann. Diese Observer entsprechen als Datenstruktur folgender `Map`:
 
 ```typescript
 private anchorHashObserverMap: Map<
@@ -159,7 +159,7 @@ private createIdObserverMap(
 }
 ```
 Mit diesem Code iteriere ich über ein Array von Links, extrahiere jeweils den Hash um diesen in der `selectTocLink`-Methode als Selektor zu nutzen.
-Zu diesen ausgewählten Links, wird dann eine CSS Klasse hinzugefügt/entfernt sobald der dazugehörige Observer einen `intersectionRatio`-Wert von größer/kleiner 0 besitzt.
+Zu diesen ausgewählten Links, wird dann eine CSS Klasse hinzugefügt/entfernt, sobald der dazugehörige Observer einen `intersectionRatio`-Wert von größer/kleiner 0 besitzt.
 
 ```typescript
 private selectTocLink(id: string): HTMLAnchorElement | null {
