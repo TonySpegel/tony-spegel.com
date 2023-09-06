@@ -13,8 +13,8 @@ info: Lists all tags
 </p>
 
 <ul class="post-tags all-tags">
-{% for tag in collections.tagList %}
-  {% set tagUrl %}tags/{{ tag | slug }}/{% endset %}
+{% for tag in collections.tagList | sort %}
+  {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
   <li>
      {{ utility.tag(tagUrl, tag) }}
   </li>
