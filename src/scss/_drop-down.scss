@@ -47,13 +47,15 @@
 
     transition: 280ms all ease-out;
 
-    background-color: var(--surface-3);
     border-radius: 4px;
+    border: 1px solid var(--toc-dropdown-border-color);
+
+    background-color: var(--toc-dropdown-bg-color);
     box-shadow: 0 0.15em 0.25em rgba(black, 0.25);
 
     margin-block-start: var(--base-gap);
     padding: calc(var(--base-gap) / 2);
-    min-width: 15ch;
+    min-width: 20ch;
 
     a {
       color: var(text-1);
