@@ -1,0 +1,92 @@
+@mixin dark-colors {
+  /**
+   * Colors
+   */
+  --deep-purple-1: hsl(281, 56%, 10%);
+  --deep-purple-2: hsl(281, 60%, 15%);
+  --deep-purple-3: hsl(281, 60%, 20%);
+  --deep-purple-4: hsl(281, 60%, 25%);
+  --deep-purple-5: hsl(262, 86%, 8%);
+
+  /**
+   * Typography
+   */
+  --text-color-1--dark: #fff;
+  /**
+   * Page elements
+   */
+  --glass-tint--dark: hsla(286, 86%, 6%, 0.657);
+
+  --header-bg-color--dark: var(--deep-purple-2);
+  --logo-bg-color--dark: var(--deep-purple-3);
+  /**
+   * Blog elements
+   */
+
+  // Disclaimer
+  --disclaimer-badge-border--dark: hsl(53.88deg 100% 80.78%);
+  --disclaimer-badge-bg--dark: hsl(54deg 100% 73%);
+  --disclaimer-badge-text--dark: #000;
+
+  --disclaimer-box-border-color--dark: #bbdefb;
+  --disclaimer-box-bg-color--dark: hsl(205.38deg 64.06% 21.67%);
+
+  // Tag
+  --tag-border-color--dark: none;
+  --tag-bg-color--dark: var(--deep-purple-3);
+  --tag-bg-color-active--dark: var(--deep-purple-2);
+  --tag-font-color--dark: var(--text-color-1--dark);
+
+  // Code tags
+  --code-bg-color-inline--dark: var(--deep-purple-3);
+
+  // Keyboard shortcuts
+  --kbd-border-color--dark: var(--deep-purple-4);
+  --kbd-bg-color--dark: var(--deep-purple-3);
+
+  // Radio container
+  --radio-container-badge-bg-color--dark: var(--deep-purple-2);
+  --radio-container-border-color--dark: var(--deep-purple-1);
+  --radio-container-bg-color--dark: var(--deep-purple-3);
+
+  // Post cards
+  --post-card-border-color--dark: var(--deep-purple-4);
+  --post-card-bg-color--dark: var(--deep-purple-1);
+
+  /**
+   * Socials
+   */
+  --social-link-border-color--dark: var(--deep-purple-4);
+  --social-link-bg-color--dark: var(--tag-bg-color--dark);
+  --social-link-bg-color-active--dark: var(--tag-bg-color-active--dark);
+  /**
+   * Web components
+   */
+
+  // <toc-observer>
+  --toc-item-border-default-color--dark: var(--deep-purple-4);
+  --toc-item-border-active-color--dark: var(--shade-50);
+
+  --toc-dropdown-border-color--dark: var(--lavender-blue-5);
+  --toc-dropdown-bg-color--dark: var(--deep-purple-5);
+
+  // <theme-switch>
+
+  // Dialog
+  --dialog-border-color--dark: var(--deep-purple-2);
+  --dialog-bg-color--dark: var(--deep-purple-5);
+  // Themes container
+  --themes-border-color--dark: var(--deep-purple-3);
+  // Radio buttons
+  --circle-border-color--dark: #eedcf530;
+  --circle-bg-color--dark: #2a1d5445;
+  --circle-bg-color-checked--dark: var(--deep-purple-3);
+  // Control elements
+  --control-color--dark: var(--deep-purple-3);
+  --control-interaction-color--dark: var(--deep-purple-2);
+  // Checkbox
+  --checkbox-border-color--dark: var(--deep-purple-3);
+  --checkbox-bg-color--dark: #402e7e45;
+  --checkbox-bg-color-checked--dark: var(--deep-purple-3);
+  --checkmark-color--dark: #fff;
+}

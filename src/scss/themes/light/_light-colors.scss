@@ -1,0 +1,92 @@
+@mixin light-colors {
+  /**
+   * Colors
+   */
+  --lavender-blue-1: #e6e6ff;
+  --lavender-blue-2: #ccc9ff;
+  --lavender-blue-3: #b3b3ff;
+  --lavender-blue-4: #9996ff;
+  --lavender-blue-5: #bbb9fe;
+
+  /**
+   * Typography
+   */
+  --text-color-1--light: var(--shade-900);
+  /**
+   * Page elements
+   */
+  --glass-tint--light: hsl(200deg 100% 96% / 67%);
+
+  --header-bg-color--light: #d5d5ff;
+  --logo-bg-color--light: var(--lavender-blue-1);
+  /**
+   * Blog elements
+   */
+
+  // Disclaimer
+  --disclaimer-badge-border--light: hsl(53.88deg 100% 80.78%);
+  --disclaimer-badge-bg--light: hsl(54deg 100% 73%);
+  --disclaimer-badge-text--light: var(--text-color-1--light);
+
+  --disclaimer-box-border-color--light: #bbdefb;
+  --disclaimer-box-bg-color--light: hsl(205.38deg 86.67% 94.12%);
+
+  // Tag
+  --tag-border-color--light: var(--lavender-blue-2);
+  --tag-bg-color--light: #d5d5ff;
+  --tag-bg-color-active--light: var(--lavender-blue-1);
+  --tag-font-color--light: var(--text-color-1--light);
+
+  // Code tags
+  --code-bg-color-inline--light: var(--lavender-blue-1);
+
+  // Keyboard shortcuts
+  --kbd-border-color--light: var(--lavender-blue-3);
+  --kbd-bg-color--light: var(--lavender-blue-1);
+
+  // Radio container
+  --radio-container-badge-bg-color--light: var(--lavender-blue-2);
+  --radio-container-border-color--light: var(--lavender-blue-2);
+  --radio-container-bg-color--light: var(--lavender-blue-1);
+
+  // Post cards
+  --post-card-border-color--light: var(--lavender-blue-2);
+  --post-card-bg-color--light: #f0efff;
+
+  /**
+   * Socials
+   */
+  --social-link-border-color--light: var(--lavender-blue-2);
+  --social-link-bg-color--light: var(--tag-bg-color--light);
+  --social-link-bg-color-active--light: var(--tag-bg-color-active--light);
+  /**
+   * Web components
+   */
+
+  // <toc-observer>
+  --toc-item-border-default-color--light: var(--lavender-blue-2);
+  --toc-item-border-active-color--light: var(--surface-4);
+
+  --toc-dropdown-border-color--light: var(--lavender-blue-5);
+  --toc-dropdown-bg--light: var(--lavender-blue-1);
+
+  // <theme-switch>
+
+  // Dialog
+  --dialog-bg-color--light: var(--lavender-blue-1);
+  --dialog-border-color--light: var(--lavender-blue-4);
+  // Themes container
+  --themes-border-color--light: var(--lavender-blue-2);
+  // Control elements
+  --control-color--light: var(--lavender-blue-3);
+  --control-interaction-color--light: var(--lavender-blue-2);
+  // Radio buttons
+  --circle-border-color--light: var(--lavender-blue-4);
+  --circle-bg-color--light: var(--lavender-blue-1);
+  --circle-bg-color-checked--light: var(--lavender-blue-3);
+  // Checkbox
+  --checkbox-border-color--light: var(--lavender-blue-4);
+  --checkbox-bg-color--light: var(--lavender-blue-1);
+  --checkbox-bg-color-checked--light: var(--lavender-blue-2);
+  --checkmark-color--light: var(--lavender-blue-1);
+}
