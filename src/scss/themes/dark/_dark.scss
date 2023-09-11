@@ -1,0 +1,69 @@
+@import './_dark-colors';
+@import '../../components/theme-switch';
+@import '../../components/toc-observer';
+
+@mixin dark {
+  color-scheme: dark;
+
+  --surface-1: var(--deep-purple-1);
+  --surface-2: var(--deep-purple-2);
+  --surface-3: var(--deep-purple-3);
+  --surface-4: var(--deep-purple-4);
+  --surface-5: var(--deep-purple-5);
+
+  --text-color-1: #fff;
+
+  /**
+  * Page elements
+  */
+  --header-bg-color: var(--header-bg-color--dark);
+  --logo-bg-color: var(--logo-bg-color--dark);
+  --glass-tint: var(--glass-tint--dark);
+  /**
+   * Blog elements
+   */
+  --disclaimer-badge-bg: var(--disclaimer-badge-bg--dark);
+  --disclaimer-badge-border: var(--disclaimer-badge-border--dark);
+  --disclaimer-badge-text: var(--disclaimer-badge-text--dark);
+
+  --disclaimer-box-border-color: var(--disclaimer-box-border-color--dark);
+  --disclaimer-box-bg-color: var(--disclaimer-box-bg-color--dark);
+
+  // Tags
+  --tag-border-color: var(--tag-border-color--dark);
+  --tag-bg-color: var(--tag-bg-color--dark);
+  --tag-bg-color-active: var(--tag-bg-color-active--dark);
+  --tag-font-color: var(--tag-font-color--dark);
+
+  // Code tags
+  --code-bg-color-inline: var(--code-bg-color-inline--dark);
+
+  // Keyboard shortcuts
+  --kbd-border-color: var(--kbd-border-color--dark);
+  --kbd-bg-color: var(--kbd-bg-color--dark);
+
+  // Radio container
+  --radio-container-badge-bg-color: var(--radio-container-badge-bg-color--dark);
+
+  --radio-container-border-color: var(--radio-container-border-color--dark);
+  --radio-container-bg-color: var(--radio-container-bg-color--dark);
+
+  // Post cards
+  --post-card-border-color: var(--post-card-border-color--dark);
+  --post-card-bg-color: var(--post-card-bg-color--dark);
+
+  /**
+   * Socials
+   */
+  --social-link-border-color: var(--social-link-border-color--dark);
+  --social-link-bg-color: var(--social-link-bg-color--dark);
+  --social-link-bg-color-active: var(--social-link-bg-color-active--dark);
+
+  /**
+   * Web components
+   */
+  --toc-dropdown-border-color: var(--toc-dropdown-border-color--dark);
+  --toc-dropdown-bg-color: var(--toc-dropdown-bg-color--dark);
+
+  @include theme-switch--dark;
+}

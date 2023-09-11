@@ -1,0 +1,69 @@
+@import './_light-colors';
+@import '../../components/theme-switch';
+@import '../../components/toc-observer';
+
+@mixin light {
+  color-scheme: light;
+
+  --surface-1: var(--surface-1-light);
+  --surface-2: var(--surface-2-light);
+  --surface-3: var(--surface-3-light);
+  --surface-4: var(--surface-4-light);
+  --surface-5: var(--surface-4-light);
+
+  --text-color-1: var(--text-color-1--light);
+
+  /**
+   * Page elements
+   */
+  --header-bg-color: var(--header-bg-color--light);
+  --logo-bg-color: var(--logo-bg-color--light);
+  --glass-tint: var(--glass-tint--light);
+  /**
+   * Blog elements
+   */
+  --disclaimer-badge-border: var(--disclaimer-badge-border--light);
+  --disclaimer-badge-bg: var(--disclaimer-badge-bg--light);
+  --disclaimer-badge-text: var(--disclaimer-badge-text--light);
+
+  --disclaimer-box-border-color: var(--disclaimer-box-border-color--light);
+  --disclaimer-box-bg-color: var(--disclaimer-box-bg-color--light);
+
+  // Tags
+  --tag-border-color: var(--tag-border-color--light);
+  --tag-bg-color: var(--tag-bg-color--light);
+  --tag-bg-color-active: var(--tag-bg-color-active--light);
+  --tag-font-color: var(--tag-font-color--light);
+
+  // Code tags
+  --code-bg-color-inline: var(--code-bg-color-inline--light);
+
+  // Keyboard shortcuts
+  --kbd-border-color: var(--kbd-border-color--light);
+  --kbd-bg-color: var(--kbd-bg-color--light);
+
+  // Radio container
+  --radio-container-badge-bg-color: var(--radio-container-badge-bg-color--light);
+
+  --radio-container-border-color: var(--radio-container-border-color--light);
+  --radio-container-bg-color: var(--radio-container-bg-color--light);
+
+  // Post cards
+  --post-card-border-color: var(--post-card-border-color--light);
+  --post-card-bg-color: var(--post-card-bg-color--light);
+
+  /**
+   * Socials
+   */
+  --social-link-border-color: var(--social-link-border-color--light);
+  --social-link-bg-color: var(--social-link-bg-color--light);
+  --social-link-bg-color-active: var(--social-link-bg-color-active--light);
+
+  /**
+   * Web components
+   */
+  --toc-dropdown-border-color: var(--toc-dropdown-border-color--light);
+  --toc-dropdown-bg-color: var(--toc-dropdown-bg--light);
+
+  @include theme-switch--light;
+}
