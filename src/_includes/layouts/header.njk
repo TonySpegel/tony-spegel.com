@@ -11,11 +11,11 @@
     {% endif %}
 
     <ul  class="header-links">
-      {% if page.url !== '/' %}
+      {% if page.url | urlStartsWith('/blog') %}
       <li class="dropdown">
         <button type="button"id="dropdown__title">
           Inhalt
-          <span class="material-symbols-outlined">toc</span>
+          <span class="material-symbols-outlined" aria-hidden="true">toc</span>
         </button>
 
         <div class="dropdown__toc" id="drop-down-container">
