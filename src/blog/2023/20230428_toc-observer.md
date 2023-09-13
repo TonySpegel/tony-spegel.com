@@ -30,10 +30,12 @@ Links zum Download gibt es hier: [GitHub](https://github.com/TonySpegel/toc-obse
 
 "Live"-Inhaltsverzeichnisse, wie zuvor beschrieben gibt es einige - unterscheiden kann man diese vor allem darin, ob diese Abschnitte oder Überschriften hervorheben.
 
-<figure>
+<figure style="max-inline-size: 620px">
   <img
     src="/img/2023/toc-observer/mdn-web-docs--toc-example.webp"
-    alt="Beispielhaftes Inhaltsverzeichnis mit Textabschnitt des Artikel 'Web Components' von MDN Web Docs"
+    width="1055"
+    height="618"
+    alt="Beispielhaftes Inhaltsverzeichnis mit Textabschnitt des Artikels 'Web Components' von MDN Web Docs"
     class="sample-img"
   >
   <figcaption>
