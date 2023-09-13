@@ -7,3 +7,53 @@ theme-switch {
     }
   }
 }
+
+@mixin theme-switch--light {
+  theme-switch {
+    --text-color-1: var(--purple-950);
+    --text-color-2: var(--purple-900);
+    // Dialog
+    --dialog-border-color: var(--dialog-border-color--light);
+    --dialog-bg-color: var(--dialog-bg-color--light);
+    // Themes container
+    --themes-border-color: var(--themes-border-color--light);
+    // Radio Buttons
+    --circle-border-color: var(--circle-border-color--light);
+    --circle-bg-color: var(--circle-bg-color--light);
+    --circle-bg-color-checked: var(--circle-bg-color-checked--light);
+    --circle-wave: var(--circle-wave--light);
+    // Control elements
+    --control-color: var(--control-color--light);
+    --control-interaction-color: var(--control-interaction-color--light);
+    // Checkbox
+    --checkbox-border-color: var(--checkbox-border-color--light);
+    --checkbox-bg-color: var(--checkbox-bg-color--light);
+    --checkbox-bg-color-checked: var(--checkbox-bg-color-checked--light);
+    --checkmark-color: var(--checkmark-color--light);
+  }
+}
+
+@mixin theme-switch--dark {
+  theme-switch {
+    --text-color-1: #fff;
+    --text-color-2: #fff;
+    // Dialog
+    --dialog-border-color: var(--dialog-border-color--dark);
+    --dialog-bg-color: var(--dialog-bg-color--dark);
+    // Themes container
+    --themes-border-color: var(--themes-border-color--dark);
+    // Radio Buttons
+    --circle-border-color: var(--circle-border-color--dark);
+    --circle-bg-color: var(--circle-bg-color--dark);
+    --circle-bg-color-checked: var(--circle-bg-color-checked--dark);
+    --circle-wave: var(--circle-wave--dark);
+    // Control elements
+    --control-color: var(--control-color--dark);
+    --control-interaction-color: var(--control-interaction-color--dark);
+    // Checkbox
+    --checkbox-border-color: var(--checkbox-border-color--dark);
+    --checkbox-bg-color: var(--checkbox-bg-color--dark);
+    --checkbox-bg-color-checked: var(--checkbox-bg-color-checked--dark);
+    --checkmark-color: #fff;
+  }
+}

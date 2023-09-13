@@ -1,5 +1,5 @@
-@import './_light';
-@import './_dark';
+@import './light/_light';
+@import './dark/_dark';
 
 :where(html) {
   /**
@@ -17,9 +17,6 @@
   --shade-800: hsla(281, 100%, 21%, 1);
   --shade-900: hsla(281, 100%, 16%, 1);
 
-  --blueish-1: hsl(205.38deg 86.67% 94.12%);
-  --blueish-2: #bbdefb;
-
   /**
    * Light-Theme
    */
@@ -32,13 +29,6 @@
   --surface-4-light: var(--shade-600);
   --surface-5-light: var(--surface-4-light);
 
-  --circle-bg-light: var(--surface-4-light);
-  --circle-wave-light: #000;
-
-  --glass-tint-light: hsla(200, 100%, 96%, 0.15);
-  --glass-tint-light-2: var(--shade-50-glass);
-
-  --logo-bg-light: var(--shade-100);
   --border-light: var(--shade-200);
 
   --bubble-size: 350px;
@@ -47,42 +37,16 @@
   --bubble-2--color-1: hsl(338, 78%, 48%);
   --bubble-2--color-2: hsl(199, 98%, 48%);
 
-  --disclaimer-badge-bg-light: hsl(54deg 100% 73%);
-  --disclaimer-badge-border-light: hsl(53.88deg 100% 80.78%);
-  --disclaimer-box-bg-light: hsl(205.38deg 86.67% 94.12%);
-  --disclaimer-box-border-light: #bbdefb;
-
-  --kbd-border-light: var(--surface-2);
+  @include light-colors;
+  @include dark-colors;
   /**
    * Dark Theme
    */
   --text-1-dark: hsl(0, 0%, 90%);
   --text-2-dark: hsl(0, 0%, 95%);
 
-  --surface-1-dark: hsl(281, 56%, 10%);
-  --surface-2-dark: hsl(281, 60%, 15%);
-  --surface-3-dark: hsl(281, 60%, 20%);
-  --surface-4-dark: hsl(281, 60%, 25%);
-  --surface-5-dark: hsl(262, 86%, 8%);
-
-  --circle-wave-dark: #fff;
-  --circle-bg-dark: #2a1d5445;
-
-  --glass-tint-dark: hsla(286, 86%, 6%, 0.657);
-  --glass-tint-dark-2: hsla(290, 93%, 5%, 0.7);
-
   --border-dark: var(--shade-800);
 
-  --disclaimer-badge-bg-dark: hsl(54deg 100% 73%);
-  --disclaimer-badge-border-dark: hsl(53.88deg 100% 80.78%);
-  --disclaimer-badge-text: var(--text-1);
-
-  --disclaimer-box-bg-dark: hsl(205.38deg 64.06% 21.67%);
-  --disclaimer-box-border-dark: #bbdefb;
-
-  theme-switch {
-    --dialog-bg-color: var(--purple-50);
-  }
 }
 
 // LIGHT MODE
@@ -97,24 +61,7 @@
 :where(html),
 [theme-preference='light'] {
   @include light;
-
-  theme-switch {
-    --dialog-bg-color: var(--purple-50);
-    --dialog-border-color: var(--purple-500);
-    --text-color-1: var(--purple-950);
-    --text-color-2: var(--purple-900);
-    // Control elements
-    --control-color: var(--purple-300);
-    --control-interaction-color: var(--purple-400);
-    --circle-bg-color: var(--purple-100);
-    --circle-bg-color-checked: var(--purple-300);
-    --circle-border-color: var(--purple-500);
-    // Checkbox
-    --checkbox-bg-color: var(--purple-50);
-    --checkbox-bg-color-checked: var(--purple-200);
-    --checkmark-color: var(--purple-900);
-    --checkbox-border-color: var(--purple-500);
-  }
+  @include toc-observer--light;
 }
 
 /**
@@ -125,12 +72,10 @@
  */
 @media (prefers-color-scheme: dark) {
   :where(html) {
-    @include theme-switch-dark;
-  }
-
-  :where(html) {
     @include dark;
   }
+
+  @include toc-observer--dark;
 
   .social-links img {
     filter: brightness(0) invert(1);
@@ -143,7 +88,7 @@
 
 [theme-preference='dark'] {
   @include dark;
-  @include theme-switch-dark;
+  @include toc-observer--dark;
 
   .social-links img {
     filter: brightness(0) invert(1);
