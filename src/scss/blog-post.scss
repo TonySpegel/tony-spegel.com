@@ -28,7 +28,7 @@ kbd {
 }
 
 .sample-img {
-  max-inline-size: 620px;
+  height: auto;
   width: 100%;
 }
 
@@ -98,10 +98,6 @@ blockquote {
 
 figure {
   margin-block-end: var(--base-gap);
-}
-
-figure:has(.sample-img) {
-  max-inline-size: 620px;
 }
 
 figcaption {
