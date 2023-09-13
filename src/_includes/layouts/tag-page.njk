@@ -1,0 +1,32 @@
+---
+templateClass: tmpl-home
+---
+<html lang="de">
+  {% include "./head.njk" %}
+  <body>
+    {% include './theme-switch.njk' %}
+    {% include './header.njk' %}
+
+    <div class="glass"></div>
+    <div class="bubble"></div>
+    <div class="bubble-2"></div>
+    <div class="main-wrapper tag-page">
+      <main>
+        <h1>Tag: #{{ tag }}</h1>
+        {% set postslist = collections[ tag ] %}
+        {% include "postslist.njk" %}
+      </main>
+
+      <aside>
+        {% set tagMeta = tagdata | filterTagMetaData(tag) %}
+
+        {% if tagMeta | length %}
+          {% if tagMeta.template | length %}
+            {% set templatePath = './src/_data/tag-data/' + tagMeta.template %}
+            {% renderFile templatePath %}
+          {% endif %}
+        {% endif %}
+      </aside>
+    </div>
+  </body>
+</html>
