@@ -1,8 +1,23 @@
 {% macro tag(link, linkText) %}
-  <a href="{{link}}" class="post-tag {% if linkText == 'Lit' %}lit{% endif %}">
-    #{{linkText}}
-    {% if linkText == 'Lit' %}
-      <span></span>
-    {% endif %}
-  </a>
+  {% switch linkText %}
+    {% case 'Lit' %}
+      <a href="{{link}}" class="post-tag lit">
+        #{{linkText}}
+        <span></span>
+      </a>
+
+    {% case 'Upcoming' %}
+      <a href="{{link}}" class="post-tag upcoming">
+        <span aria-hidden="true">🔮</span>
+      </a>
+
+    {% case 'Experimentell' %}
+      <a href="{{link}}" class="post-tag experimental">
+        #{{linkText}}
+        <span aria-hidden="true">🧪</span>
+      </a>
+
+    {% default %}
+      <a href="{{link}}" class="post-tag">#{{linkText}}</a>
+  {% endswitch %}
 {% endmacro %}
