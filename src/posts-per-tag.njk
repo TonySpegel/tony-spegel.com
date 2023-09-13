@@ -13,11 +13,21 @@ pagination:
   addAllPagesToCollections: true
 layout: home.njk
 eleventyComputed:
-  title: Tag {{ tag }}
+  title: '{{ tag }}'
 permalink: /tags/{{ tag | slug }}/
 info: Lists all posts per tag
+templateClass: tmpl-home tag-page
 ---
 <h1>Tag: #{{ tag }}</h1>
+
+{% set tagMeta = tagdata | filterTagMetaData(tag) %}
+
+{% if tagMeta | length %}
+  {% if tagMeta.template | length %}
+    {% set templatePath = './src/_data/tag-data/' + tagMeta.template %}
+    {% renderFile templatePath %}
+  {% endif %}
+{% endif %}
 
 {# <a href="{{ 'tags/' | url }}" class="post-tag single-tag">Alle Tags ›</a> #}
 {% set postslist = collections[ tag ] %}
