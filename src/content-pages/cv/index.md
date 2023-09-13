@@ -4,7 +4,7 @@ description: Mein "Curriculum Vitae", Lebenslauf in HTML Form
 
 imports: ['index', 'theme-switch']
 layout: content-page.njk
-permalink: false
+permalink: /cv/
 templateClass: content-page
 ---
 
@@ -28,7 +28,7 @@ templateClass: content-page
       <li>JavaScript Laufzeitumgebungen
         <ul>
           <li>NodeJS</li>
-          <li>Deno 🦕</li>
+          <li class="tech-card">Deno 🦕</li>
         </ul>
       </li>
     </ul>
