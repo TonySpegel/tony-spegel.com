@@ -1,6 +1,5 @@
 const fs = require('fs');
 
-const { DateTime } = require('luxon');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItHeaderSections = require('markdown-it-header-sections');
@@ -11,19 +10,27 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 const externalLinks = require('eleventy-plugin-external-links');
+const { EleventyRenderPlugin } = require('@11ty/eleventy');
+
+const filterTagMetaData = require('./11ty-helper/filters/filterTagMetaData.cjs');
+const htmlDateString = require('./11ty-helper/filters/htmlDateString.cjs');
+const readableDate = require('./11ty-helper/filters/readableDate.cjs');
+const urlStartsWith = require('./11ty-helper/filters/urlStartsWith.cjs');
 
 const DEV = process.env.NODE_ENV === 'DEV';
 const outputFolder = DEV ? '_dev' : '_prod';
 
 module.exports = function (eleventyConfig) {
   // Copy folders & files to the output directory
-  eleventyConfig.addPassthroughCopy('src/CNAME');
-  eleventyConfig.addPassthroughCopy('src/css');
-  eleventyConfig.addPassthroughCopy('src/fonts');
-  eleventyConfig.addPassthroughCopy('src/img');
-  eleventyConfig.addPassthroughCopy('src/js');
-  eleventyConfig.addPassthroughCopy('src/*.svg');
-  eleventyConfig.addPassthroughCopy('src/robots.txt');
+  eleventyConfig
+    .addPassthroughCopy('src/CNAME')
+    .addPassthroughCopy('src/css')
+    .addPassthroughCopy('src/fonts')
+    .addPassthroughCopy('src/img')
+    .addPassthroughCopy('src/js/')
+    .addPassthroughCopy('src/js/ssr')
+    .addPassthroughCopy('src/*.svg')
+    .addPassthroughCopy('src/robots.txt');
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
@@ -34,7 +41,6 @@ module.exports = function (eleventyConfig) {
     tags: ['h2', 'h3'],
   });
   eleventyConfig.addPlugin(require('./eleventy.config.drafts.js'));
-
   eleventyConfig.addPlugin(externalLinks, {
     // Plugin defaults:
     name: 'external-links', // Plugin name
@@ -45,20 +51,17 @@ module.exports = function (eleventyConfig) {
     includeDoctype: true, // Default to include '<!DOCTYPE html>' at the beginning of the file
   });
 
+  eleventyConfig.addPlugin(EleventyRenderPlugin, {
+    tagName: 'renderTemplate', // Change the renderTemplate shortcode name
+    tagNameFile: 'renderFile', // Change the renderFile shortcode name
+  });
+
   eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
 
-  eleventyConfig.addFilter('readableDate', (dateObj) => {
-    return new Intl.DateTimeFormat('de-DE', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }).format(dateObj);
-  });
-
-  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
-  });
+  filterTagMetaData(eleventyConfig);
+  htmlDateString(eleventyConfig);
+  readableDate(eleventyConfig);
+  urlStartsWith(eleventyConfig);
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter('head', (array, n) => {
@@ -71,11 +74,6 @@ module.exports = function (eleventyConfig) {
     }
 
     return array.slice(0, n);
-  });
-
-  // Return the smallest number argument
-  eleventyConfig.addFilter('min', (...numbers) => {
-    return Math.min.apply(null, numbers);
   });
 
   function filterTagList(tags) {
