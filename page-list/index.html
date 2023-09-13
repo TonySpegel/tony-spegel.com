@@ -2,13 +2,16 @@
 <html lang="de">
   <head>
   
-  <meta charset="utf-8">
+  
+
+
+
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tony Spegel | Modern Web Playground</title>
 <meta name="description" content="Frontend-Entwicklung für Websites, Shopify-Onlineshops, Web- und Cross Platform-Apps">
 <meta name="generator" content="Eleventy v2.0.1">
-<meta name="theme-color" content="hsla(281, 56%, 84%, 1)" media="(prefers-color-scheme: light)">
-
+<meta name="theme-color" content="#d5d5ff" media="(prefers-color-scheme: light)">
 <meta property="og:title" content="Tony Spegel | Modern Web Playground">
 <meta property="og:description" content="Frontend-Entwicklung für Websites, Shopify-Onlineshops, Web- und Cross Platform-Apps">
 
@@ -34,6 +37,8 @@
 
   
 
+  <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Tony Spegel | Modern Web Playground">
+  <link rel="alternate" href="/feed/feed.json" type="application/json" title="Tony Spegel | Modern Web Playground">
 
   <style>
     @font-face {
@@ -41,7 +46,7 @@
       font-style: normal;
       font-weight: 400;
       font-display: swap;
-      src: url("fonts/inter-v7-latin-regular.woff2") format('woff2');
+      src: url("/fonts/inter-v7-latin-regular.woff2") format('woff2');
       unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
     }
     @font-face {
@@ -49,7 +54,7 @@
       font-style: normal;
       font-weight: 500;
       font-display: swap;
-      src: url("fonts/inter-v7-latin-500.woff2") format('woff2');
+      src: url("/fonts/inter-v7-latin-500.woff2") format('woff2');
       unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
     }
 
@@ -58,7 +63,7 @@
       font-style: normal;
       font-weight: 700;
       font-display: swap;
-      src: url("fonts/inter-v7-latin-700.woff2") format('woff2');
+      src: url("/fonts/inter-v7-latin-700.woff2") format('woff2');
       unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
     }
   </style>
@@ -92,21 +97,6 @@
     
 
     <ul class="header-links">
-      
-      <li class="dropdown">
-        <button type="button"id="dropdown__title">
-          Inhalt
-          <span class="material-symbols-outlined">toc</span>
-        </button>
-
-        <div class="dropdown__toc" id="drop-down-container">
-          <toc-observer observeParent>
-            <div slot="toc">
-              
-            </div>
-          </toc-observer>
-        </div>
-      </li>
       
       <li>
         <button id="btn-theme-selection" title="Farbschema auswählen"></button>
@@ -161,7 +151,7 @@
     <td>Barrierefreiheit</td>
   </tr>
   <tr>
-    <td><a href="false"><code>false</code></a></td>
+    <td><a href="/cv/"><code>/cv/</code></a></td>
     <td>CV</td>
   </tr>
   <tr>
@@ -173,44 +163,44 @@
     <td>Datenschutzerklärung</td>
   </tr>
   <tr>
+    <td><a href="/feed/feed.xml"><code>/feed/feed.xml</code></a></td>
+    <td></td>
+  </tr>
+  <tr>
     <td><a href="/"><code>/</code></a></td>
     <td></td>
   </tr>
   <tr>
     <td><a href="/tags/challenge/"><code>/tags/challenge/</code></a></td>
-    <td>Tag challenge</td>
+    <td>challenge</td>
   </tr>
   <tr>
     <td><a href="/tags/css/"><code>/tags/css/</code></a></td>
-    <td>Tag CSS</td>
+    <td>CSS</td>
   </tr>
   <tr>
     <td><a href="/tags/javascript/"><code>/tags/javascript/</code></a></td>
-    <td>Tag JavaScript</td>
+    <td>JavaScript</td>
   </tr>
   <tr>
     <td><a href="/tags/typescript/"><code>/tags/typescript/</code></a></td>
-    <td>Tag TypeScript</td>
+    <td>TypeScript</td>
   </tr>
   <tr>
     <td><a href="/tags/performance/"><code>/tags/performance/</code></a></td>
-    <td>Tag Performance</td>
+    <td>Performance</td>
   </tr>
   <tr>
     <td><a href="/tags/lit/"><code>/tags/lit/</code></a></td>
-    <td>Tag Lit</td>
+    <td>Lit</td>
   </tr>
   <tr>
     <td><a href="/tags/web-components/"><code>/tags/web-components/</code></a></td>
-    <td>Tag Web Components</td>
+    <td>Web Components</td>
   </tr>
   <tr>
     <td><a href="/tags/a11y/"><code>/tags/a11y/</code></a></td>
-    <td>Tag a11y</td>
-  </tr>
-  <tr>
-    <td><a href="/tags/blog/"><code>/tags/blog/</code></a></td>
-    <td>Tag Blog</td>
+    <td>a11y</td>
   </tr>
   </tbody>
 </table>

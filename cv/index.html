@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="de">
+  <head>
+    
+    
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV</title>
+<meta name="description" content="Mein &quot;Curriculum Vitae&quot;, Lebenslauf in HTML Form">
+<meta name="generator" content="Eleventy v2.0.1">
+<meta name="theme-color" content="#d5d5ff" media="(prefers-color-scheme: light)">
+<meta property="og:title" content="CV">
+<meta property="og:description" content="Mein &quot;Curriculum Vitae&quot;, Lebenslauf in HTML Form">
+
+
+    
+    <script>
+  // Read theme preference from localStorage
+  const themePreference = localStorage.getItem('theme-preference');
+  // Set theme if one is present in localStorage
+  if (themePreference !== null) {
+    document
+      .querySelector('html')
+      .setAttribute('theme-preference', themePreference);
+  }
+</script>
+
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/blog-post.css">
+    <link rel="stylesheet" href="/css/components/theme-switch.css">
+    <link rel="icon" href="/favicon.svg">
+
+    
+      
+      <script type="module" src="/js/index.js"></script>
+    
+      
+      <script type="module" src="/js/theme-switch.js"></script>
+    
+  </head>
+  <body class="content-page">
+    
+<theme-switch>
+  <h2 slot="heading">Theme Auswahl</h2>
+  <span slot="sub-heading">Wähle ein Theme für die Website</span>
+  <a href="datenschutzerklaerung/#auswertung-des-verhaltens-von-besucherinnen-und-besuchern-cookies"
+    id="read-more"
+    slot="read-more"
+    target="_blank"
+    title="Was wird gespeichert?"
+  >
+    ?
+  </a>
+  <span slot="close-caption">Schließen</span>
+</theme-switch>
+
+    <header id="site-header">
+  <nav aria-label="Hauptnavigation">
+    
+      <a class="logo" href="/" title="Zur Startseite">
+        <img src="/tsp_icon.svg" alt="Tony Spegel Logo">
+      </a>
+    
+
+    <ul class="header-links">
+      
+      <li>
+        <button id="btn-theme-selection" title="Farbschema auswählen"></button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+    <div class="glass"></div>
+    <div class="bubble"></div>
+    <div class="bubble-2"></div>
+
+    <div class="main-wrapper">
+      <main>
+        <div id="sentinel-element"></div>
+        <section>
+<h1 id="cv"><a class="header-anchor" href="#cv">CV</a></h1>
+<section>
+<h2 id="studium"><a class="header-anchor" href="#studium">Studium</a></h2>
+<ul></ul>
+<details open>
+  <summary>Weiteres</summary>
+  <p>
+    <ul>
+      <li>Shopsysteme
+        <ul>
+          <li>Shopify</li>
+          <li>WooCommerce</li>
+          <li>Magento 2</li>
+        </ul>
+      </li>
+      <li>Flutter (Dart)</li>
+      <li>JavaScript Laufzeitumgebungen
+        <ul>
+          <li>NodeJS</li>
+          <li class="tech-card">Deno 🦕</li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+</details>
+</section>
+</section>
+
+      </main>
+    </div>
+    
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator
+        .serviceWorker
+        .register('/sw.js');
+    }
+  </script>
+
+
+    <footer>
+  <span id="copyright">
+    © Tony Spegel
+    2023
+  </span>
+  <ul class="footer-links">
+    
+      <li>
+        <a href="/impressum/">Impressum</a>
+      </li>
+    
+      <li>
+        <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>
+      </li>
+    
+      <li>
+        <a href="/barrierefreiheit/">Barrierefreiheit</a>
+      </li>
+    
+  </ul>
+</footer>
+
+  </body>
+</html>

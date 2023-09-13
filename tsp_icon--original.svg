@@ -39,7 +39,7 @@
             x: 45px;
             y: 45px;
 
-            fill: #7000a3;
+            fill: #9996ff;
 
             stroke-width: 3;
             stroke: rgba(235, 248, 255, 0.15);
@@ -59,7 +59,7 @@
             x: 45px;
             y: 45px;
 
-            fill: #cb99e1;
+            fill: #b3b3ff;
 
             stroke-width: 5;
             stroke: rgba(235, 248, 255, 0.15);
@@ -75,13 +75,13 @@
 
             width: 210px;
             height: 210px;
-            /** 
+            /**
              * x/y pos = SVG size / 2 - Box size / 2
              */
             x: 45px;
             y: 45px;
 
-            fill: #debfed;
+            fill: #ccc9ff;
             fill-opacity: 0.65;
 
             stroke-width: 3;
@@ -105,12 +105,12 @@
     <rect class="box-bottom" rx="40px" ry="40px" />
     <rect class="box-middle" rx="10px" ry="10px" />
     <rect class="box-top" rx="15px" ry="15px" />
-    <text 
-        dominant-baseline="middle" 
-        text-anchor="middle" 
-        x="150px" 
-        y="160px" 
-        font-size="5.7rem" 
+    <text
+        dominant-baseline="middle"
+        text-anchor="middle"
+        x="150px"
+        y="160px"
+        font-size="5.7rem"
         class="logo-text"
     >
         TS

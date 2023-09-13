@@ -1,16 +1,17 @@
 :root {
   --color-bg: #2b2b2b;
-  --color-1: #f8f8f2;
-  --color-2: #d4d0ab;
-  --color-3: #fefefe;
+  --color-color-primary: #f8f8f2;
+  --color-color-secondary: #d4d0ab;
+  --code-color-punctuation: #fefefe;
   --color-4: #ffa07a;
   --color-5: #00e0e0;
+  --code-color-boolean: var(--color-5);
   --color-6: #abe338;
   --color-7: #ffd700;
 }
 
 :is(code, pre):is([class*=language-]) {
-  color: var(--color-1);
+  color: var(--color-color-primary);
   background: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
@@ -51,11 +52,11 @@ pre[class*=language-] {
 }
 
 .token:is(.comment, .prolog, .doctype, .cdata) {
-  color: var(--color-2);
+  color: var(--color-color-secondary);
 }
 
 .token.punctuation {
-  color: var(--color-3);
+  color: var(--code-color-punctuation);
 }
 
 .token:is(.property, .tag, .constant, .symbol, .deleted) {
@@ -66,23 +67,18 @@ pre[class*=language-] {
   color: var(--color-5);
 }
 
+.token:is(.entity, .keyword, .operator, .url, .variable),
+.language-css .token.string,
+.style .token.string {
+  color: var(--color-5);
+}
+
 .token:is(.selector, .attr-name, .string, .char, .builtin, .inserted) {
   color: var(--color-6);
 }
 
-.token:is(.operator, .entity, .url),
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-  color: var(--color-5);
-}
-
 .token:is(.atrule, .attr-value, .function, .regex, .important) {
   color: var(--color-7);
-}
-
-.token.keyword {
-  color: var(--color-5);
 }
 
 .token:is(.important, .bold) {
