@@ -1,19 +1,32 @@
 ---
 title: queryAssignedElementContent
 description: Ein Decorator, um den Inhalt von Elementen
-date: 2023-09-15
+metaDescription: Einen Decorator entwickeln,
+shortDescription: Ein Decorator, um den Inhalt von Elementen
+date: 2023-09-21
 layout: blog/post.njk
 type: article
 includeToc: true
 draft: true
 tags:  ['Decorator', 'TypeScript', 'Web Components', 'Lit', 'Upcoming']
 permalink: /blog/query-assigned-element-content/
-imports: ['index', 'post']
+jsFiles: [
+  'theme-switch',
+  'index',
+  'post'
+]
+styleSheets: [
+  'index',
+  'blog-post',
+  'components/toc-observer',
+  'components/theme-switch',
+  'prism-a11y-rework'
+]
 ---
 
 ## Motivation
 
-Vor einer Weile habe ich eine Web Component entwickelt, welche im Viewport sichtbare Überschriften in einem Inhaltsverzeichnis dynamisch hervorhebt. Ein Vorteil von Web Components ist, dass diese so konfiguriert werden können, dass diese in sich geschlossen und von außen nur über klar definierte Schnittstellen beeinflussbar sind.
+Vor einer Weile habe ich eine Web Component [entwickelt](/blog/toc-observer), welche im Viewport sichtbare Überschriften in einem Inhaltsverzeichnis dynamisch hervorhebt. Ein Vorteil von Web Components ist, dass diese so konfiguriert werden können, dass diese in sich geschlossen und von außen nur über klar definierte Schnittstellen beeinflussbar sind.
 
 Zu diesen Schnittstellen gehört das `<slot>`-Element bzw. Attribut. Dieses verhält sich als ein Platzhalter-Element, welches eigenes Markup, in dem Fall das Inhaltsverzeichnis, in die Component aufnehmen kann.
 ```html

@@ -1,6 +1,7 @@
 ---
 title: Image Comparison Component
-description: 'Bilder vergleichen: Slider, Overlay, Side-by-Side'
+shortDescription: 'Bilder vergleichen: Slider, Overlay, Side-by-Side'
+metaDescription: 'Drei Varianten einer Web Component um zwei Bilder miteinander zu vergleichen.'
 date: 2023-04-14
 layout: blog/post.njk
 type: article
@@ -9,11 +10,19 @@ draft: false
 tags:  ['Lit', 'Web Components', 'a11y', 'TypeScript']
 socialImage: '/img/2023/image-comparison/2022_1004_14254000.jpg'
 permalink: /blog/image-comparison-component/
-imports: [
+jsFiles: [
   'theme-switch',
   'index',
   'post',
   'image-comparison'
+]
+styleSheets: [
+  'index',
+  'blog-post',
+  'components/toc-observer',
+  'components/theme-switch',
+  'components/image-comparison',
+  'prism-a11y-rework'
 ]
 ---
 In diesem Post geht es darum, eine Component zu entwickeln, welche es ermöglicht, Bilder auf verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.
@@ -56,6 +65,8 @@ In diesem Post geht es darum, eine Component zu entwickeln, welche es ermöglich
 </div>
 
 `<image-comparison>` unterstützt neben diesen Varianten diverse Tastaturkürzel, verschiedene Leserichtungen, Custom Events und ist durch Slots, Attribute und CSS Custom Properties konfigurierbar. Im Folgenden gehe ich auf diese Aspekte ein und beginne mit dem Slider.
+
+Ist es sinnvoll, mehrere Components in einer zu vereinen? tl;dr: [In diesem Fall eigentlich nicht](#warum-das-eigentlich-nicht-sinnvoll-ist).
 
 [GitHub](https://github.com/TonySpegel/image-comparison), [NPM](https://npmjs.com/package/image-comparison-component), [Lit Playground](https://lit.dev/playground/#gist=2b393dfba73ce32f7b3426492142b926)
 <hr>
@@ -633,6 +644,9 @@ Die zu Lit gehörende [`choose`](https://lit.dev/docs/templates/directives/#choo
 <image-comparison variant="split"></image-comparison>
 ```
 
+### Warum das eigentlich nicht sinnvoll ist
+
+
 ## Integration auf Websites und in Frameworks
 Um diese Component beispielsweise in WordPress zu integrieren, reicht es aus, folgendes Script-Tag zum gewünschten Template hinzuzufügen und über deren Slots zu konfigurieren.
 
@@ -672,3 +686,5 @@ radioButtonVariants.forEach((radioButton) =>
 ```
 ## Fazit
 Die Arbeit an dieser Component hatte ich bereits vor einer Weile abgeschlossen und konnte jetzt durch das Schreiben des Posts noch einiges dazu lernen. Dazu zählte auf jeden Fall das hinzufügen von Default-Styles, die Integration in einen statischen Seitengenerator und insbesondere das Handling des `rtl`-Attributs. Etwas später in der Entwicklung habe ich dann auch noch eine Component Library entdeckt, welche ebenfalls in Lit geschrieben ist und auch eine solche Component enthält. Wer also eine ausgewachsenere Variante nutzen möchte, dem kann ich nur [Shoelace](https://shoelace.style/components/image-comparer) empfehlen. Viel Spaß mit der Component :)
+
+## Update: RTL Bugfix

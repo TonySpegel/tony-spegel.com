@@ -1,6 +1,7 @@
 ---
 title: Table of Contents Component
-description: 'Links in einem Inhaltsverzeichnis dynamisch hervorheben'
+shortDescription: 'Links in einem Inhaltsverzeichnis dynamisch hervorheben'
+metaDescription: 'Eine Web Component, die CSS-Klassen zu Links in einem Inhaltsverzeichnis hinzufügen/entfernen kann, je nach Sichtbarkeit der zugehörigen Elemente im Viewport. Geschrieben mit Lit und TypeScript.'
 date: 2023-04-28
 layout: blog/post.njk
 type: article
@@ -8,7 +9,18 @@ includeToc: true
 draft: false
 tags:  ['Lit', 'Web Components', 'TypeScript', 'Blog']
 permalink: /blog/toc-observer/
-imports: ['index', 'post', 'theme-switch']
+jsFiles: [
+  'index',
+  'post',
+  'theme-switch'
+]
+styleSheets: [
+  'index',
+  'blog-post',
+  'components/toc-observer',
+  'components/theme-switch',
+  'prism-a11y-rework'
+]
 socialImage: '/img/2023/toc-observer/toc-observer-demo.jpg'
 ---
 Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter "Inhalt" oder neben dem Post an der Seite sehen.

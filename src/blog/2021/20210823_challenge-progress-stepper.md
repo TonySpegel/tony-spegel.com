@@ -1,6 +1,7 @@
 ---
 title: 'Challenge: Progress Stepper'
-description: Fortschritt anzeigen als (CSS) Challenge
+shortDescription: Fortschritt anzeigen als (CSS) Challenge
+metaDescription: ''
 date: 2021-08-23
 tags:  ['challenge', 'CSS']
 
@@ -21,7 +22,7 @@ type: article
 </figure>
 
 
-Vor einer Weile habe ich auf Twitter diese Challenge entdeckt, gespeichert und schließlich für längere Zeit vergessen (kennt man ja).
+Vor einer Weile habe ich auf Twitter diese [Challenge](https://piccalil.li/blog/challenge-008-progress-stepper/) entdeckt, gespeichert und schließlich für längere Zeit vergessen (kennt man ja).
 
 In dieser Challenge geht es darum, einen so genanten Progress Stepper umzusetzen - also etwas das man beispielsweise aus einem Lieferprozess oder im Checkout eines Onlineshops kennt. Die wichtigsten Punkte welche dieser erfüllen soll sind:
 
