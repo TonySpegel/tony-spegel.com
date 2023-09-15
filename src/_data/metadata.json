@@ -1,10 +1,10 @@
 {
-  "title": "Tony Spegel | Modern Web Playground",
+  "title": "Tony Spegel",
   "url": "https://tony-spegel.com/",
   "language": "de",
-  "description": "Frontend-Entwicklung für Websites, Shopify-Onlineshops, Web- und Cross Platform-Apps",
+  "description": "Homepage & Blog zu moderner Web-Entwicklung: Web-Apps, Angular, TypeScript, Web Components, Shopify & Barrierefreiheit",
   "feed": {
-    "subtitle": "Frontend-Entwicklung für Websites, Shopify-Onlineshops, Web- und Cross Platform-Apps",
+    "subtitle": "Homepage & Blog zu moderner Web-Entwicklung: Web-Apps, Angular, TypeScript, Web Components, Shopify & Barrierefreiheit",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "id": "https://tony-spegel.com/"
