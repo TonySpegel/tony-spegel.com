@@ -8,9 +8,10 @@ image-comparison {
   line-height: 1;
 
   &:not(:defined) {
-    background-color: rgba(0, 0, 0, 0.346);
+    background-color: rgb(0 0 0 / 4%);
     backdrop-filter: blur(20px);
     border-radius: calc(var(--base-radius) * 2);
+    border: 1px solid rgb(128 128 128 / 28%);
 
     [slot] {
       display: none;
