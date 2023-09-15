@@ -10,7 +10,6 @@ jobs:
       # Check-out repository under $GITHUB_WORKSPACE
       - name: Checkout
         uses: actions/checkout@v2
-      - run: ls -lh
       # Install NPM dependencies, build with 11ty, optimize with Rollup
       - name: Build 🏗️ + bundle 🧶
         uses: actions/setup-node@v2
@@ -20,9 +19,10 @@ jobs:
       # Set up GitHub Actions caching for Wireit.
       - name: Wireit 🔌
         uses: google/wireit@setup-github-actions-caching/v1
+      # Build CSS files
+      - run: npm run sass:dev
       # Build 11ty
       - run: npm run build:eleventy:prod
-      - run: ls -lh
       # Bundle + optimize
       - run: npm run build:rollup:prod
       # Deploy to GitHub Pages
