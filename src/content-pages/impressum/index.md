@@ -1,6 +1,6 @@
 ---
 title: Impressum
-imports: ['index', 'theme-switch']
+jsFiles: ['index', 'theme-switch']
 layout: content-page.njk
 permalink: /impressum/
 templateClass: content-page
