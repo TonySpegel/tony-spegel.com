@@ -275,6 +275,10 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   --disclaimer-badge-text--light: var(--text-color-1--light);
   --disclaimer-box-border-color--light: #bbdefb;
   --disclaimer-box-bg-color--light: hsl(205.38deg 86.67% 94.12%);
+  --details-summary-border-color--light: hsl(146deg 87.42% 65.38%);
+  --details-summary-bg-color--light: hsl(146deg 87.42% 80.38%);
+  --details-summary-bg-color-active--light: hsl(146deg 87.42% 70.38%);
+  --details-summary-font-color--light: #000;
   --tag-border-color--light: var(--lavender-blue-2);
   --tag-bg-color--light: #d5d5ff;
   --tag-bg-color-active--light: var(--lavender-blue-1);
@@ -415,6 +419,10 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   --disclaimer-badge-text: var(--disclaimer-badge-text--light);
   --disclaimer-box-border-color: var(--disclaimer-box-border-color--light);
   --disclaimer-box-bg-color: var(--disclaimer-box-bg-color--light);
+  --details-summary-border-color: var(--details-summary-border-color--light);
+  --details-summary-bg-color: var(--details-summary-bg-color--light);
+  --details-summary-bg-color-active: var(--details-summary-bg-color-active--light);
+  --details-summary-font-color: var(--details-summary-font-color--light);
   --tag-border-color: var(--tag-border-color--light);
   --tag-bg-color: var(--tag-bg-color--light);
   --tag-bg-color-active: var(--tag-bg-color-active--light);
@@ -714,7 +722,7 @@ body {
   overflow-wrap: break-word;
 }
 
-:where(button, input, a[href]):where(:not(:active)):focus-visible {
+:where(button, input, a[href], summary):where(:not(:active)):focus-visible {
   outline-offset: 5px;
   transition: outline-offset 145ms ease;
 }
@@ -977,4 +985,46 @@ a.postlist-link {
 .disclaimer ul {
   margin-block-end: 0;
   padding-inline-start: 2.5rem;
+}
+
+details {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  container-type: inline-size;
+  container-name: details-container;
+}
+details[open] summary {
+  position: absolute;
+}
+details[open] > #details-content {
+  border-radius: calc(var(--base-radius) * 1.5);
+  border: 1px solid var(--disclaimer-box-border-color);
+}
+details summary {
+  display: inline-flex;
+  list-style: none;
+  border-radius: calc(var(--base-radius) * 1.5);
+  border: 1px solid var(--details-summary-border-color);
+  margin-inline-start: 1px;
+  margin-block-start: 1px;
+  padding: calc(var(--base-gap) / 2) var(--base-gap);
+  color: var(--details-summary-font-color);
+  background-color: var(--details-summary-bg-color);
+}
+details summary:before {
+  padding-right: 0.25rem;
+  content: "+ ";
+}
+details summary:is(:hover, :focus) {
+  background-color: var(--details-summary-bg-color-active);
+}
+details #details-content {
+  padding-block-start: calc(var(--base-gap) * 2.5);
+  padding-block-end: var(--base-gap);
+  padding-inline: var(--base-gap);
+  background-color: var(--disclaimer-box-bg-color);
+}
+details #details-content p:last-child {
+  margin-block-end: 0;
 }

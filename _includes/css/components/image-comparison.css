@@ -7,9 +7,10 @@ image-comparison {
   line-height: 1;
 }
 image-comparison:not(:defined) {
-  background-color: rgba(0, 0, 0, 0.346);
+  background-color: rgba(0, 0, 0, 0.04);
   backdrop-filter: blur(20px);
   border-radius: calc(var(--base-radius) * 2);
+  border: 1px solid rgba(128, 128, 128, 0.28);
 }
 image-comparison:not(:defined) [slot] {
   display: none;
