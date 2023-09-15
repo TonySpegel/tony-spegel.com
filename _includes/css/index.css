@@ -267,6 +267,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   --glass-tint--light: hsl(200deg 100% 96% / 67%);
   --header-bg-color--light: #d5d5ff;
   --logo-bg-color--light: var(--lavender-blue-1);
+  --hr-color--light: var(--lavender-blue-2);
   /**
    * Blog elements
    */
@@ -335,6 +336,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   --glass-tint--dark: hsla(286, 86%, 6%, 0.657);
   --header-bg-color--dark: var(--deep-purple-2);
   --logo-bg-color--dark: var(--deep-purple-3);
+  --hr-color--dark: var(--deep-purple-4);
   /**
    * Blog elements
    */
@@ -411,6 +413,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   --header-bg-color: var(--header-bg-color--light);
   --logo-bg-color: var(--logo-bg-color--light);
   --glass-tint: var(--glass-tint--light);
+  --hr-color: var(--hr-color--light);
   /**
    * Blog elements
    */
@@ -492,6 +495,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
     --header-bg-color: var(--header-bg-color--dark);
     --logo-bg-color: var(--logo-bg-color--dark);
     --glass-tint: var(--glass-tint--dark);
+    --hr-color: var(--hr-color--dark);
     /**
      * Blog elements
      */
@@ -566,6 +570,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   --header-bg-color: var(--header-bg-color--dark);
   --logo-bg-color: var(--logo-bg-color--dark);
   --glass-tint: var(--glass-tint--dark);
+  --hr-color: var(--hr-color--dark);
   /**
    * Blog elements
    */
@@ -705,7 +710,7 @@ html {
 }
 
 hr {
-  background-color: var(--surface-2);
+  background-color: var(--hr-color);
   height: 1px;
   border: 0;
 }
