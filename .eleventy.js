@@ -18,6 +18,9 @@ const htmlDateString = require('./11ty-helper/filters/htmlDateString.cjs');
 const readableDate = require('./11ty-helper/filters/readableDate.cjs');
 const urlStartsWith = require('./11ty-helper/filters/urlStartsWith.cjs');
 
+const packageJson = require('./package.json');
+const { version } = packageJson;
+
 const DEV = process.env.NODE_ENV === 'DEV';
 const outputFolder = DEV ? '_dev' : '_prod';
 
@@ -58,6 +61,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
+  eleventyConfig.addShortcode('packageVersion', () => version);
 
   cssMin(eleventyConfig);
   filterTagMetaData(eleventyConfig);

@@ -18,3 +18,4 @@
 {% if (socialImage is defined) and (env.environment == "PRODUCTION") %}
   <meta property="og:image" content="https://tony-spegel.com{{ socialImage }}">
 {% endif %}
+<meta name="version" content="{% packageVersion %}"/>
