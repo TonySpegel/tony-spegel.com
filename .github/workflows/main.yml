@@ -21,8 +21,6 @@ jobs:
         uses: google/wireit@setup-github-actions-caching/v1
       # Build 11ty
       - run: npm run build:eleventy:prod
-      # Build CSS files
-      - run: npm run sass:prod
       # Bundle + optimize
       - run: npm run build:rollup:prod
       # Deploy to GitHub Pages
