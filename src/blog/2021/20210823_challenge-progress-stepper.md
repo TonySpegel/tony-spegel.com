@@ -5,11 +5,22 @@ metaDescription: ''
 date: 2021-08-23
 tags:  ['challenge', 'CSS']
 
-imports: ['index', 'post', 'theme-switch']
 includeToc: true
 layout: blog/post.njk
 permalink: /blog/challenge-progress-stepper/
 type: article
+jsFiles: [
+  'theme-switch',
+  'index',
+  'post',
+]
+styleSheets: [
+  'index',
+  'blog-post',
+  'components/toc-observer',
+  'components/theme-switch',
+  'prism-a11y-rework'
+]
 ---
 <figure>
   <img

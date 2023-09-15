@@ -8,10 +8,17 @@ includeToc: true
 tags:  ['JavaScript', 'TypeScript', 'Performance']
 permalink: /blog/beschleunigte-navigation-mit-addPrefetchLink/
 type: article
-imports: [
+jsFiles: [
   'theme-switch',
   'index',
-  'post'
+  'post',
+]
+styleSheets: [
+  'index',
+  'blog-post',
+  'components/toc-observer',
+  'components/theme-switch',
+  'prism-a11y-rework'
 ]
 ---
 
