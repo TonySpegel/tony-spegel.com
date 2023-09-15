@@ -1,7 +1,7 @@
 ---
 title: 'Challenge: Progress Stepper'
 shortDescription: Fortschritt anzeigen als (CSS) Challenge
-metaDescription: ''
+metaDescription: 'Meine Umsetzung der CSS-Challenge: Progress Stepper #008 aus der Front-End Challenges Club Reihe.'
 date: 2021-08-23
 tags:  ['challenge', 'CSS']
 
@@ -21,6 +21,7 @@ styleSheets: [
   'components/theme-switch',
   'prism-a11y-rework'
 ]
+socialImage: '/img/2021/fecc-challenge-008.png'
 ---
 <figure>
   <img
