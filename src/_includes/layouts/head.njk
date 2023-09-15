@@ -4,16 +4,21 @@
   {# Read theme preference from localStorage #}
   {% include './theme-preference.njk' %}
 
-  <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
-  <link rel="stylesheet" href="{{ '/css/components/theme-switch.css' | url }}">
+  {% set css %}
+    {% include "css/index.css" %}
+    {% include "css/components/theme-switch.css" %}
+  {% endset %}
+
+  <style>
+    {% if env.environment == "PRODUCTION" %}
+      {{css | cssMin | safe}}
+    {% else %}
+      {{css | safe}}
+    {% endif %}
+  </style>
 
   <script type="module" src="{{ '/js/index.js' | url }}"></script>
   <script type="module" src="{{ '/js/theme-switch.js' | url }}"></script>
-
-  {% if page.url | urlStartsWith('/blog') %}
-    <link rel="stylesheet" href="{{ '/css/blog-post.css' | url }}">
-    <link rel="stylesheet" href="{{ '/css/prism-a11y-rework.css' | url }}">
-  {% endif %}
 
   <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
   <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">

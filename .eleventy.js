@@ -12,6 +12,7 @@ const pluginNavigation = require('@11ty/eleventy-navigation');
 const externalLinks = require('eleventy-plugin-external-links');
 const { EleventyRenderPlugin } = require('@11ty/eleventy');
 
+const cssMin = require('./11ty-helper/filters/cssMin.cjs');
 const filterTagMetaData = require('./11ty-helper/filters/filterTagMetaData.cjs');
 const htmlDateString = require('./11ty-helper/filters/htmlDateString.cjs');
 const readableDate = require('./11ty-helper/filters/readableDate.cjs');
@@ -58,6 +59,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
 
+  cssMin(eleventyConfig);
   filterTagMetaData(eleventyConfig);
   htmlDateString(eleventyConfig);
   readableDate(eleventyConfig);

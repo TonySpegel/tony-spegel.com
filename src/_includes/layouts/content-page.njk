@@ -5,12 +5,23 @@
     {# Read theme preference from localStorage #}
     {% include 'layouts/theme-preference.njk' %}
 
-    <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
-    <link rel="stylesheet" href="{{ '/css/blog-post.css' | url }}">
-    <link rel="stylesheet" href="{{ '/css/components/theme-switch.css' | url }}">
+    {% set css %}
+      {% include "css/index.css" %}
+      {% include "css/blog-post.css" %}
+      {% include "css/components/theme-switch.css" %}
+    {% endset %}
+
+    <style>
+      {% if env.environment == "PRODUCTION" %}
+        {{css | cssMin | safe}}
+      {% else %}
+        {{css | safe}}
+      {% endif %}
+    </style>
+
     <link rel="icon" href="/favicon.svg"/>
 
-    {% for scr in imports %}
+    {% for scr in jsFiles %}
       {% set jsPath = '/js/' + scr + '.js' %}
       <script type="module" src="{{ jsPath | url }}"></script>
     {% endfor %}

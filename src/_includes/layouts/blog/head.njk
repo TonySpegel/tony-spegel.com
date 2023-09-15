@@ -2,20 +2,30 @@
   {# Set meta-tags #}
   {% include "../head/meta-tags.njk" %}
 
-  <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
-  <link rel="stylesheet" href="{{ '/css/blog-post.css' | url }}">
-  <link rel="stylesheet" href="{{ '/css/components/toc-observer.css' | url }}">
-  <link rel="stylesheet" href="{{ '/css/components/theme-switch.css' | url }}">
-  <link rel="stylesheet" href="{{ '/css/components/image-comparison.css' | url }}">
-  <link rel="stylesheet" href="{{ '/css/prism-a11y-rework.css' | url }}">
+  {% set css %}
+    {# 'styleSheets'is set in the front matter data for each post #}
+    {% for sheet in styleSheets %}
+      {% include 'css/' + sheet + '.css' %}
+    {% endfor %}
+  {% endset %}
+
+  <style>
+    {% if env.environment == "PRODUCTION" %}
+      {{css | cssMin | safe}}
+    {% else %}
+      {{css | safe}}
+    {% endif %}
+  </style>
+
 
   {% include 'layouts/theme-preference.njk' %}
 
   <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
   <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
 
-  {% for scr in imports %}
-    {% set jsPath = '/js/' + scr + '.js' %}
+  {# 'jsFiles' is set in the front matter data for each post #}
+  {% for jsFile in jsFiles %}
+    {% set jsPath = '/js/' + jsFile + '.js' %}
     <script type="module" src="{{ jsPath | url }}"></script>
   {% endfor %}
   <link rel="icon" href="/favicon.svg"/>
