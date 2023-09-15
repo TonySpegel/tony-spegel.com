@@ -53,7 +53,11 @@ export default [
       // Minify JS
       terse(),
       generateSW({
-        globIgnores: ['polyfills/*.js', 'nomodule-*.js'],
+        globIgnores: [
+          'polyfills/*.js',
+          'nomodule-*.js',
+          '_includes/css/**/*.css'
+        ],
         navigateFallback: '/index.html',
         // where to output the generated sw
         swDest: path.join(prodDir, 'sw.js'),
