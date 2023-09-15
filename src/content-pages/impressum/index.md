@@ -1,7 +1,5 @@
 ---
-title: Datenschutzerklärung
-description: Datenschutzerklärung für diese Website
-
+title: Impressum
 imports: ['index', 'theme-switch']
 layout: content-page.njk
 permalink: /impressum/
