@@ -1,15 +1,20 @@
-{# Set meta- description #}
+{# Set meta-description #}
+
+{# Extract meta description for tags from src/_data/tagdata.json #}
 {% set tagMeta = tagdata | filterTagMetaData(tag) %}
-{% set metaDescription = description or tagMeta.description or metadata.description %}
+{# Global description from from src/_data/metadata.json. Used when no other description is set #}
+{% set websiteDescription = metadata.description %}
+{# Shorthand for descriptionin order: file > tag > website #}
+{% set descriptionContent = metaDescription or tagMeta.description or websiteDescription %}
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title or metadata.title }}</title>
-<meta name="description" content="{{ metaDescription }}">
+<meta name="description" content="{{ descriptionContent }}">
 <meta name="generator" content="{{ eleventy.generator }}">
 <meta name="theme-color" content="#d5d5ff" media="(prefers-color-scheme: light)"/>
 <meta property="og:title" content="{{ title or metadata.title }}">
-<meta property="og:description" content="{{ metaDescription }}">
+<meta property="og:description" content="{{ descriptionContent }}">
 {% if (socialImage is defined) and (env.environment == "PRODUCTION") %}
   <meta property="og:image" content="https://tony-spegel.com{{ socialImage }}">
 {% endif %}
