@@ -35,12 +35,12 @@
       ]
     },
     "sass:dev": {
-      "command": "sass src/scss:_dev/css --no-source-map",
+      "command": "sass src/scss:src/_includes/css --no-source-map",
       "files": [
         "src/scss/*"
       ],
       "output": [
-        "_dev/css"
+        "src/_includes/css"
       ],
       "clean": "if-file-deleted"
     },
@@ -103,6 +103,7 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@web/dev-server": "^0.1.35",
+    "clean-css": "^5.3.2",
     "eleventy-plugin-external-links": "^1.1.2",
     "rollup": "^2.76.0",
     "rollup-plugin-minify-html-literals": "^1.2.6",
