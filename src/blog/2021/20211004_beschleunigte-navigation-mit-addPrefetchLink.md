@@ -1,7 +1,7 @@
 ---
 title: Beschleunigte Navigation mit Link prefetching
 shortDescription: 'Wie man rel="prefetch" durch Interaktionen wie bspw. mouseover oder focus optimieren kann'
-metaDescription: ''
+metaDescription: 'Entwicklung eines JS-Packages zur Optimierung des Ladens von Ressourcen mit rel=prefetch durch Interaktionen wie mouseover oder focus.'
 date: 2021-10-04
 layout: blog/post.njk
 includeToc: true
