@@ -22,12 +22,20 @@
   /**
    * Blog elements
    */
+
+  // Disclaimer
   --disclaimer-badge-border: var(--disclaimer-badge-border--light);
   --disclaimer-badge-bg: var(--disclaimer-badge-bg--light);
   --disclaimer-badge-text: var(--disclaimer-badge-text--light);
 
   --disclaimer-box-border-color: var(--disclaimer-box-border-color--light);
   --disclaimer-box-bg-color: var(--disclaimer-box-bg-color--light);
+
+  // Details
+  --details-summary-border-color: var(--details-summary-border-color--light);
+  --details-summary-bg-color: var(--details-summary-bg-color--light);
+  --details-summary-bg-color-active: var(--details-summary-bg-color-active--light);
+  --details-summary-font-color: var(--details-summary-font-color--light);
 
   // Tags
   --tag-border-color: var(--tag-border-color--light);
