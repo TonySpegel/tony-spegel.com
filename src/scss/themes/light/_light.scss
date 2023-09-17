@@ -73,6 +73,7 @@
    */
   --toc-dropdown-border-color: var(--toc-dropdown-border-color--light);
   --toc-dropdown-bg-color: var(--toc-dropdown-bg--light);
+  --toc-dropdown-icon-color-filter-value: var(--toc-dropdown-icon-color-filter-value--light);
 
   @include theme-switch--light;
 }

@@ -65,6 +65,7 @@
    */
   --toc-dropdown-border-color: var(--toc-dropdown-border-color--dark);
   --toc-dropdown-bg-color: var(--toc-dropdown-bg-color--dark);
+  --toc-dropdown-icon-color-filter-value: var(--toc-dropdown-icon-color-filter-value--dark);
 
   @include theme-switch--dark;
 }
