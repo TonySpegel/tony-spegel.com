@@ -2,7 +2,12 @@
   { "tagName": "a11y", "description": "Posts zum Thema Accessibility" },
   { "tagName": "Blog", "description": "Posts mit Eigenentwicklungen für diese Website" },
   { "tagName": "Decorator", "template": "decorator-tag-data.md", "description": "Posts zum Thema Meta-Programming mit Decorators für ES6 Classes" },
-  { "tagName": "Lit", "description": "Posts zur Web Component Bibliothek 'Lit'" },
+  { "tagName": "Lit", "template": "lit-tag-data.md", "description": "Posts zur Web Component Bibliothek 'Lit'" },
   { "tagName": "TypeScript", "description": "Posts über oder mit TypeScript" },
+  {
+    "tagName": "Upcoming",
+    "template": "future-tag-data.md",
+    "description": "Experimentelle aber praxisnahe, praktische und spannende Posts zu Themen, die in Zukunft potentiell eine Rolle spielen können."
+  },
   { "tagName": "Web Components", "description": "Posts über Web Components die wiederverwendbaren, plattformunabhängigen HTML-Elemente, die überall im Web verwendet werden können." }
 ]
