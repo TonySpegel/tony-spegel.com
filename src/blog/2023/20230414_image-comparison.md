@@ -1,6 +1,6 @@
 ---
 title: Image Comparison Component
-shortDescription: 'Bilder vergleichen: Slider, Overlay, Side-by-Side'
+shortDescription: 'Drei Varianten einer Web Component um zwei Bilder miteinander zu vergleichen.'
 metaDescription: 'Drei Varianten einer Web Component um zwei Bilder miteinander zu vergleichen.'
 date: 2023-04-14
 layout: blog/post.njk
