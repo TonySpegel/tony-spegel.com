@@ -5,7 +5,7 @@ metaDescription: 'Entwicklung eines JS-Packages zur Optimierung des Ladens von R
 date: 2021-10-04
 layout: blog/post.njk
 includeToc: true
-tags:  ['JavaScript', 'TypeScript', 'Performance']
+tags:  ['JavaScript', 'TypeScript', 'Blog']
 permalink: /blog/beschleunigte-navigation-mit-addPrefetchLink/
 type: article
 jsFiles: [
