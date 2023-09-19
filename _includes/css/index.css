@@ -148,6 +148,7 @@ p:not(.post-summary) {
           calc(var(--shadow-strength) + 3%)),
     0 7px 14px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
   --tag-border-radius: 18px;
+  --detail-summary-icon-size: 24px;
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -305,6 +306,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   --toc-item-border-active-color--light: var(--surface-4);
   --toc-dropdown-border-color--light: var(--lavender-blue-5);
   --toc-dropdown-bg--light: var(--lavender-blue-1);
+  --toc-dropdown-icon-color-filter-value--light: 0;
   --dialog-bg-color--light: var(--lavender-blue-1);
   --dialog-border-color--light: var(--lavender-blue-4);
   --themes-border-color--light: var(--lavender-blue-2);
@@ -370,6 +372,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   --toc-item-border-active-color--dark: var(--shade-50);
   --toc-dropdown-border-color--dark: var(--lavender-blue-5);
   --toc-dropdown-bg-color--dark: var(--deep-purple-5);
+  --toc-dropdown-icon-color-filter-value--dark: 1;
   --dialog-border-color--dark: var(--deep-purple-2);
   --dialog-bg-color--dark: var(--deep-purple-5);
   --themes-border-color--dark: var(--deep-purple-3);
@@ -449,6 +452,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
    */
   --toc-dropdown-border-color: var(--toc-dropdown-border-color--light);
   --toc-dropdown-bg-color: var(--toc-dropdown-bg--light);
+  --toc-dropdown-icon-color-filter-value: var(--toc-dropdown-icon-color-filter-value--light);
 }
 :where(html) theme-switch,
 [theme-preference=light] theme-switch {
@@ -527,6 +531,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
      */
     --toc-dropdown-border-color: var(--toc-dropdown-border-color--dark);
     --toc-dropdown-bg-color: var(--toc-dropdown-bg-color--dark);
+    --toc-dropdown-icon-color-filter-value: var(--toc-dropdown-icon-color-filter-value--dark);
   }
   :where(html) theme-switch {
     --text-color-1: #fff;
@@ -602,6 +607,7 @@ toc-observer a:is(:hover, :focus, .toc-active) {
    */
   --toc-dropdown-border-color: var(--toc-dropdown-border-color--dark);
   --toc-dropdown-bg-color: var(--toc-dropdown-bg-color--dark);
+  --toc-dropdown-icon-color-filter-value: var(--toc-dropdown-icon-color-filter-value--dark);
 }
 [theme-preference=dark] theme-switch {
   --text-color-1: #fff;
@@ -648,6 +654,10 @@ toc-observer a:is(:hover, :focus, .toc-active) {
   border-radius: var(--base-radius);
   border: 2px solid hsla(281, 53%, 97%, 0.63);
   background-color: transparent;
+}
+#dropdown__title img {
+  height: 1.5rem;
+  filter: brightness(0) invert(var(--toc-dropdown-icon-color-filter-value));
 }
 
 .dropdown {
@@ -944,18 +954,19 @@ a.postlist-link {
  * Post card
  */
 .postlist-item {
+  --shadow-strength: 1px;
+  box-shadow: 0 3px 5px -2px hsla(var(--shadow-color)/0.04), 0 7px 14px -5px hsla(var(--shadow-color)/0.06), 0 0 0 var(--shadow-strength) var(--post-card-border-color), 0 7px 14px -5px hsla(var(--shadow-color)/0.1);
   display: flex;
   flex-direction: column;
   gap: var(--base-gap);
   border-radius: var(--base-radius);
   border: 1px solid var(--post-card-border-color);
   padding: var(--base-gap);
-  background-color: rgba(215, 215, 255, 0.2392156863);
-  background-color: #f0efff;
   background-color: var(--post-card-bg-color);
-  box-shadow: var(--shadow-2);
 }
-
+.postlist-item:focus-within {
+  --shadow-strength: 2px;
+}
 .postlist-item header {
   display: flex;
   flex-direction: column;
@@ -996,11 +1007,14 @@ details {
   position: relative;
   max-width: 500px;
   width: 100%;
-  container-type: inline-size;
-  container-name: details-container;
+  margin-block-end: var(--base-gap);
 }
 details[open] summary {
   position: absolute;
+}
+details[open] summary:before {
+  content: "";
+  transform: rotate(180deg);
 }
 details[open] > #details-content {
   border-radius: calc(var(--base-radius) * 1.5);
@@ -1008,6 +1022,7 @@ details[open] > #details-content {
 }
 details summary {
   display: inline-flex;
+  align-items: center;
   list-style: none;
   border-radius: calc(var(--base-radius) * 1.5);
   border: 1px solid var(--details-summary-border-color);
@@ -1018,8 +1033,14 @@ details summary {
   background-color: var(--details-summary-bg-color);
 }
 details summary:before {
-  padding-right: 0.25rem;
-  content: "+ ";
+  content: "";
+  height: var(--detail-summary-icon-size);
+  width: var(--detail-summary-icon-size);
+  background-image: url("/img/icons/expand_more_FILL0_wght400_GRAD0_opsz48.svg");
+  background-size: var(--detail-summary-icon-size);
+  background-repeat: no-repeat;
+  transform-origin: center;
+  transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 details summary:is(:hover, :focus) {
   background-color: var(--details-summary-bg-color-active);
