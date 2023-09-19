@@ -1,6 +1,6 @@
 ---
 title: 'Einen Decorator für <slot> Inhalte entwickeln'
-metaDescription: Ein ClassAccessor-Decorator für Web Components welcher eine Property in einen Getter zu  konvertiert, um den Inhalt <slot> zugewiesener Elemente einfacher verarbeiten zu können.
+metaDescription: Ein ClassAccessor-Decorator für Web Components, welcher eine Property in einen Getter konvertiert, um den Inhalt <slot> zugewiesener Elemente einfacher verarbeiten zu können.
 shortDescription: Den Inhalt <slot> zugewiesener Elemente mit einem Decorator verarbeiten
 date: 2023-09-20
 layout: blog/post.njk
