@@ -172,6 +172,8 @@ p:not(.post-summary) {
     0 7px 14px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
 
   --tag-border-radius: 18px;
+
+  --detail-summary-icon-size: 24px;
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -471,6 +473,18 @@ a.postlist-link {
  */
 
 .postlist-item {
+  --shadow-strength: 1px;
+
+  &:focus-within {
+    --shadow-strength: 2px;
+  }
+
+  box-shadow:
+    0 3px 5px -2px hsla(var(--shadow-color) / 0.04),
+    0 7px 14px -5px hsla(var(--shadow-color) / 0.06),
+    0 0 0 var(--shadow-strength) var(--post-card-border-color),
+    0 7px 14px -5px hsla(var(--shadow-color) / 0.1);
+
   display: flex;
   flex-direction: column;
   gap: var(--base-gap);
@@ -479,15 +493,12 @@ a.postlist-link {
   border: 1px solid var(--post-card-border-color);
 
   padding: var(--base-gap);
-  background-color: #d7d7ff3d;
-  background-color: #f0efff;
   background-color: var(--post-card-bg-color);
-  box-shadow: var(--shadow-2);
-}
 
-.postlist-item header {
-  display: flex;
-  flex-direction: column;
+  header {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .post-tags {
@@ -525,24 +536,19 @@ a.postlist-link {
   }
 }
 
-// @container details-container (max-width: 450px) {
-//   #details-content {
-//     background-color: #fff !important;
-//     display: block;
-//     content-visibility: hidden;
-//   }
-// }
-
 details {
   position: relative;
   max-width: 500px;
   width: 100%;
-
-  container-type: inline-size;
-  container-name: details-container;
+  margin-block-end: var(--base-gap);
 
   &[open] {
     summary {
+      &:before {
+        content: '';
+        transform: rotate(180deg);
+      }
+
       position: absolute;
     }
 
@@ -554,8 +560,16 @@ details {
 
   summary {
     &:before {
-      padding-right: 0.25rem;
-      content: '+ ';
+      content: '';
+      height: var(--detail-summary-icon-size);
+      width: var(--detail-summary-icon-size);
+
+      background-image: url('/img/icons/expand_more_FILL0_wght400_GRAD0_opsz48.svg');
+      background-size: var(--detail-summary-icon-size);
+      background-repeat: no-repeat;
+
+      transform-origin: center;
+      transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &:is(:hover, :focus) {
@@ -563,6 +577,7 @@ details {
     }
 
     display: inline-flex;
+    align-items: center;
     list-style: none;
 
     border-radius: calc(var(--base-radius) * 1.5);
