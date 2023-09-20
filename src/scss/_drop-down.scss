@@ -12,15 +12,18 @@
   display: flex;
   align-items: center;
   gap: calc(var(--base-gap) / 2);
-  padding: calc(var(--base-gap) / 4) calc(var(--base-gap) / 2);
 
   border-radius: var(--base-radius);
   border: 2px solid hsla(281, 53%, 97%, 0.63);
+  padding: calc(var(--base-gap) / 4) calc(var(--base-gap) / 2);
+
   background-color: transparent;
 
   img {
+    aspect-ratio: 1;
+
     height: 1.5rem;
-    filter: brightness(0) #{"invert(var(--toc-dropdown-icon-color-filter-value))"};
+    filter: brightness(0) #{'invert(var(--toc-dropdown-icon-color-filter-value))'};
   }
 }
 
