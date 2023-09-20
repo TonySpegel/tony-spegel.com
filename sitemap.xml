@@ -67,11 +67,6 @@
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/page-list/</loc>
-    <lastmod>2023-09-20</lastmod>
-  </url>
-  
-  <url>
     <loc>https://tony-spegel.com/tags/challenge/</loc>
     <lastmod>2023-09-20</lastmod>
   </url>
@@ -107,17 +102,17 @@
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/tags/a11y/</loc>
-    <lastmod>2023-09-20</lastmod>
-  </url>
-  
-  <url>
     <loc>https://tony-spegel.com/tags/decorator/</loc>
     <lastmod>2023-09-20</lastmod>
   </url>
   
   <url>
     <loc>https://tony-spegel.com/tags/upcoming/</loc>
+    <lastmod>2023-09-20</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/a11y/</loc>
     <lastmod>2023-09-20</lastmod>
   </url>
 </urlset>
