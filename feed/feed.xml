@@ -13,7 +13,7 @@
 	</author>
 	
 	<entry>
-		<title>Einen Decorator für &lt;slot&gt; Inhalte entwickeln</title>
+		<title>Einen Decorator für Inhalte eines Slots entwickeln</title>
 		<link href="https://tony-spegel.com/blog/query-assigned-element-content/"/>
 		<updated>2023-09-20T00:00:00Z</updated>
 		<id>https://tony-spegel.com/blog/query-assigned-element-content/</id>
