@@ -8,11 +8,19 @@ eleventyExcludeFromCollections: true
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="{{ '/css/colors.css' | url }}">
+    {% set css %}
+      {% include "css/colors.css" %}
+    {% endset %}
+
+    <style>
+      {% if env.environment == "PRODUCTION" %}
+        {{css | cssMin | safe}}
+      {% else %}
+        {{css | safe}}
+      {% endif %}
+    </style>
   </head>
   <body>
-    <h2>moin</h2>
-
     <div class="code-tile tag">
       <span>Text</span>
     </div>
