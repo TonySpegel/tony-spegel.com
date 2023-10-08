@@ -56,7 +56,7 @@ export class TocObserver extends LitElement {
   }
 }
 ```
-Bei der Nutzung dieses Decorators bin ich zunächst darüber gestolpert, dass ausschließlich die zum Slot zugewiesenen Elemente zurückgegeben werden - was so aber auch Sinn ergibt. Deswegen nutze ich in einem weiteren Schritt auch einen Getter, welcher mit einem `querySelectorAll` die enthaltenen Links zurückgibt. Das ist nicht großartig kompliziert aber hat mich dann motiviert meinen eigenen Decorator zu schreiben der am Ende beide Schritte in einem vereint:
+Bei der Nutzung dieses Decorators bin ich zunächst darüber gestolpert, dass ausschließlich die zum Slot zugewiesenen Elemente zurückgegeben werden - was so aber auch Sinn ergibt. Deswegen nutze ich in einem weiteren Schritt auch einen Getter, welcher mit einem `querySelectorAll` die enthaltenen Links zurückgibt. Das ist nicht großartig kompliziert, aber hat mich dann motiviert meinen eigenen Decorator zu schreiben, der am Ende beide Schritte in einem vereint:
 ```typescript
 class DecoElement extends HTMLElement {
   @queryAssignedElementContent({ selector: 'li', slot: 'list' })
@@ -67,7 +67,7 @@ class DecoElement extends HTMLElement {
 ## Implementation
 <details>
    <summary>Gut zu wissen: Decorators</summary>
-   <div id="details-content">
+   <div class="details-content">
     <p>
       Decorators ermöglichen es, das Verhalten von Classes und deren Member zu ändern. Dazu zählt beispielsweise das Hinzufügen von Metadaten, die Erweiterung von Funktionalität oder die Validierung von Daten.
     </p>
@@ -77,7 +77,7 @@ class DecoElement extends HTMLElement {
    </div>
 </details>
 
-Meine Implementation basiert auf dem derzeit aktuellen Stage 3 Proposal und unterscheidet sich somit von den bisher bereits verfügbaren Legacy Decorators (siehe _Gut zu wissen_). Den aktuellen Status des Proposals verfolge ich schon eine Weile und habe dann schließlich im Mai mit der Umsetzung begonnen. Eine kleine Einschränkung direkt vorab: zum jetzigen Zeitpunkt ist es noch nicht mögliche beide Arten von Decorators parallel in Lit zu nutzen - das ist aber bereits in Arbeit.
+Meine Implementation basiert auf dem derzeit aktuellen Stage 3 Proposal und unterscheidet sich somit von den bisher bereits verfügbaren Legacy Decorators (siehe _Gut zu wissen_). Den aktuellen Status des Proposals verfolge ich schon eine Weile und habe dann schließlich im Mai mit der Umsetzung begonnen. Eine kleine Einschränkung direkt vorab: zum jetzigen Zeitpunkt ist es noch nicht möglich, beide Arten von Decorators parallel in Lit zu nutzen - das ist aber bereits in Arbeit.
 
 Die eigentliche Logik im Code ist, wie in der [Motivation](#motivation) zu sehen, überschaubar. Die Herausforderung für mich lag eher darin, ein so umfassendes, technisches Dokument wie das Proposal komplett zu lesen und so weit zu verstehen, dass ich damit arbeiten konnte. Viel gelernt habe ich im Austausch mit [Valentin Degenne](https://github.com/vdegenne), welchen ich über den [Lit Discord](https://discord.gg/eMaSX7G5) kennenlernen durfte und mich bei Fragen immer wieder unterstützt hat.
 
@@ -104,9 +104,9 @@ class C {
 }
 ```
 
-Auf diese Art funktioniert das nur für einfache Felder. Das stellt aber kein Problem dar, weil diese sich weiter anpassen lassen. Grob ausgedrückt soll der Decorator dieses so dekorierte Feld nehmen und mit einem angepassten Getter ersetzen in dem es mit zusätzlicher Logik angereichert wird.
+Auf diese Art funktioniert das nur für einfache Felder. Das stellt aber kein Problem dar, weil diese sich weiter anpassen lassen. Grob ausgedrückt soll der Decorator dieses so dekorierte Feld nehmen und mit einem angepassten Getter ersetzen, in dem es mit zusätzlicher Logik angereichert wird.
 
-Meine Implementation basiert auf Grund der Nähe auch stark auf dem `queryAssignedElements`-[Decorators](https://github.com/lit/lit/blob/main/packages/reactive-element/src/decorators/query-assigned-elements.ts#L79):
+Meine Implementation basiert auf Grund der Nähe auch stark auf dem `queryAssignedElements`-[Decorator](https://github.com/lit/lit/blob/main/packages/reactive-element/src/decorators/query-assigned-elements.ts#L79):
 
 ```ts
 // A: Signature
@@ -183,16 +183,16 @@ Lediglich `slot` definiere ich als optional, da ich später ohne Angabe eines Na
 
 ### B: Runtime check
 
-Um nicht nur in TypeScript sondern auch in JavaScript etwas mehr Sicherheit zu bieten, habe ich noch einen Check integriert, um sicherzustellen, dass der Decorator nur an der richtigen Stelle, nämlich an einer Class Property, verwendet werden kann. Wäre es nicht für diesen Check wäre auch das `context`-Objekt unbenutzt.
+Um nicht nur in TypeScript, sondern auch in JavaScript etwas mehr Sicherheit zu bieten, habe ich noch einen Check integriert, um sicherzustellen, dass der Decorator nur an der richtigen Stelle, nämlich an einer Class Property, verwendet werden kann. Wäre es nicht für diesen Check, wäre auch das `context`-Objekt unbenutzt.
 
 ### C: Building a new getter
 
-Der Kern dieses Decorators ist der neue Getter. Im ersten Schritt (**C1**) konstruiere ich den Slot-Selektor für **C2** und greife auf den Standard-Slot zurück, sollte kein `name` übergeben werden. Eine Web Component kann aber muss nämlich nicht nur aus einem Slot-Element bestehen. Inklusive **C3** ist die Implementierung noch nah am Vorbild denn erst in **C4** extrahiere ich den für mich eigentlich interessanten Inhalt.
+Der Kern dieses Decorators ist der neue Getter. Im ersten Schritt (**C1**) konstruiere ich den Slot-Selektor für **C2** und greife auf den Standard-Slot zurück, sollte kein `name` übergeben werden. Eine Web Component kann aber muss nämlich nicht nur aus einem Slot-Element bestehen. Inklusive **C3** ist die Implementierung noch nah am Vorbild, denn erst in **C4** extrahiere ich den für mich eigentlich interessanten Inhalt.
 
 ## Fazit & Ausblick
 
 Auch wenn ich zum jetzigen Stand meinen Decorator noch nicht in meinen Projekten nutzen kann, habe ich hier eine Menge gelernt und wertvolles Feedback einholen können sowohl was die Implementierung aber auch insbesondere das Arbeiten mit anspruchsvolleren Spezifikationen betrifft.
-Vor allem das Ganze typsicher umzusetzen und Generics über mehrere Ebenen hinweg zu nutzen war nicht ganz ohne. Auch spannend würde ich es bezeichnen, dass zur Zeit der Umsetzung wenig bis eher keine anderen Posts existierten, die genau diese Art an Decorators behandelt haben.
+Vor allem das Ganze typsicher umzusetzen und Generics über mehrere Ebenen hinweg zu nutzen, war nicht ganz ohne. Auch spannend würde ich es bezeichnen, dass zur Zeit der Umsetzung wenig bis eher keine anderen Posts existierten, die genau diese Art an Decorators behandelt haben.
 
 Das Ganze sehe ich im Moment noch als experimentell aber als guten ersten Schritt für weitere Entwicklungen an. Logik hinter einem Decorator zu verstecken ist natürlich auch immer etwas <span aria-hidden="true">✨</span>Magie<span aria-hidden="true">✨</span>, da es auf den ersten Blick nicht ersichtlich ist, was konkret passiert. Da hier aber der Anwendungsfall relativ kompakt ist, sehe ich das als kein großes Problem an.
 

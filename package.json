@@ -1,11 +1,12 @@
 {
   "name": "tony-spegel.com-website",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "My personal website. I blog about the modern web.",
   "scripts": {
     "build:eleventy:dev": "wireit",
     "build:eleventy:prod": "wireit",
     "build:rollup:prod": "rollup --config rollup.config.live.js",
+    "build:rollup:sw": "rollup --config rollup-sw.local.js",
     "sass:dev": "wireit",
     "sass:prod": "wireit",
     "wire-serve:dev": "wireit",

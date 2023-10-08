@@ -2,6 +2,7 @@
 title: CV
 description: Mein "Curriculum Vitae", Lebenslauf in HTML Form
 
+eleventyExcludeFromCollections: true
 imports: ['index', 'theme-switch']
 layout: content-page.njk
 permalink: /cv/

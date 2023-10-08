@@ -11,6 +11,8 @@ import summary from 'rollup-plugin-summary';
 import path from 'path';
 
 const prodDir = '_prod';
+const packageJson = require('./package.json');
+const { version } = packageJson;
 
 const terse = () =>
   terser({
@@ -53,11 +55,7 @@ export default [
       // Minify JS
       terse(),
       generateSW({
-        globIgnores: [
-          'polyfills/*.js',
-          'nomodule-*.js',
-          '_includes/css/**/*.css'
-        ],
+        globIgnores: ['cv/*', '_includes/css/**/*.css'],
         navigateFallback: '/index.html',
         // where to output the generated sw
         swDest: path.join(prodDir, 'sw.js'),
@@ -68,7 +66,11 @@ export default [
         skipWaiting: true,
         clientsClaim: true,
         runtimeCaching: [
-          { urlPattern: 'polyfills/*.js', handler: 'CacheFirst' },
+          {
+            handler: 'CacheFirst',
+            urlPattern: /^https?:\/\/.+/,
+            options: { cacheName: `tony-spegel.com-v${version}` },
+          },
         ],
       }),
       summary(),
