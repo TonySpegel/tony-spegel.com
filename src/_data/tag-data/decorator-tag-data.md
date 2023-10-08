@@ -1,6 +1,6 @@
 <details>
    <summary>Gut zu wissen</summary>
-   <div id="details-content">
+   <div class="details-content">
     <p>
       Decorators ermöglichen es, das Verhalten von Classes und deren Member zu ändern. Dazu zählt beispielsweise das Hinzufügen von Metadaten, die Erweiterung von Funktionalität oder die Validierung von Daten.
     </p>

@@ -552,7 +552,7 @@ details {
       position: absolute;
     }
 
-    > #details-content {
+    > .details-content {
       border-radius: calc(var(--base-radius) * 1.5);
       border: 1px solid var(--disclaimer-box-border-color);
     }
@@ -591,7 +591,7 @@ details {
     background-color: var(--details-summary-bg-color);
   }
 
-  #details-content {
+  .details-content {
     padding-block-start: calc(var(--base-gap) * 2.5);
     padding-block-end: var(--base-gap);
     padding-inline: var(--base-gap);
