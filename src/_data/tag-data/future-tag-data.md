@@ -1,6 +1,6 @@
 <details>
    <summary>Gut zu wissen</summary>
-   <div id="details-content">
+   <div class="details-content">
     <p>
       Posts unter diesem Tag behandeln Themen welche (noch) nicht uneingeschränkt oder ohne weiteres auf jeder Plattform laufen.
       Dazu können frühe Stadien einer Spezifikation oder Features zählen, welche TypeScript oder Sass und Ähnliches benötigen
