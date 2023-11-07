@@ -5,7 +5,7 @@ date: 2023-11-11
 layout: blog/post.njk
 type: article
 includeToc: true
-draft: false
+draft: true
 tags:  ['Decorator', 'TypeScript', 'Upcoming']
 permalink: /blog/event-emitter/
 imports: ['index', 'post']
