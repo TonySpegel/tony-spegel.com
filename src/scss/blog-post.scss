@@ -144,3 +144,16 @@ blockquote {
 #toc-opener:is(:focus, :hover) + #toc-nav {
   display: block;
 }
+
+#skip-to-main-link {
+  position: fixed;
+  left: 10px;
+  top: var(--header-height);
+
+  border-radius: var(--base-radius);
+  padding: var(--base-gap);
+
+  background-color: #d5d5ff;
+
+  z-index: 5;
+}
