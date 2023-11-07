@@ -1,12 +1,13 @@
 <head>
   {# Set meta-tags #}
-  {% include "./head/meta-tags.njk" %}
+  {% include "./meta-tags.njk" %}
   {# Read theme preference from localStorage #}
   {% include './theme-preference.njk' %}
 
   {% set css %}
     {% include "css/index.css" %}
     {% include "css/components/theme-switch.css" %}
+    {% include "css/font-registration.css" %}
   {% endset %}
 
   <style>
@@ -22,34 +23,5 @@
 
   <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
   <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
-
-  <style>
-    @font-face {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url("/fonts/inter-v7-latin-regular.woff2") format('woff2');
-      unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
-    }
-    @font-face {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 500;
-      font-display: swap;
-      src: url("/fonts/inter-v7-latin-500.woff2") format('woff2');
-      unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
-    }
-
-    @font-face {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 700;
-      font-display: swap;
-      src: url("/fonts/inter-v7-latin-700.woff2") format('woff2');
-      unicode-range: U+0000-00FF, U+02BB-02BC, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
-    }
-  </style>
-
   <link rel="icon" href="/favicon.svg"/>
 </head>

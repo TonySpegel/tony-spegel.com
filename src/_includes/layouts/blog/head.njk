@@ -1,12 +1,13 @@
 <head>
   {# Set meta-tags #}
-  {% include "../head/meta-tags.njk" %}
+  {% include "../meta-tags.njk" %}
 
   {% set css %}
     {# 'styleSheets'is set in the front matter data for each post #}
     {% for sheet in styleSheets %}
       {% include 'css/' + sheet + '.css' %}
     {% endfor %}
+    {% include "css/font-registration.css" %}
   {% endset %}
 
   <style>
