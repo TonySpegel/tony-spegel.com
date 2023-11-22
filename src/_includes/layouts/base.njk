@@ -12,7 +12,7 @@
 
     <div id="sentinel-element"></div>
     <div class="main-wrapper">
-      <main>
+      <main {% if page.url == '/' %} class="main-start"{% endif %}>
         {% if page.url == '/' %}
           <div id="me-wrapper">
             <div class="intro">
