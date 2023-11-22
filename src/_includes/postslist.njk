@@ -1,7 +1,7 @@
 {% import './layouts/blog/post-tags.njk'  as post %}
 {% import 'macros/tag.njk' as utility %}
 
-<div reversed class="posts" style="counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}">
+<div reversed class="posts">
   {% for post in postslist | reverse %}
     <article class="postlist-item">
       <header>
