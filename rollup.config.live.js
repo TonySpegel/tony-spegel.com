@@ -60,7 +60,6 @@ export default [
           '_includes/css/**/*.css',
           'img/social-images/**/*',
         ],
-        navigateFallback: '/index.html',
         // where to output the generated sw
         swDest: path.join(prodDir, 'sw.js'),
         // directory to match patterns against to be precached
