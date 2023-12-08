@@ -8,7 +8,7 @@ type: article
 includeToc: true
 draft: false
 tags:  ['Lit', 'Web Components', 'a11y', 'TypeScript']
-socialImage: '/img/2023/image-comparison/2022_1004_14254000.jpg'
+socialImage: '/img/social-images/2023/image-comparison-component-flowers.jpg'
 permalink: /blog/image-comparison-component/
 jsFiles: [
   'theme-switch',

@@ -8,6 +8,7 @@ type: article
 includeToc: true
 draft: false
 tags:  ['Lit', 'Web Components', 'TypeScript', 'Blog']
+socialImage: '/img/social-images/2023/toc-observer-demo.jpg'
 permalink: /blog/toc-observer/
 jsFiles: [
   'index',
@@ -21,7 +22,6 @@ styleSheets: [
   'components/theme-switch',
   'prism-a11y-rework'
 ]
-socialImage: '/img/2023/toc-observer/toc-observer-demo.jpg'
 eleventyImport:
   collections: ["post"]
 ---

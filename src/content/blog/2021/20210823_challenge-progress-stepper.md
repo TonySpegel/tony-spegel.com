@@ -21,7 +21,7 @@ styleSheets: [
   'components/theme-switch',
   'prism-a11y-rework'
 ]
-socialImage: '/img/2021/fecc-challenge-008.png'
+socialImage: '/img/social-images/2021/challenge-progress-stepper_fecc-challenge-008.png'
 eleventyImport:
   collections: ["post"]
 ---

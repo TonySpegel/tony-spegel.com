@@ -16,6 +16,6 @@
 <meta property="og:title" content="{{ title or metadata.title }}">
 <meta property="og:description" content="{{ descriptionContent }}">
 {% if (socialImage is defined) and (env.environment == "PRODUCTION") %}
-  <meta property="og:image" content="{{ metadata.url }}{{ socialImage }}">
+<meta property="og:image" content="{{ metadata.url }}{{ socialImage }}">
 {% endif %}
 <meta name="version" content="{% packageVersion %}"/>

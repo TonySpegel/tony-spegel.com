@@ -8,7 +8,7 @@ type: article
 includeToc: true
 draft: false
 tags:  ['Decorator', 'TypeScript', 'Lit', 'Web Components', 'Upcoming']
-socialImage: '/img/2023/query-assigned-element-content/queryAssignedElementContentDemo.png'
+socialImage: '/img/social-images/2023/queryAssignedElementContentDemo.png'
 permalink: /blog/query-assigned-element-content/
 jsFiles: [
   'theme-switch',
