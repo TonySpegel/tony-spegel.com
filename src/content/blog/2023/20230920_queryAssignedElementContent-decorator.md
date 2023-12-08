@@ -22,7 +22,10 @@ styleSheets: [
   'components/theme-switch',
   'prism-a11y-rework'
 ]
+eleventyImport:
+  collections: ["post"]
 ---
+{% import 'macros/good-to-know.njk' as gtn with context %}
 
 ## Motivation
 
@@ -65,17 +68,8 @@ class DecoElement extends HTMLElement {
 ```
 
 ## Implementation
-<details>
-   <summary>Gut zu wissen: Decorators</summary>
-   <div class="details-content">
-    <p>
-      Decorators ermöglichen es, das Verhalten von Classes und deren Member zu ändern. Dazu zählt beispielsweise das Hinzufügen von Metadaten, die Erweiterung von Funktionalität oder die Validierung von Daten.
-    </p>
-    <p>
-      Es ist wichtig zu beachten, dass hier Standard Decorators gemeint sind, die derzeit als <a href="https://github.com/tc39/proposal-decorators">Stage 3 Proposal</a> existieren. (Legacy) Decorators können bereits seit längerem genutzt werden und entsprechen einem vorherigen Entwurf. Obwohl Standard Decorators derzeit von keinem Browser unterstützt werden, können sie bereits mit Compilern wie TypeScript (>= 5.x.x) oder Babel genutzt werden.
-    </p>
-   </div>
-</details>
+
+{{ gtn.gtnDecorators() }}
 
 Meine Implementation basiert auf dem derzeit aktuellen Stage 3 Proposal und unterscheidet sich somit von den bisher bereits verfügbaren Legacy Decorators (siehe _Gut zu wissen_). Den aktuellen Status des Proposals verfolge ich schon eine Weile und habe dann schließlich im Mai mit der Umsetzung begonnen. Eine kleine Einschränkung direkt vorab: zum jetzigen Zeitpunkt ist es noch nicht möglich, beide Arten von Decorators parallel in Lit zu nutzen - das ist aber bereits in Arbeit.
 
