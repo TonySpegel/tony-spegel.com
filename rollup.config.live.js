@@ -55,7 +55,11 @@ export default [
       // Minify JS
       terse(),
       generateSW({
-        globIgnores: ['cv/*', '_includes/css/**/*.css'],
+        globIgnores: [
+          'cv/*',
+          '_includes/css/**/*.css',
+          'img/social-images/**/*',
+        ],
         navigateFallback: '/index.html',
         // where to output the generated sw
         swDest: path.join(prodDir, 'sw.js'),
