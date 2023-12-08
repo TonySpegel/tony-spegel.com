@@ -1,6 +1,6 @@
 ---
 title: 'Custom Events mit @eventEmitter'
-metaDescription: Ein ClassMethod-Decorator, welcher eine Property in einen Getter konvertiert, um den Inhalt <slot> zugewiesener Elemente einfacher verarbeiten zu können.
+metaDescription: Ein ClassMethod-Decorator welcher CustomEvents auslösen kann. Mit diesem Standard Decorator kann DOM-unabhängig kommuniziert werden. Eine gute Lösung für (Web) Components und Frameworks.
 shortDescription: Wie man einen Class Method Decorator für Custom Events umsetzen kann
 
 date: 2023-12-08
