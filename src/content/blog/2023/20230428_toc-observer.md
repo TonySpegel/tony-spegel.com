@@ -22,6 +22,8 @@ styleSheets: [
   'prism-a11y-rework'
 ]
 socialImage: '/img/2023/toc-observer/toc-observer-demo.jpg'
+eleventyImport:
+  collections: ["post"]
 ---
 Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter "Inhalt" oder neben dem Post an der Seite sehen.
 

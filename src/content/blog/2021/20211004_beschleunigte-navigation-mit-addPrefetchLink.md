@@ -20,6 +20,8 @@ styleSheets: [
   'components/theme-switch',
   'prism-a11y-rework'
 ]
+eleventyImport:
+  collections: ["post"]
 ---
 Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt, um diese schneller aufrufen zu können. Das kann beispielsweise so aussehen: `<link rel="prefetch" href="/img/catsarecute.jpg" />`. Browser werden diese Ressource dann herunterladen und zwischenspeichern (allerdings nur im [Idle](https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined)).
 

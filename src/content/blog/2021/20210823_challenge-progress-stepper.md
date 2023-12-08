@@ -22,6 +22,8 @@ styleSheets: [
   'prism-a11y-rework'
 ]
 socialImage: '/img/2021/fecc-challenge-008.png'
+eleventyImport:
+  collections: ["post"]
 ---
 <figure>
   <img

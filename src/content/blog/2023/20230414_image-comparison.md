@@ -24,6 +24,8 @@ styleSheets: [
   'components/image-comparison',
   'prism-a11y-rework'
 ]
+eleventyImport:
+  collections: ["post"]
 ---
 In diesem Post geht es darum, eine Component zu entwickeln, welche es ermöglicht, Bilder auf verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.
 
