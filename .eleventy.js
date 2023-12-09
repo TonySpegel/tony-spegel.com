@@ -101,9 +101,9 @@ module.exports = function (eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
-  eleventyConfig.addCollection('shorts', function(collection) {
-    return collection.getAll().filter(item => item.data.type === 'short');
-  });
+  // eleventyConfig.addCollection('shorts', function(collection) {
+  //   return collection.getAll().filter(item => item.data.type === 'short');
+  // });
 
   eleventyConfig.addGlobalData('env', process.env.NODE_ENV);
 

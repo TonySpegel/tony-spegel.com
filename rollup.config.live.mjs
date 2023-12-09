@@ -4,14 +4,13 @@
 
 import { generateSW } from 'rollup-plugin-workbox';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
+import packageJson from './package.json' assert { type: 'json' };
 
-import minifyHTML from 'rollup-plugin-minify-html-literals';
-import summary from 'rollup-plugin-summary';
+import template from 'rollup-plugin-html-literals';
 import path from 'path';
 
 const prodDir = '_prod';
-const packageJson = require('./package.json');
 const { version } = packageJson;
 
 const terse = () =>
@@ -34,17 +33,17 @@ export default [
   {
     input: `${prodDir}/js/image-comparison.js`,
     output: outputSettings,
-    plugins: [nodeResolve(), minifyHTML(), terse(), summary()],
+    plugins: [nodeResolve(), template(), terse()],
   },
   {
     input: `${prodDir}/js/theme-switch.js`,
     output: outputSettings,
-    plugins: [nodeResolve(), minifyHTML(), terse(), summary()],
+    plugins: [nodeResolve(), template(), terse()],
   },
   {
     input: `${prodDir}/js/post.js`,
     output: outputSettings,
-    plugins: [nodeResolve(), minifyHTML(), terse(), summary()],
+    plugins: [nodeResolve(), template(), terse()],
   },
   {
     input: `${prodDir}/js/index.js`,
@@ -76,7 +75,6 @@ export default [
           },
         ],
       }),
-      summary(),
     ],
   },
 ];

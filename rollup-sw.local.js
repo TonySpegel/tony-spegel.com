@@ -4,7 +4,6 @@
 
 import { generateSW } from 'rollup-plugin-workbox';
 import path from 'path';
-import summary from 'rollup-plugin-summary';
 const packageJson = require('./package.json');
 const { version } = packageJson;
 
@@ -38,7 +37,6 @@ export default [
           },
         ],
       }),
-      summary(),
     ],
   },
 ];
