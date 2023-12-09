@@ -192,7 +192,10 @@ Dieser Decorator diente für mich vor allem dazu, noch mehr über Standard Decor
 import { Event, EventEmitter } from '@stencil/core';
 
 export class TodoList {
-  // Event called 'todoCompleted' that is "composed", "cancellable" and it will bubble up!
+  /**
+   * Event called 'todoCompleted' that is "composed",
+   * "cancellable" and it will bubble up!
+   */
   @Event({
     eventName: 'todoCompleted',
     composed: true,
