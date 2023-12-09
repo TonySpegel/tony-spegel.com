@@ -1,3 +1,8 @@
+---
+permalink: false
+eleventyExcludeFromCollections: true
+---
+
 Here lays the content of almost everything:
 - /blog/: posts organized by years
 - /misc/: content pages such as imprint

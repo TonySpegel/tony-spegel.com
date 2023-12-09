@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /cv/
 
 Sitemap: https://tony-spegel.com/sitemap.xml
