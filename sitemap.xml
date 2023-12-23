@@ -62,16 +62,6 @@
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/tags/challenge/</loc>
-    <lastmod>2023-12-23</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tony-spegel.com/tags/css/</loc>
-    <lastmod>2023-12-23</lastmod>
-  </url>
-  
-  <url>
     <loc>https://tony-spegel.com/tags/javascript/</loc>
     <lastmod>2023-12-23</lastmod>
   </url>
@@ -98,6 +88,16 @@
   
   <url>
     <loc>https://tony-spegel.com/tags/a11y/</loc>
+    <lastmod>2023-12-23</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/challenge/</loc>
+    <lastmod>2023-12-23</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/css/</loc>
     <lastmod>2023-12-23</lastmod>
   </url>
   
