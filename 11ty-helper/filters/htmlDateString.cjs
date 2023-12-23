@@ -1,9 +1,16 @@
-const { DateTime } = require('luxon');
-
 function htmlDateString(eleventyConfig) {
-  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+  const dateOptions = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  };
+
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
+    const [day, month, year] = new Intl.DateTimeFormat('de-DE', dateOptions)
+      .format(dateObj)
+      .split('.');
+
+    return `${year}-${month}-${day}`;
   });
 }
 
