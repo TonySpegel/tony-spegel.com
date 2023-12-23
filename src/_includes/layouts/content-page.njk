@@ -5,6 +5,10 @@
     {# Read theme preference from localStorage #}
     {% include 'layouts/theme-preference.njk' %}
 
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
+    <link href="{{ metadata.author.mastodon }}" rel="me">
+
     {% set css %}
       {% include "css/index.css" %}
       {% include "css/blog-post.css" %}
