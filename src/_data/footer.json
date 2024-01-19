@@ -1,5 +1,6 @@
 [
   { "url": "/impressum/", "text": "Impressum" },
   { "url": "/datenschutzerklaerung/", "text": "Datenschutzerklärung" },
-  { "url": "/barrierefreiheit/", "text": "Barrierefreiheit" }
+  { "url": "/barrierefreiheit/", "text": "Barrierefreiheit" },
+  { "url": "/feed/feed.xml", "text": "RSS" }
 ]
