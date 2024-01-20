@@ -22,17 +22,6 @@ permalink: /feed/feed.xml
     <generator>{{ eleventy.generator }}</generator>
     <docs>https://www.rssboard.org/rss-specification</docs>
 
-    <image>
-      <url>{{ metadata.url }}/tsp_icon.svg</url>
-      <title>{{ metadata.title }}</title>
-      <link>{{ metadata.url }}</link>
-    </image>
-
-    <author>
-      <name>{{ metadata.author.name }}</name>
-      <email>{{ metadata.author.email }}</email>
-    </author>
-
     {%- for post in collections.blog | reverse %}
       {%- set absolutePostUrl = post.url | absoluteUrl(metadata.url) %}
       <item>
@@ -41,17 +30,16 @@ permalink: /feed/feed.xml
         <description>
           {% if (post.data.socialImage is defined) %}
             <![CDATA[<img align="left" hspace="5" src="{{ metadata.url }}{{ post.data.socialImage }}"/>
-            {{ post.data.shortDescription }}]]>
+            {{ post.data.metaDescription }}]]>
           {% else %}
-            {{ post.data.shortDescription }}
+            {{ post.data.metaDescription }}
           {% endif %}
         </description>
 
         <author>{{ metadata.author.url }} ({{ metadata.author.name }})</author>
-        <pubDate>{{ post.date | rssDate }}</pubDate>
+        <pubDate>{{ post.date | dateToRfc822 }}</pubDate>
         <guid>{{ absolutePostUrl }}</guid>
         <source url="{{ metadata.url }}">{{ metadata.title }}</source>
-        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
       </item>
     {%- endfor %}
   </channel>
