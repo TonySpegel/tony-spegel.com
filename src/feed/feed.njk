@@ -3,26 +3,56 @@
 permalink: /feed/feed.xml
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-	<title>{{ metadata.title }}</title>
-	<subtitle>{{ metadata.feed.subtitle }}</subtitle>
-	{% set absoluteUrl %}{{ metadata.feed.path | url | absoluteUrl(metadata.url) }}{% endset %}
-	<link href="{{ absoluteUrl }}" rel="self"/>
-	<link href="{{ metadata.url }}"/>
-	<updated>{{ collections.blog | rssLastUpdatedDate }}</updated>
-	<id>{{ metadata.feed.id }}</id>
-	<author>
-		<name>{{ metadata.author.name }}</name>
-		<email>{{ metadata.author.email }}</email>
-	</author>
-	{%- for post in collections.blog | reverse %}
-	{% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
-	<entry>
-		<title>{{ post.data.title }}</title>
-		<link href="{{ absolutePostUrl }}"/>
-		<updated>{{ post.date | rssDate }}</updated>
-		<id>{{ absolutePostUrl }}</id>
-		<content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
-	</entry>
-	{%- endfor %}
-</feed>
+<rss
+  version="2.0"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="{{ metadata.url }}"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+>
+  <channel>
+    <title>{{ metadata.title }}</title>
+    <link>{{ metadata.url }}</link>
+    <atom:link href="{{ permalink | absoluteUrl(metadata.url) }}" rel="self" type="application/rss+xml" />
+    <description>{{ metadata.feed.subtitle }}</description>
+    <language>{{ metadata.language }}</language>
+    <copyright>© {{ metadata.author.name }} {% year %}</copyright>
+    <managingEditor>{{ metadata.author.email }} ({{ metadata.author.name }})</managingEditor>
+    <webMaster>{{ metadata.author.email }} ({{ metadata.author.name }})</webMaster>
+    <lastBuildDate>{{ lastBuildDate }}</lastBuildDate>
+    <generator>{{ eleventy.generator }}</generator>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+
+    <image>
+      <url>{{ metadata.url }}/tsp_icon.svg</url>
+      <title>{{ metadata.title }}</title>
+      <link>{{ metadata.url }}</link>
+    </image>
+
+    <author>
+      <name>{{ metadata.author.name }}</name>
+      <email>{{ metadata.author.email }}</email>
+    </author>
+
+    {%- for post in collections.blog | reverse %}
+      {%- set absolutePostUrl = post.url | absoluteUrl(metadata.url) %}
+      <item>
+        <title>{{ post.data.title }}</title>
+        <link>{{ absolutePostUrl }}</link>
+        <description>
+          {% if (post.data.socialImage is defined) %}
+            <![CDATA[<img align="left" hspace="5" src="{{ metadata.url }}{{ post.data.socialImage }}"/>
+            {{ post.data.shortDescription }}]]>
+          {% else %}
+            {{ post.data.shortDescription }}
+          {% endif %}
+        </description>
+
+        <author>{{ metadata.author.url }} ({{ metadata.author.name }})</author>
+        <pubDate>{{ post.date | rssDate }}</pubDate>
+        <guid>{{ absolutePostUrl }}</guid>
+        <source url="{{ metadata.url }}">{{ metadata.title }}</source>
+        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+      </item>
+    {%- endfor %}
+  </channel>
+</rss>

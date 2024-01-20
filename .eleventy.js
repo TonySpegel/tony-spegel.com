@@ -107,6 +107,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addGlobalData('env', process.env.NODE_ENV);
 
+  eleventyConfig.addGlobalData('lastBuildDate', () => {
+    return new Date().toUTCString();
+  });
+
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
     html: true,

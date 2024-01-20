@@ -1,6 +1,6 @@
 {
   "name": "tony-spegel.com-website",
-  "version": "6.1.1",
+  "version": "6.1.4",
   "description": "My personal website. I blog about the modern web.",
   "scripts": {
     "build:eleventy:dev": "wireit",
@@ -15,7 +15,7 @@
   },
   "wireit": {
     "build:eleventy:dev": {
-      "command": "NODE_ENV=DEV eleventy --config=.eleventy.js",
+      "command": "NODE_ENV=DEV eleventy --config=.eleventy.js --incremental",
       "files": [
         "src/**/*",
         ".eleventy.js"
