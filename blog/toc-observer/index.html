@@ -25,7 +25,7 @@
 
 <meta property="og:image" content="https://tony-spegel.com/img/social-images/2023/toc-observer-demo.jpg">
 
-<meta name="version" content="6.1.6">
+<meta name="version" content="6.1.7">
 
 
   
@@ -187,7 +187,7 @@
           </ul>
         </header>
 
-        <p>Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter &quot;Inhalt&quot; oder neben dem Post an der Seite sehen.</p>
+        <p>Eine Table of Contents (TOC) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter &quot;Inhalt&quot; oder neben dem Post an der Seite sehen.</p>
 <p>Links zum Download gibt es hier: <a href="https://github.com/TonySpegel/toc-observer" target="_blank" rel="noopener noreferrer">GitHub</a>, <a href="https://www.npmjs.com/package/toc-observer-component" target="_blank" rel="noopener noreferrer">NPM</a>.</p>
 <div class="disclaimer">
   <span>Hinweis</span>
@@ -318,7 +318,7 @@ Zu diesen ausgewählten Links, wird dann eine CSS Klasse hinzugefügt/entfernt, 
 </section>
 <section>
 <h2 id="verschiedene-html-strukturen-unterstuetzen"><a class="header-anchor" href="#verschiedene-html-strukturen-unterstuetzen">Verschiedene HTML Strukturen unterstützen</a></h2>
-<p>Das eingangs erwähnte, vereinfachte Markup geht davon aus, dass Sections eine ID besitzen. Üblicher ist es aber in <abr>SSG</abr> (Static site generators), eine Section zu haben auf die eine Überschrift mit ID und einem Link folgt. Also eher so:</p>
+<p>Das eingangs erwähnte, vereinfachte Markup geht davon aus, dass Sections eine ID besitzen. Üblicher ist es aber in Static site generators (SSG), eine Section zu haben auf die eine Überschrift mit ID und einem Link folgt. Also eher so:</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beschreibung<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#beschreibung<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Beschreibung<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
