@@ -36,7 +36,7 @@ permalink: /feed/feed.xml
           {% endif %}
         </description>
 
-        <author>{{ metadata.author.url }} ({{ metadata.author.name }})</author>
+        <author>{{ metadata.author.email }} ({{ metadata.author.name }})</author>
         <pubDate>{{ post.date | dateToRfc822 }}</pubDate>
         <guid>{{ absolutePostUrl }}</guid>
         <source url="{{ metadata.url }}">{{ metadata.title }}</source>

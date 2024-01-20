@@ -1,6 +1,6 @@
 {
   "name": "tony-spegel.com-website",
-  "version": "6.1.5",
+  "version": "6.1.6",
   "description": "My personal website. I blog about the modern web.",
   "scripts": {
     "build:eleventy:dev": "wireit",
