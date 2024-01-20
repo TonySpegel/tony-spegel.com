@@ -67,12 +67,17 @@
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/tags/challenge/</loc>
+    <loc>https://tony-spegel.com/tags/javascript/</loc>
     <lastmod>2024-01-20</lastmod>
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/tags/css/</loc>
+    <loc>https://tony-spegel.com/tags/typescript/</loc>
+    <lastmod>2024-01-20</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tony-spegel.com/tags/blog/</loc>
     <lastmod>2024-01-20</lastmod>
   </url>
   
@@ -92,17 +97,12 @@
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/tags/typescript/</loc>
+    <loc>https://tony-spegel.com/tags/challenge/</loc>
     <lastmod>2024-01-20</lastmod>
   </url>
   
   <url>
-    <loc>https://tony-spegel.com/tags/javascript/</loc>
-    <lastmod>2024-01-20</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tony-spegel.com/tags/blog/</loc>
+    <loc>https://tony-spegel.com/tags/css/</loc>
     <lastmod>2024-01-20</lastmod>
   </url>
   
