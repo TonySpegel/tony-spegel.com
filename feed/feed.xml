@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-	<title>Tony Spegel</title>
-	<subtitle>Homepage &amp; Blog zu moderner Web-Entwicklung: Web-Apps, Angular, TypeScript, Web Components, Shopify &amp; Barrierefreiheit</subtitle>
-	
-	<link href="https://tony-spegel.com/feed/feed.xml" rel="self"/>
-	<link href="https://tony-spegel.com"/>
-	<updated>2023-12-08T00:00:00Z</updated>
-	<id>https://tony-spegel.com/</id>
-	<author>
-		<name>Tony Spegel</name>
-		<email>tony.spegel@gmail.com</email>
-	</author>
-	
-	<entry>
-		<title>Custom Events mit @eventEmitter</title>
-		<link href="https://tony-spegel.com/blog/event-emitter-decorator/"/>
-		<updated>2023-12-08T00:00:00Z</updated>
-		<id>https://tony-spegel.com/blog/event-emitter-decorator/</id>
-		<content type="html">&lt;p&gt;Events sind eine super Möglichkeit um zwischen verschiedenen (Web) Components&lt;br /&gt;
+<rss
+  version="2.0"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="https://tony-spegel.com"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+>
+  <channel>
+    <title>Tony Spegel</title>
+    <link>https://tony-spegel.com</link>
+    <atom:link href="https://tony-spegel.com/feed/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Homepage &amp; Blog zu moderner Web-Entwicklung: Web-Apps, Angular, TypeScript, Web Components, Shopify &amp; Barrierefreiheit</description>
+    <language>de</language>
+    <copyright>© Tony Spegel 2024</copyright>
+    <managingEditor>tony.spegel@gmail.com (Tony Spegel)</managingEditor>
+    <webMaster>tony.spegel@gmail.com (Tony Spegel)</webMaster>
+    <lastBuildDate>Sat, 20 Jan 2024 01:43:16 GMT</lastBuildDate>
+    <generator>Eleventy v2.0.1</generator>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+
+    <image>
+      <url>https://tony-spegel.com/tsp_icon.svg</url>
+      <title>Tony Spegel</title>
+      <link>https://tony-spegel.com</link>
+    </image>
+
+    <author>
+      <name>Tony Spegel</name>
+      <email>tony.spegel@gmail.com</email>
+    </author>
+      <item>
+        <title>Custom Events mit @eventEmitter</title>
+        <link>https://tony-spegel.com/blog/event-emitter-decorator/</link>
+        <description>
+          
+            <![CDATA[<img align="left" hspace="5" src="https://tony-spegel.com/img/social-images/2023/event-emitter-decorator.png"/>
+            Wie man einen Class Method Decorator für Custom Events umsetzen kann]]>
+          
+        </description>
+
+        <author>https://tony-spegel.com/ (Tony Spegel)</author>
+        <pubDate>2023-12-08T00:00:00Z</pubDate>
+        <guid>https://tony-spegel.com/blog/event-emitter-decorator/</guid>
+        <source url="https://tony-spegel.com">Tony Spegel</source>
+        <content type="html">&lt;p&gt;Events sind eine super Möglichkeit um zwischen verschiedenen (Web) Components&lt;br /&gt;
 zu kommunizieren und besonders geeignet, wenn man nicht so sehr an das DOM gebunden sein möchte oder keine Annahmen über dessen Aufbau treffen kann. Deswegen habe ich mir die Frage gestellt, wie man das Auslösen von Custom Events mit Hilfe von Standard Decorators etwas &amp;quot;bequemer&amp;quot; lösen kann und führe hier durch meinen Denkprozess. Kleiner Spoiler: man könnte das so machen, wie ich es umgesetzt habe, aber es geht auch noch besser. Übrigens unterstützen auch die meisten Frontend-Frameworks native DOM-Events.&lt;/p&gt;
 &lt;details&gt;
    &lt;summary&gt;Gut zu wissen: Decorators&lt;/summary&gt;
@@ -193,14 +218,22 @@ zu kommunizieren und besonders geeignet, wenn man nicht so sehr an das DOM gebun
 &lt;code&gt;this.todoCompleted.emit(todo)&lt;/code&gt;. Das hat, finde ich, den entscheidenden Vorteil, dass man noch mehr Logik oder Bedingungen einführen kann bevor das Event ausgelöst wird. Schön zu sehen ist aber auch, dass man auf ähnliche Lösungen wie etablierte Bibliotheken kommt &lt;span aria-hidden=&quot;true&quot;&gt;😅&lt;/span&gt;. Neben dem &lt;code&gt;Event&lt;/code&gt;-Decorator bietet Stencil außerdem noch einen &lt;code&gt;Listen&lt;/code&gt;-Decorator um Events verarbeiten zu können. Ein nächster Schritt für mein Projekt könnte sein, es alternativ mit einem &lt;code&gt;ClassField&lt;/code&gt;-Decorator zu versuchen und dann noch mehr Möglichkeiten zur Typisierung zu bieten. Einen Link zum GitHub Repository gibt es &lt;a href=&quot;https://github.com/TonySpegel/event-emitter&quot;&gt;hier&lt;/a&gt; - über Feedback freue ich mich natürlich auch.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-	</entry>
-	
-	<entry>
-		<title>Einen Decorator für Inhalte eines Slots entwickeln</title>
-		<link href="https://tony-spegel.com/blog/query-assigned-element-content/"/>
-		<updated>2023-09-20T00:00:00Z</updated>
-		<id>https://tony-spegel.com/blog/query-assigned-element-content/</id>
-		<content type="html">&lt;section&gt;
+      </item>
+      <item>
+        <title>Einen Decorator für Inhalte eines Slots entwickeln</title>
+        <link>https://tony-spegel.com/blog/query-assigned-element-content/</link>
+        <description>
+          
+            <![CDATA[<img align="left" hspace="5" src="https://tony-spegel.com/img/social-images/2023/queryAssignedElementContentDemo.png"/>
+            Den Inhalt &lt;slot&gt; zugewiesener Elemente mit einem ClassAccessor-Decorator verarbeiten]]>
+          
+        </description>
+
+        <author>https://tony-spegel.com/ (Tony Spegel)</author>
+        <pubDate>2023-09-20T00:00:00Z</pubDate>
+        <guid>https://tony-spegel.com/blog/query-assigned-element-content/</guid>
+        <source url="https://tony-spegel.com">Tony Spegel</source>
+        <content type="html">&lt;section&gt;
 &lt;h2 id=&quot;motivation&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;https://tony-spegel.com/blog/query-assigned-element-content/#motivation&quot;&gt;Motivation&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Vor einer Weile habe ich eine Web Component &lt;a href=&quot;https://tony-spegel.com/blog/toc-observer&quot;&gt;entwickelt&lt;/a&gt;, welche CSS-Klassen zu Links in einem Inhaltsverzeichnis&lt;br /&gt;
 je nach Sichtbarkeit der zugehörigen Elemente im Viewport hinzufügen/entfernen kann.&lt;/p&gt;
@@ -351,14 +384,22 @@ Vor allem das Ganze typsicher umzusetzen und Generics über mehrere Ebenen hinwe
 &lt;p&gt;Jetzt bleibt meinerseits lediglich zu warten, bis seitens Lit die Unterstützung für &amp;quot;Hybrid&amp;quot;-Decorators kommt und Browser anfangen Standard-Decorators zu implementieren. In meinem nächsten Post wird es um einen weiteren Decorator und dazu passenden Anwendungsfall gehen.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-	</entry>
-	
-	<entry>
-		<title>Table of Contents Component</title>
-		<link href="https://tony-spegel.com/blog/toc-observer/"/>
-		<updated>2023-04-28T00:00:00Z</updated>
-		<id>https://tony-spegel.com/blog/toc-observer/</id>
-		<content type="html">&lt;p&gt;Eine Table of Contents (&lt;abbr&gt;TOC&lt;/abbr&gt;) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter &amp;quot;Inhalt&amp;quot; oder neben dem Post an der Seite sehen.&lt;/p&gt;
+      </item>
+      <item>
+        <title>Table of Contents Component</title>
+        <link>https://tony-spegel.com/blog/toc-observer/</link>
+        <description>
+          
+            <![CDATA[<img align="left" hspace="5" src="https://tony-spegel.com/img/social-images/2023/toc-observer-demo.jpg"/>
+            Links in einem Inhaltsverzeichnis dynamisch hervorheben]]>
+          
+        </description>
+
+        <author>https://tony-spegel.com/ (Tony Spegel)</author>
+        <pubDate>2023-04-28T00:00:00Z</pubDate>
+        <guid>https://tony-spegel.com/blog/toc-observer/</guid>
+        <source url="https://tony-spegel.com">Tony Spegel</source>
+        <content type="html">&lt;p&gt;Eine Table of Contents (&lt;abbr&gt;TOC&lt;/abbr&gt;) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter &amp;quot;Inhalt&amp;quot; oder neben dem Post an der Seite sehen.&lt;/p&gt;
 &lt;p&gt;Links zum Download gibt es hier: &lt;a href=&quot;https://github.com/TonySpegel/toc-observer&quot;&gt;GitHub&lt;/a&gt;, &lt;a href=&quot;https://www.npmjs.com/package/toc-observer-component&quot;&gt;NPM&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;disclaimer&quot;&gt;
   &lt;span&gt;Hinweis&lt;/span&gt;
@@ -571,14 +612,22 @@ override &lt;span class=&quot;token function&quot;&gt;disconnectedCallback&lt;/s
 &lt;p&gt;Das imperative selektieren von DOM-Elementen außerhalb des Shadow-DOM fühlt sich meiner Empfindung nach immer etwas umständlich an, da nicht direkt ersichtlich ist, in welchem Zusammenhang Logik und User Interface stehen und man sich darauf verlassen muss, dass die hinzugefügten Elemente den intern vorhergesehenen entsprechen. Als Limitation sehe ich, dass im Moment noch die (reactive) &lt;code&gt;observeParent&lt;/code&gt;-Property verwendet werden muss, statt auf den CSS-Selektor &lt;code&gt;:has()&lt;/code&gt; zurückgreifen zu können. Außerdem ist der Hash in &lt;code&gt;Map&amp;lt;HTMLAnchorElement[&#39;hash&#39;], IntersectionObserver&amp;gt;&lt;/code&gt; doch nicht ganz ideal, da so auch Elemente erfasst werden, die lediglich als Sprungmarken zu Überschriften gedacht sind. Als Verbesserung werde ich den Selektor konfigurierbar machen, so dass dieser spezifischer ist und nur die Elemente überwacht werden, welche wirklich relevant sind.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-	</entry>
-	
-	<entry>
-		<title>Image Comparison Component</title>
-		<link href="https://tony-spegel.com/blog/image-comparison-component/"/>
-		<updated>2023-04-14T00:00:00Z</updated>
-		<id>https://tony-spegel.com/blog/image-comparison-component/</id>
-		<content type="html">&lt;p&gt;In diesem Post geht es darum, eine Component zu entwickeln, welche es ermöglicht, Bilder auf verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.&lt;/p&gt;
+      </item>
+      <item>
+        <title>Image Comparison Component</title>
+        <link>https://tony-spegel.com/blog/image-comparison-component/</link>
+        <description>
+          
+            <![CDATA[<img align="left" hspace="5" src="https://tony-spegel.com/img/social-images/2023/image-comparison-component-flowers.jpg"/>
+            Drei Varianten einer Web Component um zwei Bilder miteinander zu vergleichen.]]>
+          
+        </description>
+
+        <author>https://tony-spegel.com/ (Tony Spegel)</author>
+        <pubDate>2023-04-14T00:00:00Z</pubDate>
+        <guid>https://tony-spegel.com/blog/image-comparison-component/</guid>
+        <source url="https://tony-spegel.com">Tony Spegel</source>
+        <content type="html">&lt;p&gt;In diesem Post geht es darum, eine Component zu entwickeln, welche es ermöglicht, Bilder auf verschiedene Arten zu vergleichen. Bilder können mit einem Slider, einem Overlay oder in einer Split-Ansicht verglichen werden.&lt;/p&gt;
 &lt;image-comparison variant=&quot;slider&quot; sliderPrompt=&quot;Slider bewegen, um zu vergleichen&quot; overlayPrompt=&quot;Tippen und gedrückt halten, um zu vergleichen&quot; class=&quot;post-img&quot; id=&quot;image-comparison-demo&quot;&gt;
   &lt;label slot=&quot;label-before&quot;&gt;Ohne Filter&lt;/label&gt;
   &lt;label slot=&quot;label-after&quot;&gt;Graustufen&lt;/label&gt;
@@ -1176,14 +1225,21 @@ radioButtonVariants&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt
 &lt;h2 id=&quot;update-rtl-bugfix&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;https://tony-spegel.com/blog/image-comparison-component/#update-rtl-bugfix&quot;&gt;Update: RTL Bugfix&lt;/a&gt;&lt;/h2&gt;
 &lt;/section&gt;
 </content>
-	</entry>
-	
-	<entry>
-		<title>Beschleunigte Navigation mit Link prefetching</title>
-		<link href="https://tony-spegel.com/blog/beschleunigte-navigation-mit-addPrefetchLink/"/>
-		<updated>2021-10-04T00:00:00Z</updated>
-		<id>https://tony-spegel.com/blog/beschleunigte-navigation-mit-addPrefetchLink/</id>
-		<content type="html">&lt;p&gt;Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt, um diese schneller aufrufen zu können. Das kann beispielsweise so aussehen: &lt;code&gt;&amp;lt;link rel=&amp;quot;prefetch&amp;quot; href=&amp;quot;/img/catsarecute.jpg&amp;quot; /&amp;gt;&lt;/code&gt;. Browser werden diese Ressource dann herunterladen und zwischenspeichern (allerdings nur im &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined&quot;&gt;Idle&lt;/a&gt;).&lt;/p&gt;
+      </item>
+      <item>
+        <title>Beschleunigte Navigation mit Link prefetching</title>
+        <link>https://tony-spegel.com/blog/beschleunigte-navigation-mit-addPrefetchLink/</link>
+        <description>
+          
+            Wie man rel=&quot;prefetch&quot; durch Interaktionen wie bspw. mouseover oder focus optimieren kann
+          
+        </description>
+
+        <author>https://tony-spegel.com/ (Tony Spegel)</author>
+        <pubDate>2021-10-04T00:00:00Z</pubDate>
+        <guid>https://tony-spegel.com/blog/beschleunigte-navigation-mit-addPrefetchLink/</guid>
+        <source url="https://tony-spegel.com">Tony Spegel</source>
+        <content type="html">&lt;p&gt;Prefetching beschreibt einen Prozess, welcher eventuell benötigte Inhalte vorlädt, um diese schneller aufrufen zu können. Das kann beispielsweise so aussehen: &lt;code&gt;&amp;lt;link rel=&amp;quot;prefetch&amp;quot; href=&amp;quot;/img/catsarecute.jpg&amp;quot; /&amp;gt;&lt;/code&gt;. Browser werden diese Ressource dann herunterladen und zwischenspeichern (allerdings nur im &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ#how_is_browser_idle_time_determined&quot;&gt;Idle&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Alle Links einer Seite für das Prefetching hinzuzufügen ist natürlich wenig sinnvoll.&lt;br /&gt;
 Um das zu optimieren ist mein Ansatz, Links nur auf eine Interaktion hin zu prefetchen - also beispielsweise das Zeigen mit der Maus oder das Fokussieren mit einer Tastatur. Inspiration habe ich mir hierbei durch das von Google entwickelte &lt;a href=&quot;https://getquick.link/&quot;&gt;Quicklink&lt;/a&gt; geholt. Der entscheidende Unterschied zu meiner Lösung ist, dass Quicklink alle Links im sichtbaren Bereichen vorlädt (wenn der Browser im Idle ist) und nicht durch eine Interaktion.&lt;/p&gt;
 &lt;p&gt;Links zu meiner Lösung &lt;em&gt;addPrefetchLink&lt;/em&gt;:&lt;/p&gt;
@@ -1328,14 +1384,22 @@ Weitere Details zum Projekt auf Github.&lt;br /&gt;
 Da es mein erstes NPM-Modul ist, freue ich mich natürlich besonders über Feedback &lt;a class=&quot;text-link&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; href=&quot;mailto:tony.spegel@gmail.com&quot; title=&quot;E-Mail schreiben&quot;&gt;tony.spegel@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;/section&gt;
 </content>
-	</entry>
-	
-	<entry>
-		<title>Challenge: Progress Stepper</title>
-		<link href="https://tony-spegel.com/blog/challenge-progress-stepper/"/>
-		<updated>2021-08-23T00:00:00Z</updated>
-		<id>https://tony-spegel.com/blog/challenge-progress-stepper/</id>
-		<content type="html">&lt;figure&gt;
+      </item>
+      <item>
+        <title>Challenge: Progress Stepper</title>
+        <link>https://tony-spegel.com/blog/challenge-progress-stepper/</link>
+        <description>
+          
+            <![CDATA[<img align="left" hspace="5" src="https://tony-spegel.com/img/social-images/2021/challenge-progress-stepper_fecc-challenge-008.png"/>
+            Fortschritt anzeigen als (CSS) Challenge]]>
+          
+        </description>
+
+        <author>https://tony-spegel.com/ (Tony Spegel)</author>
+        <pubDate>2021-08-23T00:00:00Z</pubDate>
+        <guid>https://tony-spegel.com/blog/challenge-progress-stepper/</guid>
+        <source url="https://tony-spegel.com">Tony Spegel</source>
+        <content type="html">&lt;figure&gt;
   &lt;img src=&quot;https://tony-spegel.com/img/2021/fecc-challenge-008.png&quot; alt=&quot;Fortschrittsanzeige für einen Checkout-Prozess&quot; width=&quot;320&quot; height=&quot;303&quot; /&gt;
   &lt;figcaption&gt;Abbildung von © Andy Bell&lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -1529,5 +1593,6 @@ Da es mein erstes NPM-Modul ist, freue ich mich natürlich besonders über Feedb
 Den Code als Ganzes gibt es noch einmal hier auf meinem &lt;a href=&quot;https://codepen.io/TonySpegel/pen/XWgWRgm?editors=1100&quot;&gt;Codepen&lt;/a&gt;.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-	</entry>
-</feed>
+      </item>
+  </channel>
+</rss>
