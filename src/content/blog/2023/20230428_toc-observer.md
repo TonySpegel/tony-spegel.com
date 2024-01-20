@@ -25,7 +25,7 @@ styleSheets: [
 eleventyImport:
   collections: ["post"]
 ---
-Eine Table of Contents (<abbr>TOC</abbr>) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter "Inhalt" oder neben dem Post an der Seite sehen.
+Eine Table of Contents (TOC) stellt ein Inhaltsverzeichnis dar und findet sich häufig in Blogs oder Artikeln wieder. Für meinen Blog (und alle die es nutzen möchten), habe ich eine Component entwickelt, welche Links in einem TOC dynamisch hervorheben kann, sobald die dazugehörigen Überschriften oder Abschnitte sichtbar werden. Eine Demo könnt ihr mobil im Header unter "Inhalt" oder neben dem Post an der Seite sehen.
 
 Links zum Download gibt es hier: [GitHub](https://github.com/TonySpegel/toc-observer), [NPM](https://www.npmjs.com/package/toc-observer-component).
 <div class="disclaimer">
@@ -188,7 +188,7 @@ private selectTocLink(id: string): HTMLAnchorElement | null {
 Auch hier wieder manuelles selektieren der Links. Das ist eigentlich ganz grob auch schon alles, was die reine Funktionalität betrifft. Aber wie eingangs erwähnt, bringt die Entscheidung auch Abschnitte zu unterstützen ein paar Herausforderungen mit sich, auf die ich im nächsten Abschnitt eingehe.
 
 ## Verschiedene HTML Strukturen unterstützen
-Das eingangs erwähnte, vereinfachte Markup geht davon aus, dass Sections eine ID besitzen. Üblicher ist es aber in <abr>SSG</abr> (Static site generators), eine Section zu haben auf die eine Überschrift mit ID und einem Link folgt. Also eher so:
+Das eingangs erwähnte, vereinfachte Markup geht davon aus, dass Sections eine ID besitzen. Üblicher ist es aber in Static site generators (SSG), eine Section zu haben auf die eine Überschrift mit ID und einem Link folgt. Also eher so:
 
 ```html
 <section>

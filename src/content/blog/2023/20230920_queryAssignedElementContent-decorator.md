@@ -29,8 +29,7 @@ eleventyImport:
 
 ## Motivation
 
-Vor einer Weile habe ich eine Web Component [entwickelt](/blog/toc-observer), welche CSS-Klassen zu Links in einem Inhaltsverzeichnis
-je nach Sichtbarkeit der zugehörigen Elemente im Viewport hinzufügen/entfernen kann.
+Vor einer Weile habe ich eine Web Component [entwickelt](/blog/toc-observer), welche CSS-Klassen zu Links in einem Inhaltsverzeichnis je nach Sichtbarkeit der zugehörigen Elemente im Viewport hinzufügen/entfernen kann.
 ```html
 <toc-observer>
   <ul slot="toc">

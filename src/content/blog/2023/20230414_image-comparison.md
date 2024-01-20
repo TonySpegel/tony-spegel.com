@@ -57,11 +57,11 @@ In diesem Post geht es darum, eine Component zu entwickeln, welche es ermöglich
     <legend>Leserichtung</legend>
     <div>
       <input type="radio" id="ltr" name="reading-direction" value="ltr" checked>
-      <label for="ltr"><abbr>LTR</abbr> (Left To Right)</label>
+      <label for="ltr">Left To Right (LTR)</label>
     </div>
     <div>
       <input type="radio" id="rtl" name="reading-direction" value="rtl">
-      <label for="rtl"><abbr>RTL</abbr> (Right To Left)</label>
+      <label for="rtl">Right To Left (RTL)</label>
     </div>
   </fieldset> -->
 </div>
@@ -235,7 +235,7 @@ export class ImageComparison extends LitElement {
   }
 }
 ```
-Hier nutze ich zwei neue Konzepte im Lit Kontext: die [@-Syntax](https://lit.dev/docs/components/events/#adding-event-listeners-in-the-element-template) definiert JavaScript-typische EventListener, der `@state()`-Decorator einen ausschließlich internen Zustand. Inbesondere `isRtl` wird später wichtig sein, um eine so genannte <abbr>RTL</abbr> (Right-to-left) script Unterstützung, also Sprachen welche von Rechts nach Links gelesen werden, zu bieten. Hier hat das den einfachen Hintergrund, dass ich das Vorzeichen im `left`-Attribut ändern oder im `inset()` das Rechteck von der anderen Seite aus aufziehen kann.
+Hier nutze ich zwei neue Konzepte im Lit Kontext: die [@-Syntax](https://lit.dev/docs/components/events/#adding-event-listeners-in-the-element-template) definiert JavaScript-typische EventListener, der `@state()`-Decorator einen ausschließlich internen Zustand. Inbesondere `isRtl` wird später wichtig sein, um eine so genannte Right-to-left (RTL) script Unterstützung, also Sprachen welche von Rechts nach Links gelesen werden, zu bieten. Hier hat das den einfachen Hintergrund, dass ich das Vorzeichen im `left`-Attribut ändern oder im `inset()` das Rechteck von der anderen Seite aus aufziehen kann.
 
 Jetzt zu den eigentlichen Methoden, ich gehe dabei nur auf die wirklich wichtigen und etwas komplizierteren ein:
 ```ts
