@@ -21,8 +21,8 @@
 
   {% include 'layouts/theme-preference.njk' %}
 
-  <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
-  <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
+  <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="RSS Feed von {{ metadata.author.name }}">
+  <link rel="alternate" href="/feed/feed.json" type="application/json" title="JSON Feed von {{ metadata.author.name }}">
   <link href="{{ metadata.author.mastodon }}" rel="me">
 
   {# 'jsFiles' is set in the front matter data for each post #}
