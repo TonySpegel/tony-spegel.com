@@ -249,13 +249,13 @@ body {
  * ======
  */
 
-.tmpl-home {
+.base-layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.tmpl-home .main-wrapper {
+.base-layout .main-wrapper {
   flex: 1;
   padding: var(--base-gap);
 }
@@ -273,7 +273,6 @@ body {
 .intro {
   line-height: 1.5;
   max-width: 470px;
-  // text-align: justify;
 
   h1 {
     margin-block-start: 0;
