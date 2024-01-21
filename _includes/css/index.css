@@ -755,13 +755,13 @@ body {
  * Main
  * ======
  */
-.tmpl-home {
+.base-layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.tmpl-home .main-wrapper {
+.base-layout .main-wrapper {
   flex: 1;
   padding: var(--base-gap);
 }
